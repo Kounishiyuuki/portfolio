@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --color-background: 214 30% 7%;
+  --color-foreground: 210 20% 94%;
+  --color-muted: 215 23% 14%;
+  --color-muted-foreground: 214 12% 70%;
+  --color-line: 214 18% 22%;
+  --color-line-strong: 214 18% 30%;
+  --color-surface: 214 24% 10%;
+  --color-surface-strong: 214 20% 14%;
+  --color-accent: 204 74% 63%;
+  --color-accent-foreground: 212 40% 10%;
+  --radius-shell: 1.75rem;
+  --radius-card: 1.5rem;
+  --radius-control: 999px;
+  --shadow-shell: 0 24px 80px rgba(0, 0, 0, 0.32);
+  --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 18px 60px rgba(88, 148, 255, 0.12);
+  --container-padding: clamp(1.25rem, 2vw, 2rem);
+  --page-space: clamp(2rem, 4vw, 3.5rem);
+  --section-space: clamp(4rem, 7vw, 7.5rem);
+  --content-space: clamp(1.5rem, 3vw, 2.5rem);
+  --section-gap: clamp(1.25rem, 2vw, 2rem);
+}
+
+* {
+  border-color: hsl(var(--color-line) / 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(105, 154, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 25%),
+    hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-family: var(--font-sans), sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  isolation: isolate;
+}
+
+::selection {
+  background: hsl(var(--color-accent) / 0.28);
+  color: hsl(var(--color-foreground) / 1);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.04em;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display), serif;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .surface-hairline {
+    position: relative;
+  }
+
+  .surface-hairline::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .surface-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+      hsl(var(--color-surface) / 0.82);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-muted {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
