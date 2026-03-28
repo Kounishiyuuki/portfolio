@@ -1,10 +1,20 @@
+"use client";
+
 import type { HTMLAttributes } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import { getCardHoverFeedback } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-type CardProps = HTMLAttributes<HTMLDivElement> & {
+type CardDomProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd" | "onAnimationIteration"
+>;
+
+type CardProps = CardDomProps & {
   inset?: boolean;
   padding?: "none" | "sm" | "md" | "lg";
   tone?: "default" | "muted" | "strong";
+  interactive?: boolean;
 };
 
 const paddingClasses = {
@@ -25,13 +35,25 @@ export function Card({
   inset = false,
   padding = "md",
   tone = "default",
+  interactive = true,
   ...props
 }: CardProps) {
+  const prefersReducedMotion = useReducedMotion() ?? false;
+  const feedback = getCardHoverFeedback(prefersReducedMotion, interactive);
+
   return (
-    <div
+    <motion.div
+      initial={false}
+      animate={feedback.rest}
+      whileHover={interactive ? feedback.hover : undefined}
+      transition={feedback.transition}
       className={cn(
-        "surface-hairline surface-panel rounded-card border border-white/10",
+        "surface-hairline surface-panel rounded-card border border-line/80",
         "supports-[backdrop-filter]:backdrop-blur-chrome",
+        "transition-[transform,border-color,box-shadow,background-color] duration-300 ease-out",
+        !prefersReducedMotion &&
+          interactive &&
+          "hover:border-line-strong/90 hover:shadow-[0_22px_55px_rgba(27,44,74,0.12)]",
         paddingClasses[padding],
         toneClasses[tone],
         inset && "glass-muted",

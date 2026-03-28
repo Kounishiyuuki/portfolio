@@ -40,7 +40,7 @@ export function SectionContainer({
           )}
         >
           {eyebrow ? (
-            <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">
+            <p className="ui-eyebrow text-muted-foreground">
               {eyebrow}
             </p>
           ) : null}
@@ -50,7 +50,7 @@ export function SectionContainer({
             </h2>
           ) : null}
           {description ? (
-            <p className="text-base leading-8 text-muted-foreground md:text-lg">
+            <p className="ui-copy md:text-lg">
               {description}
             </p>
           ) : null}
