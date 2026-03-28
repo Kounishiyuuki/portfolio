@@ -116,7 +116,7 @@ export default function ProjectsPage() {
                   "rounded-pill border px-4 py-2 text-[11px] font-medium tracking-[0.04em] transition-[background-color,border-color,color,box-shadow] duration-200",
                   index === 0
                     ? "border-accent/22 bg-accent/92 text-accent-foreground shadow-[0_8px_18px_rgba(88,148,255,0.16)]"
-                    : "border-line/80 bg-white/84 text-foreground/78 shadow-[0_8px_20px_rgba(27,44,74,0.04)] hover:border-line-strong/85 hover:bg-white hover:text-foreground/88",
+                    : "border-line/80 bg-white/84 text-foreground/78 shadow-[0_8px_20px_rgba(27,44,74,0.04)]",
                 ].join(" ")}
               >
                 {filter}

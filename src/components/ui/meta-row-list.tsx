@@ -23,9 +23,9 @@ export function MetaRowList({
 }: MetaRowListProps) {
   return (
     <div className={cn("space-y-3", className)}>
-      {rows.map((row) => (
+      {rows.map((row, index) => (
         <div
-          key={`${String(row.label)}-${String(row.value)}`}
+          key={index}
           className={cn("border-b border-white/8 pb-3 last:border-b-0 last:pb-0", rowClassName)}
         >
           <p className={cn("text-[10px] tracking-[0.1em] text-muted-foreground", labelClassName)}>

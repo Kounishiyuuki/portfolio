@@ -137,7 +137,7 @@ export default function ContactPage() {
                           <a
                             href={item.href}
                             target={item.href.startsWith("http") ? "_blank" : undefined}
-                            rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                             className="mt-3 inline-flex items-center gap-1.5 rounded-pill border border-line/75 bg-white/80 px-3 py-1.5 text-[12px] font-semibold tracking-[0.01em] text-accent transition-[border-color,color,background-color,box-shadow] duration-200 hover:border-line-strong/85 hover:bg-white hover:text-accent/90"
                           >
                             {item.action}
