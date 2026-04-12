@@ -17,7 +17,7 @@ const display = Noto_Serif_JP({
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} | ${siteConfig.role}`,
-  description: "学生ITエンジニア・小西勇輝のポートフォリオです。",
+  description: `${siteConfig.role} ${siteConfig.name} のポートフォリオです。`,
 };
 
 export default function RootLayout({

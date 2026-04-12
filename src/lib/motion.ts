@@ -31,25 +31,45 @@ export const motionTokens = {
   },
   interaction: {
     button: {
-      lift: -1,
-      hoverScale: 1.002,
-      pressOffset: 0.5,
-      pressScale: 0.992,
+      lift: -1.5,
+      hoverScale: 1.005,
+      hoverOpacity: 1,
+      pressOffset: 1,
+      pressScale: 0.986,
+      pressOpacity: 0.985,
       spring: {
         type: "spring" as const,
-        stiffness: 420,
-        damping: 28,
-        mass: 0.7,
+        stiffness: 340,
+        damping: 22,
+        mass: 0.72,
       },
     },
     card: {
-      lift: -2,
-      hoverScale: 1.002,
+      lift: -3,
+      hoverScale: 1.004,
+      hoverOpacity: 1,
+      pressOffset: -1,
+      pressScale: 0.998,
+      pressOpacity: 0.992,
       spring: {
         type: "spring" as const,
-        stiffness: 280,
-        damping: 26,
-        mass: 0.9,
+        stiffness: 235,
+        damping: 21,
+        mass: 0.95,
+      },
+    },
+    nav: {
+      lift: -1,
+      hoverScale: 1.003,
+      hoverOpacity: 1,
+      pressOffset: 0.5,
+      pressScale: 0.99,
+      pressOpacity: 0.988,
+      spring: {
+        type: "spring" as const,
+        stiffness: 340,
+        damping: 24,
+        mass: 0.78,
       },
     },
   },
@@ -136,22 +156,24 @@ function createStaggerChildren(options: StaggerOptions = {}) {
 export function getButtonFeedback(prefersReducedMotion: boolean, disabled = false) {
   if (prefersReducedMotion || disabled) {
     return {
-      rest: { y: 0, scale: 1 },
-      hover: { y: 0, scale: 1 },
-      press: { y: 0, scale: 1 },
+      rest: { y: 0, scale: 1, opacity: 1 },
+      hover: { y: 0, scale: 1, opacity: 1 },
+      press: { y: 0, scale: 1, opacity: 1 },
       transition: { duration: 0 },
     } as const;
   }
 
   return {
-    rest: { y: 0, scale: 1 },
+    rest: { y: 0, scale: 1, opacity: 1 },
     hover: {
       y: motionTokens.interaction.button.lift,
       scale: motionTokens.interaction.button.hoverScale,
+      opacity: motionTokens.interaction.button.hoverOpacity,
     },
     press: {
       y: motionTokens.interaction.button.pressOffset,
       scale: motionTokens.interaction.button.pressScale,
+      opacity: motionTokens.interaction.button.pressOpacity,
     },
     transition: motionTokens.interaction.button.spring,
   } as const;
@@ -160,20 +182,51 @@ export function getButtonFeedback(prefersReducedMotion: boolean, disabled = fals
 export function getCardHoverFeedback(prefersReducedMotion: boolean, interactive = true) {
   if (prefersReducedMotion || !interactive) {
     return {
-      rest: { y: 0, scale: 1 },
-      hover: { y: 0, scale: 1 },
-      press: { y: 0, scale: 1 },
+      rest: { y: 0, scale: 1, opacity: 1 },
+      hover: { y: 0, scale: 1, opacity: 1 },
+      press: { y: 0, scale: 1, opacity: 1 },
       transition: { duration: 0 },
     } as const;
   }
 
   return {
-    rest: { y: 0, scale: 1 },
+    rest: { y: 0, scale: 1, opacity: 1 },
     hover: {
       y: motionTokens.interaction.card.lift,
       scale: motionTokens.interaction.card.hoverScale,
+      opacity: motionTokens.interaction.card.hoverOpacity,
     },
-    press: { y: 0, scale: 1 },
+    press: {
+      y: motionTokens.interaction.card.pressOffset,
+      scale: motionTokens.interaction.card.pressScale,
+      opacity: motionTokens.interaction.card.pressOpacity,
+    },
     transition: motionTokens.interaction.card.spring,
+  } as const;
+}
+
+export function getNavFeedback(prefersReducedMotion: boolean, interactive = true) {
+  if (prefersReducedMotion || !interactive) {
+    return {
+      rest: { y: 0, scale: 1, opacity: 1 },
+      hover: { y: 0, scale: 1, opacity: 1 },
+      press: { y: 0, scale: 1, opacity: 1 },
+      transition: { duration: 0 },
+    } as const;
+  }
+
+  return {
+    rest: { y: 0, scale: 1, opacity: 1 },
+    hover: {
+      y: motionTokens.interaction.nav.lift,
+      scale: motionTokens.interaction.nav.hoverScale,
+      opacity: motionTokens.interaction.nav.hoverOpacity,
+    },
+    press: {
+      y: motionTokens.interaction.nav.pressOffset,
+      scale: motionTokens.interaction.nav.pressScale,
+      opacity: motionTokens.interaction.nav.pressOpacity,
+    },
+    transition: motionTokens.interaction.nav.spring,
   } as const;
 }
