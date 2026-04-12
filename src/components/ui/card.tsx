@@ -46,10 +46,12 @@ export function Card({
       initial={false}
       animate={feedback.rest}
       whileHover={interactive ? feedback.hover : undefined}
+      whileTap={interactive ? feedback.press : undefined}
       transition={feedback.transition}
       className={cn(
         "surface-hairline surface-panel rounded-card border border-line/80",
         "supports-[backdrop-filter]:backdrop-blur-chrome",
+        "will-change-transform",
         "transition-[transform,border-color,box-shadow,background-color] duration-300 ease-out",
         !prefersReducedMotion &&
           interactive &&

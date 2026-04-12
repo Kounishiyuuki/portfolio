@@ -1,18 +1,11 @@
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
+import type { ProjectItem } from "@/lib/projects-data";
 import { cn } from "@/lib/utils";
 
-type ProjectShowcaseCardProps = {
-  title: string;
-  category: string;
-  kind: "自主制作" | "UI study" | "コンセプト案";
-  description: string;
-  focus: string;
-  accent: string;
-  visual: "server" | "chip" | "orb" | "canvas";
-  href?: string;
-  layout?: "featured" | "default" | "wide";
+type ProjectShowcaseCardProps = ProjectItem & {
+  ctaAriaLabel?: string;
   className?: string;
 };
 
@@ -34,14 +27,26 @@ export function ProjectShowcaseCard({
   kind,
   description,
   focus,
-  accent,
-  visual,
+  showcase,
+  ctaLabel = "制作を見る",
+  ctaAriaLabel,
   href = "/projects",
-  layout = "default",
   className,
 }: ProjectShowcaseCardProps) {
+  if (!showcase) {
+    return null;
+  }
+
+  const {
+    eyebrow = "採用担当向けに確認しやすい制作",
+    accent,
+    visual,
+    layout = "default",
+    className: showcaseClassName,
+  } = showcase;
+
   return (
-    <article className={className}>
+    <article className={cn(showcaseClassName, className)}>
       <Card
         padding="none"
         tone="default"
@@ -73,14 +78,14 @@ export function ProjectShowcaseCard({
         <div className={bodySpacingClasses[layout]}>
           <div className="flex items-center justify-between gap-4">
             <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
-              採用担当向けに確認しやすい制作
+              {eyebrow}
             </p>
             <InternalLink
               href={href}
-              aria-label={`${title} の詳細を見る`}
+              aria-label={ctaAriaLabel ?? `${title} - ${ctaLabel}`}
               className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.03em] text-accent/90 transition-colors duration-200 hover:text-accent"
             >
-              制作を見る
+              {ctaLabel}
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
             </InternalLink>
           </div>
@@ -119,7 +124,11 @@ export function ProjectShowcaseCard({
   );
 }
 
-function ProjectVisual({ type }: { type: ProjectShowcaseCardProps["visual"] }) {
+function ProjectVisual({
+  type,
+}: {
+  type: NonNullable<ProjectItem["showcase"]>["visual"];
+}) {
   if (type === "server") {
     return (
       <div className="absolute inset-0 flex items-end gap-3 px-5 pb-5 transition-transform duration-500 group-hover:scale-[1.03]">

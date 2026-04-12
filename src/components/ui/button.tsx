@@ -76,7 +76,7 @@ function ButtonContent({ children, disabled = false }: { children: ReactNode; di
       whileHover={disabled ? undefined : feedback.hover}
       whileTap={disabled ? undefined : feedback.press}
       transition={feedback.transition}
-      className="relative flex w-full items-center justify-center gap-2 self-stretch px-[0.02em]"
+      className="relative flex w-full items-center justify-center gap-2 self-stretch will-change-transform px-[0.02em]"
     >
       {children}
     </motion.span>

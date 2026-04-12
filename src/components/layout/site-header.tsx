@@ -1,22 +1,27 @@
 "use client";
 
 import { useId, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { InternalLink } from "@/components/ui/internal-link";
+import { getNavFeedback } from "@/lib/motion";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "ホーム" },
   { href: "/projects", label: "制作実績" },
   { href: "/about", label: "プロフィール" },
-  { href: "/contact", label: "お問い合わせ" },
+  { href: "/contact", label: "連絡先" },
 ];
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavId = useId();
+  const prefersReducedMotion = useReducedMotion() ?? false;
+  const navFeedback = getNavFeedback(prefersReducedMotion);
 
   function toggleMenu() {
     setIsMenuOpen((current) => !current);
@@ -28,9 +33,16 @@ export function SiteHeader() {
         <div className="surface-hairline flex items-center justify-between rounded-pill border border-line/80 bg-white/84 px-4 py-2.5 shadow-glow backdrop-blur-chrome md:px-5">
           <InternalLink
             href="/"
-            className="rounded-pill px-2.5 py-1.5 text-sm font-semibold tracking-[0.03em] text-foreground/92 hover:text-foreground"
+            className="rounded-[1.1rem] px-2.5 py-1.5 transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            勇輝 / Yuki
+            <span className="flex flex-col leading-none">
+              <span className="text-[1rem] font-semibold tracking-[-0.035em] text-foreground/94">
+                {siteConfig.name}
+              </span>
+              <span className="mt-1 text-[10px] font-medium tracking-[0.08em] text-muted-foreground">
+                {siteConfig.role}
+              </span>
+            </span>
           </InternalLink>
           <nav className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
@@ -50,11 +62,16 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="relative md:hidden">
-            <button
+            <motion.button
               type="button"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls={mobileNavId}
+              initial={false}
+              animate={navFeedback.rest}
+              whileHover={navFeedback.hover}
+              whileTap={navFeedback.press}
+              transition={navFeedback.transition}
               className={cn(
                 "rounded-pill border border-line/90 bg-background/90 px-4 py-2 text-sm font-medium tracking-[0.01em] text-foreground/88",
                 "transition-[background-color,color,border-color,box-shadow] duration-200",
@@ -63,7 +80,7 @@ export function SiteHeader() {
               )}
             >
               メニュー
-            </button>
+            </motion.button>
             <nav
               id={mobileNavId}
               aria-label="モバイルナビゲーション"
