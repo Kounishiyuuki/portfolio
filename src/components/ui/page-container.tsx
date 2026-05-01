@@ -13,7 +13,7 @@ export function PageContainer({
   return (
     <div
       className={cn(
-        "mx-auto flex w-full max-w-container flex-col",
+        "layout-shell mx-auto flex w-full flex-col",
         bleed ? "px-0" : "px-[var(--container-padding)]",
         className
       )}

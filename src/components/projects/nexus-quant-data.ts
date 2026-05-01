@@ -1,6 +1,6 @@
 export const nexusQuantStatItems = [
-  { label: "性質", value: "UI study" },
-  { label: "対象", value: "金融・分析領域の study" },
+  { label: "性質", value: "UIスタディ" },
+  { label: "対象", value: "金融・分析向けの画面" },
   { label: "技術", value: "Next.js / TypeScript / Tailwind CSS" },
   { label: "主眼", value: "複雑な情報の整理" },
 ] as const;
@@ -8,7 +8,7 @@ export const nexusQuantStatItems = [
 export const nexusQuantBadgeItems = ["金融・分析UI", "情報設計", "フロントエンド実装"] as const;
 
 export const nexusQuantOverviewPoints = [
-  "実案件として見せるのではなく、金融・分析領域を想定した UI study として設計意図が伝わることを重視しています。",
+  "実案件の紹介ではなく、金融・分析領域を想定した UIスタディとして設計意図が伝わることを重視しています。",
   "数字、グラフ、補助情報の優先順位を整理し、視線誘導しやすい構成にしています。",
   "情報量が多くても、何から読めばよいかが自然に分かる画面構成を目指しました。",
   "抽象ビジュアルに頼りすぎず、性質、担当範囲、技術要素を明示して判断材料を補っています。",
@@ -17,7 +17,7 @@ export const nexusQuantOverviewPoints = [
 export const nexusQuantSideInfoGroups = [
   {
     title: "性質",
-    items: ["UI study", "金融・分析領域の study", "公開用に整理した制作詳細"],
+    items: ["UIスタディ", "金融・分析向けの画面", "公開用に整理した制作詳細"],
   },
   {
     title: "見るポイント",
@@ -36,10 +36,10 @@ export const nexusQuantSideInfoGroups = [
 export const nexusQuantDetailSections = [
   {
     eyebrow: "概要",
-    title: "金融・分析領域を想定した UI study の制作詳細。",
+    title: "金融・分析領域を想定した UIスタディの制作詳細。",
     body: [
       "金額や指標、グラフ、補助説明が同時に存在する画面を想定し、何を先に読めばよいかが伝わる構成にしています。",
-      "実案件の紹介ではなく、UI study として情報設計、見せ方の判断、フロントエンド実装の方向性が伝わることを目的にしています。",
+      "実案件の紹介ではなく、UIスタディとして情報設計、見せ方の判断、フロントエンド実装の方向性が伝わることを目的にしています。",
     ],
   },
   {
@@ -63,7 +63,7 @@ export const nexusQuantDetailSections = [
     title: "主軸の情報から読み始め、補助情報へ滑らかにつながる構成にする。",
     body: [
       "本文カラムは、必要な説明量を保ちつつ、行間と余白で読み進めやすさを確保しています。サイドレールには担当範囲や技術だけを置き、本文を邪魔しないようにしました。",
-      "大きなビジュアルは補助表現として扱い、先に文脈を理解してから確認できるようにしています。全体として、実案件紹介よりも study の記録として読みやすい形に寄せています。",
+      "大きなビジュアルは補助表現として扱い、先に文脈を理解してから確認できるようにしています。全体として、実案件紹介よりも制作記録として読みやすい形に寄せています。",
     ],
   },
 ] as const;
@@ -82,7 +82,7 @@ export const nexusQuantImpactCards = [
 ] as const;
 
 export const nexusQuantProjectMetaRows = [
-  { label: "性質", value: "UI study" },
+  { label: "性質", value: "UIスタディ" },
   { label: "担当範囲", value: "情報設計 / UI設計 / フロントエンド実装" },
   { label: "見るポイント", value: "複雑な情報を整理して見せる力" },
   { label: "技術", value: "Next.js / TypeScript / Tailwind CSS" },
@@ -93,6 +93,6 @@ export const nexusQuantRelatedWorks = [
     eyebrow: "次に見る制作",
     title: "ニューラルデータ解析",
     description:
-      "分析結果を見やすく整理する UI study として、グラフと説明文の優先順位を整えた制作です。",
+      "分析結果を見やすく整理する UIスタディとして、グラフと説明文の優先順位を整えた制作です。",
   },
 ] as const;

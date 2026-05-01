@@ -3,7 +3,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export function NexusQuantMediaSection() {
   return (
-    <section className="space-y-8 pt-4 md:space-y-10">
+    <section className="space-y-7 pt-2 md:space-y-9 md:pt-4">
       <SectionHeader
         align="center"
         eyebrow="補助ビジュアル"
@@ -12,15 +12,16 @@ export function NexusQuantMediaSection() {
       />
 
       <Card
+        interactive={false}
         padding="none"
         tone="strong"
         className="overflow-hidden rounded-[2rem] border-white/10"
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-[linear-gradient(135deg,rgba(4,18,29,1),rgba(3,8,16,0.96))]">
+        <div className="relative min-h-[22rem] overflow-hidden bg-[linear-gradient(135deg,rgba(4,18,29,1),rgba(3,8,16,0.96))] md:aspect-[16/10] md:min-h-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_26%,rgba(76,220,255,0.16),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_30%)]" />
-          <div className="absolute inset-6 rounded-[1.6rem] border border-cyan-300/15 bg-[linear-gradient(180deg,rgba(7,24,34,0.88),rgba(2,8,14,0.92))] shadow-[0_34px_80px_rgba(0,0,0,0.34)] md:inset-12">
+          <div className="absolute inset-4 rounded-[1.6rem] border border-cyan-300/15 bg-[linear-gradient(180deg,rgba(7,24,34,0.88),rgba(2,8,14,0.92))] shadow-[0_34px_80px_rgba(0,0,0,0.34)] md:inset-12">
             <div className="grid h-full grid-cols-12 gap-3 p-4 md:gap-4 md:p-7">
-              <div className="col-span-7 grid gap-3">
+              <div className="col-span-12 grid gap-3 md:col-span-7">
                 <div className="grid grid-cols-2 gap-3">
                   {[0, 1, 2, 3].map((item) => (
                     <div
@@ -59,7 +60,7 @@ export function NexusQuantMediaSection() {
                 </div>
               </div>
 
-              <div className="col-span-5 flex flex-col gap-3">
+              <div className="col-span-12 hidden flex-col gap-3 md:col-span-5 md:flex">
                 <div className="rounded-[1rem] border border-cyan-200/10 bg-cyan-300/[0.04] p-3">
                   <div className="h-2 w-20 rounded-full bg-cyan-200/15" />
                   <div className="mt-4 space-y-2">
@@ -87,6 +88,7 @@ export function NexusQuantMediaSection() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card
+          interactive={false}
           inset
           padding="md"
           tone="muted"
@@ -100,6 +102,7 @@ export function NexusQuantMediaSection() {
           </p>
         </Card>
         <Card
+          interactive={false}
           inset
           padding="md"
           tone="muted"

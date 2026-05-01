@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
@@ -20,6 +21,8 @@ export function WorkCard({
   techStack,
   highlightPoints,
   visual,
+  coverImage,
+  coverAlt,
   featured = false,
   href = "/projects",
   ctaLabel = "制作詳細を見る",
@@ -51,25 +54,29 @@ export function WorkCard({
             </div>
             <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(15,22,35,0.08))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <div className="pointer-events-none absolute inset-x-[16%] top-4 z-[1] h-12 rounded-full bg-white/[0.08] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
-            <WorkVisual type={visual} />
+            {coverImage ? (
+              <ProjectCover src={coverImage} alt={coverAlt} />
+            ) : (
+              <WorkVisual type={visual} />
+            )}
           </div>
         </div>
 
-        <div className="flex min-h-[18.4rem] flex-col px-4 py-4 md:px-5 md:py-5">
-          <div className="flex items-center justify-between gap-4">
+        <div className="flex min-h-[18.4rem] min-w-0 flex-col px-4 py-4 md:px-5 md:py-5">
+          <div className="flex flex-wrap items-center justify-between gap-2.5">
             <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
-              採用担当が比較しやすい制作
+              制作の概要
             </p>
             <p className="text-[10px] tracking-[0.08em] text-muted-foreground">
               {year}
             </p>
           </div>
 
-          <div className="mt-3 space-y-3">
-            <h2 className="text-[1.14rem] font-semibold leading-[1.5] tracking-[-0.015em] text-foreground md:min-h-[3.9rem] md:text-[1.24rem]">
+          <div className="mt-3 min-w-0 space-y-3">
+            <h2 className="ui-card-title layout-title-card text-foreground md:text-[clamp(1.1rem,0.9vw,1.24rem)] xl:min-h-[3.9rem]">
               {title}
             </h2>
-            <p className="max-w-[30ch] text-[12.5px] leading-[1.85] text-muted-foreground md:min-h-[4.85rem] md:text-[13px]">
+            <p className="ui-body-sm layout-card-copy text-muted-foreground xl:min-h-[4.85rem] md:text-[13px]">
               {description}
             </p>
           </div>
@@ -88,7 +95,7 @@ export function WorkCard({
           </div>
 
           <div className="mt-auto space-y-3 pt-4">
-            <div className="flex flex-wrap items-center gap-2 text-[10px] tracking-[0.04em] text-foreground/58">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] tracking-[0.04em] text-foreground/58">
               {tags.map((tag) => (
                 <span key={tag} className="inline-flex items-center gap-1.5">
                   <span className="h-1 w-1 rounded-full bg-foreground/18" />
@@ -99,9 +106,9 @@ export function WorkCard({
 
             <div className="space-y-3 border-t border-line/65 pt-3">
               <span className="block text-[10px] tracking-[0.06em] text-muted-foreground">
-                性質、技術、確認先を一覧で把握できます
+                技術と確認先をまとめています
               </span>
-              <div className="flex flex-wrap items-center gap-2.5">
+              <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
                 {githubUrl ? (
                   <Button
                     href={githubUrl}
@@ -109,7 +116,7 @@ export function WorkCard({
                     size="sm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-w-[8.9rem]"
+                    className="w-full sm:flex-1 sm:min-w-[8.9rem] lg:flex-none"
                   >
                     {githubLabel}
                   </Button>
@@ -117,7 +124,7 @@ export function WorkCard({
                 <InternalLink
                   href={href}
                   aria-label={ctaAriaLabel ?? `${title} - ${ctaLabel}`}
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-4 text-[11px] font-semibold tracking-[0.04em] text-accent/90 transition-[border-color,color,background-color,box-shadow] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-accent"
+                  className="inline-flex w-full justify-center sm:flex-1 lg:w-auto lg:flex-none min-h-11 items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-4 text-[11px] font-semibold tracking-[0.04em] text-accent/90 transition-[border-color,color,background-color,box-shadow] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-accent"
                 >
                   {ctaLabel}
                   <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -173,6 +180,26 @@ function InfoBlock({
             {item}
           </span>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function ProjectCover({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.76))] p-3.5 transition-transform duration-500 group-hover:scale-[1.02] md:p-4">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1rem] border border-white/70 bg-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-[12%] top-[10%] h-16 rounded-full bg-accent/10 blur-2xl"
+        />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="relative z-[1] max-h-full max-w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(27,44,74,0.16)] md:p-3"
+        />
       </div>
     </div>
   );

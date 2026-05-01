@@ -1,81 +1,128 @@
-export const skillGroups = [
+export const skillCategories = [
   {
-    title: "TypeScript",
-    level: "95%",
-    label: "主要言語",
+    icon: "A/W",
+    label: "アプリ / Web",
+    title: "アプリとWebの実装",
     description:
-      "アプリ構造の設計、コンポーネントの整理、読みやすいフロントエンド実装の中心に置いています。",
-    items: ["Next.js 構成設計", "型を活かしたUI", "API連携"],
+      "Swift、Kotlin、Next.js を主軸に、画面設計からUI実装まで一貫して組み立てています。",
+    items: [
+      { name: "Swift", featured: true },
+      { name: "Kotlin", featured: true },
+      { name: "Next.js", featured: true },
+    ],
+    note: "iOS、Android、Web を横断して、読みやすい画面づくりを考えられます。",
   },
   {
-    title: "Python",
-    level: "90%",
-    label: "自動化",
+    icon: "C++",
+    label: "プログラミング",
+    title: "ロジックと基礎実装",
     description:
-      "自動化、スクリプト、分析補助などを、速さと保守しやすさの両面から扱っています。",
-    items: ["データ処理", "作業自動化", "補助ツール"],
+      "C++ を通して、アルゴリズムやデータ構造、処理の組み立て方を丁寧に学んでいます。",
+    items: [{ name: "C++", featured: false }],
+    note: "見た目だけでなく、内部の構造まで整理して考える土台になっています。",
   },
   {
-    title: "C++",
-    level: "82%",
-    label: "基礎力",
+    icon: "UI",
+    label: "デザイン / 制作",
+    title: "UI設計とプロトタイプ",
     description:
-      "アルゴリズム、性能意識、低レイヤへの理解を深める基礎として学んできました。",
-    items: ["データ構造", "アルゴリズム", "低レイヤ理解"],
+      "Figma を使いながら、情報の優先順位や画面の流れを整えて制作しています。",
+    items: [
+      { name: "Figma", featured: true },
+      { name: "情報設計", featured: false },
+    ],
+    note: "使いやすさと見やすさを両立するための整理も大切にしています。",
   },
   {
-    title: "Rust",
-    level: "74%",
-    label: "学習中",
+    icon: "3D",
+    label: "3D / 表現",
+    title: "3Dとインタラクティブ制作",
     description:
-      "安全性を重視した設計や、性能と保守性を両立する考え方を広げるために学習しています。",
-    items: ["所有権モデル", "信頼性", "システム探究"],
+      "Unity、Blender、Maya を組み合わせて、体験づくりやビジュアル表現にも取り組んでいます。",
+    items: [
+      { name: "Unity", featured: false },
+      { name: "Blender", featured: false },
+      { name: "Maya", featured: false },
+    ],
+    note: "アプリやWeb以外にも、立体表現やインタラクションの視点を持っています。",
   },
 ] as const;
 
-export const infraHighlights = [
+export const primarySkills = ["Swift", "Kotlin", "Next.js", "Figma"] as const;
+
+export const skillSnapshots = [
   {
-    icon: "◌",
-    title: "Docker / Dev Containers",
-    detail: "開発環境の差分を減らし、再現しやすいワークフローを整えます。",
+    name: "Swift",
+    area: "iOS",
+    level: "主軸",
+    usage: "画面設計からUI実装まで、iOSアプリの見やすさを意識して組み立てます。",
+    output: "ネイティブUI / 画面遷移 / 情報整理",
   },
   {
-    icon: "△",
-    title: "AWS 基礎",
-    detail: "サービスの役割と構成パターンを踏まえて、現実的なクラウド利用を考えます。",
+    name: "Kotlin",
+    area: "Android",
+    level: "主軸",
+    usage: "Androidアプリの構成や表示を、読みやすく保てるように整理します。",
+    output: "ネイティブUI / 状態整理 / 実装の分割",
   },
   {
-    icon: "□",
-    title: "CI/CD 運用",
-    detail: "再現性、レビューしやすさ、安定運用を意識したデリバリーを心がけています。",
+    name: "Next.js",
+    area: "Web",
+    level: "主軸",
+    usage: "ページ構成、コンポーネント、レスポンシブ表示を一体で考えて実装します。",
+    output: "Reactコンポーネント / ルーティング / Tailwind CSS",
+  },
+  {
+    name: "Figma",
+    area: "Design",
+    level: "設計",
+    usage: "作る前に情報の優先順位や画面の流れを整理し、実装しやすい形へ落とし込みます。",
+    output: "ワイヤー / UI整理 / プロトタイプ",
   },
 ] as const;
 
-export const categoryBlocks = [
+export const focusHighlights = [
   {
-    icon: "◧",
-    label: "フロントエンド",
-    value: "React, Next.js, TypeScript, Tailwind CSS",
+    icon: "01",
+    title: "主軸技術",
+    detail: "Swift、Kotlin、Next.js、Figma を中心に、学生制作の幅を組み立てています。",
   },
   {
-    icon: "↗",
-    label: "バックエンド",
-    value: "Python, API設計, 外部連携",
+    icon: "02",
+    title: "制作の流れ",
+    detail: "画面設計、実装、プロトタイプ、3D表現までを、つながりのある工程として扱えます。",
   },
   {
-    icon: "●",
-    label: "インフラ",
-    value: "Docker, AWS, CI/CD, デプロイ運用",
+    icon: "03",
+    title: "見せたい強み",
+    detail: "開発系と制作系の両方を持ちながら、読みやすいUIに整理してまとめることが得意です。",
+  },
+] as const;
+
+export const capabilityBlocks = [
+  {
+    icon: "A",
+    label: "アプリ",
+    value: "Swift / Kotlin",
+    description: "ネイティブUI実装",
   },
   {
-    icon: "◇",
-    label: "体験設計",
-    value: "情報設計, UIシステム, 落ち着いた画面構成",
+    icon: "W",
+    label: "Web",
+    value: "Next.js",
+    description: "整理されたフロントエンド",
   },
   {
-    icon: "○",
-    label: "品質",
-    value: "読みやすいコード, 保守しやすい構成, 丁寧な実装基準",
+    icon: "D",
+    label: "デザイン",
+    value: "Figma",
+    description: "情報設計とUI整理",
+  },
+  {
+    icon: "3D",
+    label: "3D",
+    value: "Unity / Blender / Maya",
+    description: "3Dとインタラクティブ表現",
   },
 ] as const;
 

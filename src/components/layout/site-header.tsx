@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "ホーム" },
-  { href: "/projects", label: "制作実績" },
+  { href: "/projects", label: "制作物" },
   { href: "/about", label: "プロフィール" },
   { href: "/contact", label: "連絡先" },
 ];
@@ -84,6 +84,7 @@ export function SiteHeader() {
             <nav
               id={mobileNavId}
               aria-label="モバイルナビゲーション"
+              hidden={!isMenuOpen}
               className={cn(
                 "absolute right-0 top-[calc(100%+0.75rem)] w-56 rounded-[1.2rem] border border-line/90 bg-white/96 p-2 shadow-[0_18px_40px_rgba(27,44,74,0.1)]",
                 isMenuOpen ? "block" : "hidden"

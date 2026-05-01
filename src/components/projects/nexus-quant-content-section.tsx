@@ -13,8 +13,8 @@ import {
 
 export function NexusQuantContentSection() {
   return (
-    <section className="grid gap-10 xl:grid-cols-[minmax(0,1.35fr)_19rem] xl:gap-8">
-      <div className="space-y-14">
+    <section className="grid gap-8 xl:grid-cols-[minmax(0,1.35fr)_19rem] xl:gap-8">
+      <div className="space-y-12 md:space-y-14">
         <Card
           inset
           padding="lg"
@@ -31,8 +31,8 @@ export function NexusQuantContentSection() {
               </div>
 
               <div className="space-y-4">
-                <p className="max-w-[42rem] text-[15px] leading-[2.05] text-muted-foreground md:text-[15.5px]">
-                  Nexus Quant は、採用の場でじっくり読まれることを前提に設計した UI study の制作詳細ページです。
+                <p className="ui-copy max-w-[42rem] text-muted-foreground md:text-[15.5px]">
+                  Nexus Quant は、金融・分析領域を想定して設計した UIスタディの制作詳細ページです。
                   何を作ったかだけでなく、どこを見れば設計判断や画面整理の考え方が分かるかを明確にしています。
                 </p>
 
@@ -40,7 +40,7 @@ export function NexusQuantContentSection() {
                   {nexusQuantOverviewPoints.map((point) => (
                     <div key={point} className="flex gap-3">
                       <span className="mt-2.5 size-2 rounded-full bg-accent" />
-                      <p className="text-sm leading-[1.95] text-foreground/86 md:text-[14px]">
+                      <p className="ui-body-sm text-foreground/86 md:text-[14px]">
                         {point}
                       </p>
                     </div>
@@ -58,23 +58,23 @@ export function NexusQuantContentSection() {
           </div>
         </Card>
 
-        <div className="space-y-14">
+        <div className="space-y-12 md:space-y-14">
           {nexusQuantDetailSections.map((section) => (
-            <article key={section.title} className="grid gap-4 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-6">
+            <article key={section.title} className="grid gap-4 border-t border-line/70 pt-8 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-6 md:pt-9 first:border-t-0 first:pt-0">
               <div className="pt-1">
                 <p className="text-[11px] font-semibold tracking-[0.1em] text-accent/90">
                   {section.eyebrow}
                 </p>
               </div>
               <div className="space-y-5">
-                <h2 className="max-w-[14ch] text-balance font-display text-[1.95rem] leading-[1.35] tracking-[-0.02em] text-foreground md:text-[2.45rem]">
+                <h2 className="ui-section-title max-w-[15ch] text-foreground md:text-[clamp(1.9rem,2.15vw,2.45rem)]">
                   {section.title}
                 </h2>
                 <div className="max-w-3xl space-y-4">
                   {section.body.map((paragraph) => (
                     <p
                       key={paragraph}
-                      className="max-w-[42rem] text-[15px] leading-[2.05] text-muted-foreground"
+                      className="ui-copy max-w-[42rem] text-muted-foreground"
                     >
                       {paragraph}
                     </p>
