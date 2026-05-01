@@ -30,13 +30,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       <Container className="pt-5">
-        <div className="surface-hairline flex items-center justify-between rounded-pill border border-line/80 bg-white/84 px-4 py-2.5 shadow-glow backdrop-blur-chrome md:px-5">
+        <div className="surface-hairline flex min-w-0 items-center justify-between gap-3 rounded-pill border border-line/80 bg-white/84 px-4 py-2.5 shadow-glow backdrop-blur-chrome md:px-5">
           <InternalLink
             href="/"
-            className="rounded-[1.1rem] px-2.5 py-1.5 transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-w-0 rounded-[1.1rem] px-2.5 py-1.5 transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <span className="flex flex-col leading-none">
-              <span className="text-[1rem] font-semibold tracking-[-0.035em] text-foreground/94">
+              <span className="truncate text-[1rem] font-semibold tracking-[-0.035em] text-foreground/94">
                 {siteConfig.name}
               </span>
               <span className="mt-1 text-[10px] font-medium tracking-[0.08em] text-muted-foreground">
@@ -61,7 +61,7 @@ export function SiteHeader() {
               </InternalLink>
             ))}
           </nav>
-          <div className="relative md:hidden">
+          <div className="relative shrink-0 md:hidden">
             <motion.button
               type="button"
               onClick={toggleMenu}

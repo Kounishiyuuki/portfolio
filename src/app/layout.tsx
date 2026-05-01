@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -18,6 +18,11 @@ const display = Noto_Serif_JP({
 export const metadata: Metadata = {
   title: `${siteConfig.name} | ${siteConfig.role}`,
   description: `${siteConfig.role} ${siteConfig.name} のポートフォリオです。`,
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -40,6 +40,11 @@ describe("projects data", () => {
     expect(featuredProjectItems.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY"]);
     expect(featuredProjectItems.every((project) => project.featured && project.showcase)).toBe(true);
     expect(featuredProjectItems.every((project) => matchesProjectFilter(project, "mobile"))).toBe(true);
+    expect(featuredProjectItems.map((project) => project.href)).toEqual([
+      "/projects/wincook",
+      "/projects/share-fit",
+      "/projects/aivy",
+    ]);
   });
 
   it("keeps non-featured works separate from featured projects", () => {

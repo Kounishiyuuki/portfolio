@@ -31,7 +31,6 @@ export type ProjectItem = {
   ctaLabel: string;
   githubUrl?: string;
   githubLabel?: string;
-  demoUrl?: string;
   coverImage?: string;
   coverAlt: string;
   screenshots?: readonly {
@@ -69,11 +68,10 @@ export const projectItems = [
     learned: ["ハッカソンでの機能優先順位の決め方", "Apple系フレームワークの組み合わせ", "体験を検証しながら実装する進め方"],
     highlightPoints: ["入力体験の設計", "SwiftUI実装", "チーム開発"],
     visual: "figure",
-    href: "/projects",
-    ctaLabel: "一覧で見る",
+    href: "/projects/wincook",
+    ctaLabel: "詳細を見る",
     githubUrl: "https://github.com/jphacks/kz_2503",
     githubLabel: "GitHubを見る",
-    demoUrl: undefined,
     coverImage: "/images/projects/wincook/cover.png",
     coverAlt: "WinCookのREADMEに掲載されているアプリビジュアル",
     screenshots: [
@@ -115,11 +113,10 @@ export const projectItems = [
     learned: ["Android開発の実装フロー", "位置情報を扱うアプリ設計", "バックエンドを含む構成の考え方"],
     highlightPoints: ["Android実装", "位置情報活用", "チーム開発"],
     visual: "vessel",
-    href: "/projects",
-    ctaLabel: "一覧で見る",
+    href: "/projects/share-fit",
+    ctaLabel: "詳細を見る",
     githubUrl: "https://github.com/jphacks/kz_2402",
     githubLabel: "GitHubを見る",
-    demoUrl: undefined,
     coverImage: "/images/projects/share-fit/screen-1.png",
     coverAlt: "Share Fitのタイトル画面用画像",
     screenshots: [
@@ -161,11 +158,10 @@ export const projectItems = [
     learned: ["AI APIを使うアプリ構成", "モバイルでのメディア体験設計", "外部サービス連携の扱い方"],
     highlightPoints: ["AI連携", "Jetpack Compose", "メディア連携"],
     visual: "mesh",
-    href: "/projects",
-    ctaLabel: "一覧で見る",
+    href: "/projects/aivy",
+    ctaLabel: "詳細を見る",
     githubUrl: "https://github.com/ko-tarou/AIVY",
     githubLabel: "GitHubを見る",
-    demoUrl: undefined,
     coverImage: "/images/projects/aivy/cover.jpg",
     coverAlt: "AIVYのREADMEに掲載されているアプリ画面例",
     screenshots: [
@@ -207,7 +203,6 @@ export const projectItems = [
     ctaLabel: "一覧で見る",
     githubUrl: siteConfig.githubUrl,
     githubLabel: "GitHubを見る",
-    demoUrl: undefined,
     coverAlt: "Portfolioの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
     status: "制作中",
     featured: false,
@@ -235,7 +230,6 @@ export const projectItems = [
     ctaLabel: "一覧で見る",
     githubUrl: "https://github.com/Kounishiyuuki/pulsecue-ios",
     githubLabel: "GitHubを見る",
-    demoUrl: undefined,
     coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
     status: "制作中",
     featured: false,
@@ -285,3 +279,12 @@ export function getProjectsByFilter(filterId: ProjectFilterId) {
 
 export const featuredProjectItems = projectItems.filter((project) => project.featured && project.showcase);
 export const allWorkProjectItems = projectItems.filter((project) => !project.featured);
+export const featuredProjectSlugs = featuredProjectItems.map((project) => project.slug);
+
+export function getProjectBySlug(slug: string) {
+  return projectItems.find((project) => project.slug === slug) as ProjectItem | undefined;
+}
+
+export function getFeaturedProjectBySlug(slug: string) {
+  return featuredProjectItems.find((project) => project.slug === slug) as ProjectItem | undefined;
+}

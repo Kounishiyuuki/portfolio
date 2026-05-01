@@ -102,6 +102,7 @@ a {
     font-size: clamp(0.9375rem, 0.18vw + 0.89rem, 1rem);
     line-height: 1.84;
     text-wrap: pretty;
+    overflow-wrap: anywhere;
     color: hsl(var(--color-muted-foreground) / 1);
   }
 
@@ -161,6 +162,7 @@ a {
     font-size: clamp(0.83rem, 0.8rem + 0.14vw, 0.9375rem);
     line-height: 1.78;
     text-wrap: pretty;
+    overflow-wrap: anywhere;
   }
 
   .layout-shell {

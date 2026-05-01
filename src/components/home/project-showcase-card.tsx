@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
@@ -27,6 +28,8 @@ export function ProjectShowcaseCard({
   kind,
   description,
   focus,
+  coverImage,
+  coverAlt,
   showcase,
   ctaLabel = "制作を見る",
   ctaAriaLabel,
@@ -72,7 +75,11 @@ export function ProjectShowcaseCard({
           </div>
           <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(6,10,18,0.08))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="pointer-events-none absolute inset-x-[16%] top-5 z-[1] h-12 rounded-full bg-white/[0.08] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
-          <ProjectVisual type={visual} />
+          {coverImage ? (
+            <ProjectShowcaseCover src={coverImage} alt={coverAlt} />
+          ) : (
+            <ProjectVisual type={visual} />
+          )}
         </div>
 
         <div className={cn("flex flex-1 flex-col justify-between min-w-0", bodySpacingClasses[layout])}>
@@ -121,6 +128,22 @@ export function ProjectShowcaseCard({
         </div>
       </Card>
     </article>
+  );
+}
+
+function ProjectShowcaseCover({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-[1.02] md:p-5">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 45vw, (min-width: 768px) 50vw, 100vw"
+          className="h-full w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(27,44,74,0.16)] md:p-3"
+        />
+      </div>
+    </div>
   );
 }
 

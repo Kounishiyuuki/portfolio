@@ -39,7 +39,9 @@ Use this skill when Codex should verify a web UI in the Codex in-app browser aft
    - `/`
    - `/about`
    - `/projects`
-   - `/projects/nexus-quant`
+   - `/projects/wincook`
+   - `/projects/share-fit`
+   - `/projects/aivy`
    - `/skills`
    - `/contact`
 4. For bug reproduction, open the exact route, viewport, and state described by the user.
@@ -130,4 +132,3 @@ Use this format:
 6. Remaining risks
 - <risk or "None">
 ```
-

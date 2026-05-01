@@ -4,6 +4,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
 import type { ProjectItem } from "@/lib/projects-data";
+import { cn } from "@/lib/utils";
 
 export type WorkCardProps = ProjectItem & {
   ctaLabel?: string;
@@ -38,7 +39,12 @@ export function WorkCard({
         className="group h-full overflow-hidden rounded-[1.55rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,250,253,0.82))] shadow-[0_12px_30px_rgba(27,44,74,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_20px_42px_rgba(27,44,74,0.12)]"
       >
         <div className="p-3 pb-0 md:p-4 md:pb-0">
-          <div className="relative aspect-[1.12/1] overflow-hidden rounded-[1.15rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] transition-[border-color,box-shadow,transform] duration-300 group-hover:border-white/12 group-hover:shadow-[0_16px_34px_rgba(27,44,74,0.14)]">
+          <div
+            className={cn(
+              "relative overflow-hidden rounded-[1.15rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] transition-[border-color,box-shadow,transform] duration-300 group-hover:border-white/12 group-hover:shadow-[0_16px_34px_rgba(27,44,74,0.14)]",
+              featured ? "aspect-[1.22/1] md:aspect-[1.32/1]" : "aspect-[1.12/1]"
+            )}
+          >
             <div className="absolute left-4 top-4 z-[2] flex items-center gap-2">
               {featured ? (
                 <span className="rounded-pill border border-accent/18 bg-accent/90 px-2.5 py-1 text-[10px] font-semibold tracking-[0.05em] text-accent-foreground shadow-[0_10px_24px_rgba(88,148,255,0.16)]">

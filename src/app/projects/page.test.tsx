@@ -18,6 +18,7 @@ describe("ProjectsPage", () => {
     expect(screen.getByText("Featured Projects")).toBeInTheDocument();
     expect(screen.getByText("All Works")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "WinCook - 詳細を見る" })).toHaveAttribute("href", "/projects/wincook");
     expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
   });
 
