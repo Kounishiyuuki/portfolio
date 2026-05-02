@@ -13,6 +13,7 @@ const navItems = [
   { href: "/", label: "ホーム" },
   { href: "/projects", label: "制作物" },
   { href: "/about", label: "プロフィール" },
+  { href: "/skills", label: "スキル" },
   { href: "/contact", label: "連絡先" },
 ];
 

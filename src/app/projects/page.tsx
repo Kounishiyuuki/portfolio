@@ -35,7 +35,7 @@ export default function ProjectsPage() {
         variants={staggerChildren(0.08)}
         className="pt-8 md:pt-12"
       >
-        <motion.div variants={fadeInUp()} className="space-y-7 md:space-y-8">
+        <motion.div variants={fadeInUp({ reducedMotion: true })} className="space-y-7 md:space-y-8">
           <div className="layout-header space-y-4">
             <p className="ui-eyebrow text-accent/90">制作一覧</p>
             <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.3rem,4.2vw,4.35rem)]">
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
           </div>
 
           <motion.div
-            variants={fadeIn()}
+            variants={fadeIn(0, true)}
             className="rounded-[1.6rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,248,253,0.86))] p-3 shadow-[0_14px_34px_rgba(27,44,74,0.06)] md:p-4"
           >
             <div className="flex flex-col gap-4">
@@ -130,7 +130,7 @@ export default function ProjectsPage() {
           </motion.div>
 
           <motion.div
-            variants={fadeIn()}
+            variants={fadeIn(0, true)}
             className="layout-reading-wide rounded-[1.45rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,249,253,0.82))] px-5 py-4 shadow-[0_10px_26px_rgba(27,44,74,0.05)]"
           >
             <p className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">一覧の見方</p>
@@ -144,8 +144,7 @@ export default function ProjectsPage() {
       <motion.section
         className="pt-9 md:pt-12"
         initial="initial"
-        whileInView="animate"
-        viewport={defaultViewport}
+        animate="animate"
         variants={staggerChildren(0.06)}
       >
         <div className="mb-5 flex flex-col gap-2.5 sm:flex-row sm:items-end sm:justify-between">
@@ -172,8 +171,7 @@ export default function ProjectsPage() {
               {visibleFeaturedWorks.map((work, index) => (
                 <motion.article
                   key={`${activeFilter}-${work.title}`}
-                  variants={fadeInUp({ delay: index * 0.02, distance: 16 })}
-                  layout
+                  variants={fadeInUp({ delay: index * 0.02, distance: 16, reducedMotion: true })}
                 >
                   <WorkCard {...work} />
                 </motion.article>
@@ -194,8 +192,7 @@ export default function ProjectsPage() {
               {visibleAllWorks.map((work, index) => (
                 <motion.article
                   key={`${activeFilter}-${work.title}`}
-                  variants={fadeInUp({ delay: index * 0.02, distance: 12 })}
-                  layout
+                  variants={fadeInUp({ delay: index * 0.02, distance: 12, reducedMotion: true })}
                 >
                   <CompactWorkCard project={work} />
                 </motion.article>
@@ -205,7 +202,7 @@ export default function ProjectsPage() {
         ) : null}
 
         {visibleWorksCount === 0 ? (
-          <motion.div variants={fadeInUp()} className="pt-6">
+          <motion.div variants={fadeInUp({ reducedMotion: true })} className="pt-6">
             <Card
               interactive={false}
               inset
@@ -227,7 +224,7 @@ export default function ProjectsPage() {
         initial="initial"
         whileInView="animate"
         viewport={defaultViewport}
-        variants={fadeInUp()}
+        variants={fadeInUp({ reducedMotion: true })}
       >
         <Card
           interactive={false}
