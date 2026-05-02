@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
@@ -27,6 +28,8 @@ export function ProjectShowcaseCard({
   kind,
   description,
   focus,
+  coverImage,
+  coverAlt,
   showcase,
   ctaLabel = "制作を見る",
   ctaAriaLabel,
@@ -38,7 +41,7 @@ export function ProjectShowcaseCard({
   }
 
   const {
-    eyebrow = "採用担当向けに確認しやすい制作",
+    eyebrow = "見やすく整理した制作",
     accent,
     visual,
     layout = "default",
@@ -46,12 +49,12 @@ export function ProjectShowcaseCard({
   } = showcase;
 
   return (
-    <article className={cn(showcaseClassName, className)}>
+    <article className={cn("min-w-0", showcaseClassName, className)}>
       <Card
         padding="none"
         tone="default"
         className={cn(
-          "group overflow-hidden rounded-[1.6rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(248,250,253,0.72))] shadow-[0_10px_28px_rgba(27,44,74,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_18px_38px_rgba(27,44,74,0.12)]",
+          "group flex h-full flex-col overflow-hidden rounded-[1.6rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,250,253,0.76))] shadow-[0_12px_32px_rgba(27,44,74,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_18px_42px_rgba(27,44,74,0.12)]",
           layout === "featured" && "shadow-[0_14px_34px_rgba(27,44,74,0.1)] hover:shadow-[0_22px_44px_rgba(27,44,74,0.14)]"
         )}
       >
@@ -72,44 +75,48 @@ export function ProjectShowcaseCard({
           </div>
           <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(6,10,18,0.08))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="pointer-events-none absolute inset-x-[16%] top-5 z-[1] h-12 rounded-full bg-white/[0.08] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
-          <ProjectVisual type={visual} />
+          {coverImage ? (
+            <ProjectShowcaseCover src={coverImage} alt={coverAlt} />
+          ) : (
+            <ProjectVisual type={visual} />
+          )}
         </div>
 
-        <div className={bodySpacingClasses[layout]}>
-          <div className="flex items-center justify-between gap-4">
+        <div className={cn("flex flex-1 flex-col justify-between min-w-0", bodySpacingClasses[layout])}>
+          <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
               {eyebrow}
             </p>
             <InternalLink
               href={href}
               aria-label={ctaAriaLabel ?? `${title} - ${ctaLabel}`}
-              className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.03em] text-accent/90 transition-colors duration-200 hover:text-accent"
+              className="inline-flex max-w-full items-center gap-1.5 text-[12px] font-semibold tracking-[0.03em] text-accent/90 transition-colors duration-200 hover:text-accent"
             >
               {ctaLabel}
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
             </InternalLink>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="min-w-0 space-y-2.5">
             <h3
               className={cn(
-                "font-semibold leading-[1.5] tracking-[-0.015em] text-foreground",
+                "ui-card-title max-w-[min(100%,28ch)] text-foreground",
                 layout === "featured"
-                  ? "text-[1.45rem] md:min-h-[4.4rem] md:text-[1.72rem]"
-                  : "text-[1.28rem] md:min-h-[4.2rem] md:text-[1.4rem]"
+                  ? "md:text-[clamp(1.38rem,1.5vw,1.72rem)] lg:min-h-[4.4rem]"
+                  : "md:text-[clamp(1.22rem,1.15vw,1.4rem)] lg:min-h-[4.2rem]"
               )}
             >
               {title}
             </h3>
             <p
               className={cn(
-                "max-w-[26rem] text-sm leading-[1.9] text-muted-foreground",
-                layout === "featured" ? "md:min-h-[5.6rem]" : "md:min-h-[5.25rem]"
+                "ui-body-sm max-w-[44rem] text-muted-foreground",
+                layout === "featured" ? "lg:min-h-[5.6rem]" : "lg:min-h-[5.25rem]"
               )}
             >
               {description}
             </p>
-            <div className="rounded-[1rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-3.5 py-3">
+            <div className="rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.06))] px-3.5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]">
               <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
                 見るポイント
               </p>
@@ -121,6 +128,22 @@ export function ProjectShowcaseCard({
         </div>
       </Card>
     </article>
+  );
+}
+
+function ProjectShowcaseCover({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-[1.02] md:p-5">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 45vw, (min-width: 768px) 50vw, 100vw"
+          className="h-full w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(27,44,74,0.16)] md:p-3"
+        />
+      </div>
+    </div>
   );
 }
 

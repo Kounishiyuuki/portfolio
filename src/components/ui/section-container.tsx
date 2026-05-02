@@ -35,7 +35,7 @@ export function SectionContainer({
       {(eyebrow || title || description) && (
         <div
           className={cn(
-            "mb-8 flex max-w-prose flex-col gap-4",
+            "layout-header mb-8 flex min-w-0 flex-col gap-4",
             align === "center" && "mx-auto text-center"
           )}
         >
@@ -45,18 +45,18 @@ export function SectionContainer({
             </p>
           ) : null}
           {title ? (
-            <h2 className="text-balance font-display text-3xl leading-tight md:text-5xl">
+            <h2 className="ui-section-title layout-title-section text-foreground">
               {title}
             </h2>
           ) : null}
           {description ? (
-            <p className="ui-copy md:text-lg">
+            <p className="ui-copy layout-reading text-pretty">
               {description}
             </p>
           ) : null}
         </div>
       )}
-      <div className="flex flex-col gap-[var(--section-gap)]">{children}</div>
+      <div className="flex min-w-0 flex-col gap-[var(--section-gap)]">{children}</div>
     </Component>
   );
 }

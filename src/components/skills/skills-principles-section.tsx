@@ -4,13 +4,13 @@ import { principles } from "@/components/skills/skills-data";
 
 export function SkillsPrinciplesSection() {
   return (
-    <section className="pt-10 md:pt-14">
+    <section className="pt-9 md:pt-12">
       <Card
         interactive={false}
         inset
         padding="lg"
         tone="muted"
-        className="rounded-[2rem] border-white/8 px-5 py-6 md:px-8 md:py-8"
+        className="rounded-[2rem] border-white/8 px-5 py-6 shadow-[0_18px_48px_rgba(27,44,74,0.08)] md:px-8 md:py-8"
       >
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.82fr)] lg:items-center">
           <div className="space-y-6">
@@ -20,7 +20,7 @@ export function SkillsPrinciplesSection() {
               description="ツールの新しさだけでなく、理解しやすさ、手戻りの少なさ、長く保てる構成を重視しています。"
               className="space-y-3"
               eyebrowClassName="ui-eyebrow text-muted-foreground"
-              titleClassName="max-w-[12ch] text-balance text-[2rem] md:text-[2.85rem]"
+              titleClassName="ui-section-title max-w-[14ch] text-foreground md:text-[clamp(1.95rem,2.2vw,2.85rem)]"
               descriptionClassName="ui-copy max-w-xl"
             />
 
@@ -34,10 +34,10 @@ export function SkillsPrinciplesSection() {
                     {principle.index}
                   </div>
                   <div className="min-w-0 pt-0.5">
-                    <h3 className="text-[1rem] font-semibold tracking-[-0.04em] text-foreground md:text-[1.05rem]">
+                    <h3 className="ui-card-title text-foreground md:text-[clamp(1rem,0.5vw,1.08rem)]">
                       {principle.title}
                     </h3>
-                    <p className="mt-1.5 max-w-[52ch] text-[13px] leading-6 text-muted-foreground md:text-[14px]">
+                    <p className="ui-body-sm mt-1.5 max-w-[52ch] text-muted-foreground md:text-[14px]">
                       {principle.description}
                     </p>
                   </div>

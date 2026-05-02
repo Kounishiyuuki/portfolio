@@ -47,15 +47,15 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "min-h-11 px-4.5 text-[13px]",
-  md: "min-h-12 px-6 text-[14px]",
-  lg: "min-h-14 px-7.5 text-[15px]",
+  sm: "min-h-10 px-4 text-[12.5px] sm:min-h-11 sm:px-4.5 sm:text-[13px]",
+  md: "min-h-11 px-5 text-[13.5px] sm:min-h-12 sm:px-6 sm:text-[14px]",
+  lg: "min-h-12 px-5.5 text-[14px] sm:min-h-14 sm:px-7.5 sm:text-[15px]",
 };
 
 function buttonClassName(variant: ButtonVariant, size: ButtonSize, className?: string) {
   return cn(
-    "relative inline-flex w-fit items-center justify-center rounded-pill font-medium leading-none tracking-[0.01em]",
-    "whitespace-nowrap text-center select-none [font-feature-settings:'palt'_1]",
+    "relative inline-flex max-w-full w-fit items-center justify-center rounded-pill font-medium leading-[1.2] tracking-[0.01em]",
+    "whitespace-normal text-center select-none [font-feature-settings:'palt'_1] sm:whitespace-nowrap",
     "transition-[background-color,border-color,color,box-shadow,filter] duration-200",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:cursor-not-allowed disabled:border-line/70 disabled:bg-[linear-gradient(180deg,rgba(249,250,252,0.84),rgba(241,244,248,0.72))] disabled:text-foreground/38 disabled:shadow-none disabled:brightness-100",

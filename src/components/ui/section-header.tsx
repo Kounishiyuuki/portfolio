@@ -23,7 +23,13 @@ export function SectionHeader({
   descriptionClassName,
 }: SectionHeaderProps) {
   return (
-    <div className={cn("space-y-3", align === "center" && "text-center", className)}>
+    <div
+      className={cn(
+        "layout-header min-w-0 space-y-3",
+        align === "center" && "mx-auto text-center",
+        className
+      )}
+    >
       {eyebrow ? (
         <p
           className={cn(
@@ -38,7 +44,7 @@ export function SectionHeader({
       {title ? (
         <h2
           className={cn(
-            "font-display text-[2rem] leading-[1.35] tracking-[-0.02em] text-foreground",
+            "ui-section-title layout-title-section text-foreground",
             titleClassName
           )}
         >
@@ -49,7 +55,7 @@ export function SectionHeader({
       {description ? (
         <p
           className={cn(
-            "text-sm leading-7 text-muted-foreground",
+            "ui-copy layout-reading text-muted-foreground",
             align === "center" && "mx-auto",
             descriptionClassName
           )}

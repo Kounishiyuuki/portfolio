@@ -25,21 +25,21 @@ const storyBlocks = [
     index: "01",
     title: "はじまり",
     description:
-      "金沢工業大学 情報フロンティア学部 メディア情報学科で学びながら、アプリや Web の画面がどう整理され、どう伝わるかに関心を持ってきました。見た目だけでなく、情報の優先順位や読みやすさまで含めて考えることが出発点です。",
+      "大学で学びながら、アプリや Web の画面をどう整理して伝えるかに関心を持ってきました。見た目だけでなく、情報の優先順位や読みやすさまで考えることが出発点です。",
     cta: "学びの起点",
   },
   {
     index: "02",
     title: "技術の主軸",
     description:
-      "特に Swift、Kotlin、Next.js を主軸に、UI の読みやすさと実装の整理しやすさが両立する構成を意識しています。モバイルと Web の両方から、使いやすい画面の作り方を考えるのが得意です。",
+      "Swift、Kotlin、Next.js を主軸に、UI の読みやすさと実装の整理しやすさが両立する構成を意識しています。モバイルと Web の両方から、使いやすい画面を考えるのが得意です。",
     cta: "主軸技術",
   },
   {
     index: "03",
     title: "強み",
     description:
-      "見た目を整えるだけでなく、情報の優先順位、ラベル、余白、実装構造まで含めて読みやすく整理することを重視しています。採用の場でも、成果物の性質や見るポイントが伝わる見せ方を意識しています。",
+      "見た目だけでなく、情報の優先順位、ラベル、余白、実装構造まで含めて読みやすく整理することを重視しています。成果物の性質や見るポイントが自然に伝わる見せ方を意識しています。",
     cta: "強みの出し方",
   },
 ] as const;
@@ -53,31 +53,30 @@ export default function AboutPage() {
         initial="initial"
         animate="animate"
         variants={staggerChildren(0.08)}
-        className="pt-8 md:pt-14"
+        className="pt-8 md:pt-12"
       >
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.12fr)_minmax(21rem,0.88fr)]">
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:gap-6">
           <motion.div variants={fadeInUp()}>
             <Card
               interactive={false}
               inset
               padding="lg"
               tone="muted"
-              className="relative overflow-hidden rounded-[2rem] px-6 py-8 md:px-10 md:py-11 lg:min-h-[32rem]"
+              className="relative overflow-hidden rounded-[2rem] px-6 py-8 md:px-10 md:py-10 xl:min-h-[31rem]"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top_left,rgba(88,148,255,0.18),transparent_55%)]" />
               <div className="pointer-events-none absolute -left-16 top-20 h-40 w-40 rounded-full bg-white/[0.025] blur-3xl" />
 
               <div className="relative flex h-full flex-col justify-between gap-12">
-                <div className="max-w-[39rem] space-y-8">
+                <div className="layout-reading-wide space-y-8">
                   <div className="space-y-4">
                     <p className="ui-eyebrow text-accent/90">
                       プロフィール
                     </p>
-                    <h1 className="max-w-[10ch] text-balance font-display text-[3rem] leading-[1.2] tracking-[-0.025em] text-foreground md:text-[5.1rem]">
-                      所属と技術の重心が、
-                      <span className="block text-accent">自然に伝わるプロフィールへ。</span>
+                    <h1 className="ui-display-title layout-title-display text-foreground md:text-[clamp(2.4rem,4.9vw,5rem)]">
+                      所属と主軸が、<span className="text-accent">自然に伝わるプロフィール。</span>
                     </h1>
-                    <p className="ui-copy max-w-[36rem] md:text-[1.02rem]">
+                    <p className="ui-copy layout-reading md:text-[1.02rem]">
                       {siteConfig.school} {siteConfig.faculty} {siteConfig.department} に所属する {siteConfig.year}の {siteConfig.role} として、
                       Swift、Kotlin、Next.js を主軸に、情報設計と UI 実装の両方を意識しながら取り組んでいます。
                     </p>
@@ -92,7 +91,7 @@ export default function AboutPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-x-8 gap-y-3 border-t border-white/8 pt-5">
+                  <div className="grid gap-3 border-t border-white/8 pt-5 sm:grid-cols-2">
                     {introMeta.map((item) => (
                       <div key={item.label} className="flex items-center gap-3">
                         <span className="flex size-6 items-center justify-center rounded-full bg-accent/14 text-[10px] font-semibold text-accent">
@@ -128,11 +127,11 @@ export default function AboutPage() {
               interactive={false}
               padding="none"
               tone="strong"
-              className="overflow-hidden rounded-[2rem] border-white/12 lg:min-h-[32rem]"
+              className="overflow-hidden rounded-[2rem] border-white/12 xl:min-h-[31rem]"
             >
               <div className="flex h-full flex-col">
                 <div className="flex flex-1 flex-col p-5">
-                  <div className="relative flex min-h-[30rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(27,44,74,0.14)]">
+                  <div className="relative flex min-h-[23rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(27,44,74,0.14)] sm:min-h-[28rem]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.08),transparent_30%)]" />
                     <div className="absolute inset-x-[16%] top-8 h-40 rounded-full bg-white/[0.06] blur-3xl" />
                     <div className="absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,rgba(11,16,24,0),rgba(11,16,24,0.82))]" />
@@ -187,23 +186,21 @@ export default function AboutPage() {
           ))}
         </motion.div>
 
-        <motion.div variants={fadeInUp()} className="mx-auto mt-14 max-w-2xl text-center">
+        <motion.div variants={fadeInUp()} className="layout-header mx-auto mt-10 text-center md:mt-12">
           <p className="ui-eyebrow text-muted-foreground">
             読み方
           </p>
-          <h2 className="mt-4 text-balance font-display text-[2rem] leading-[1.35] tracking-[-0.02em] text-foreground md:text-[2.55rem]">
-            所属、技術の主軸、
-            仕事で大切にしていることを整えて伝える。
+          <h2 className="ui-section-title layout-title-section mt-4 text-foreground">
+            所属と主軸が、短く分かるようにしています。
           </h2>
-          <p className="ui-copy mt-4">
-            所属情報、主軸にしている技術、実際の制作で重視している判断軸を、
-            日本の採用担当が短時間でも読み取りやすい順番に整理しています。
+          <p className="ui-copy layout-reading mx-auto mt-4">
+            所属情報、主軸にしている技術、制作で重視していることを、短時間でも読みやすい順番で整理しています。
           </p>
         </motion.div>
 
         <motion.div
           variants={staggerChildren(0.08)}
-          className="mt-10 grid gap-5 md:grid-cols-3 md:items-stretch"
+          className="mt-9 grid gap-5 md:grid-cols-2 md:items-stretch xl:grid-cols-3"
         >
           {storyBlocks.map((block) => (
             <motion.div key={block.index} variants={fadeInUp()}>
@@ -222,10 +219,10 @@ export default function AboutPage() {
                     <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(255,255,255,0.14),rgba(255,255,255,0.02))]" />
                   </div>
 
-                  <h3 className="text-xl font-semibold tracking-[-0.04em] text-foreground md:text-[1.35rem]">
+                  <h3 className="ui-card-title text-foreground">
                     {block.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-[1.95] text-muted-foreground md:text-[14px]">
+                  <p className="ui-body-sm mt-4 text-muted-foreground">
                     {block.description}
                   </p>
                   <p className="mt-6 text-[11px] font-semibold tracking-[0.08em] text-accent/90">
@@ -253,21 +250,20 @@ export default function AboutPage() {
           className="relative overflow-hidden rounded-[2rem] px-6 py-10 md:px-10 md:py-12"
         >
           <div className="pointer-events-none absolute inset-x-[18%] top-10 h-24 rounded-full bg-accent/8 blur-3xl" />
-          <div className="relative grid gap-8 lg:grid-cols-[0.78fr_minmax(0,1.22fr)] lg:items-center">
-            <div className="max-w-sm space-y-3">
+          <div className="relative grid gap-8 xl:grid-cols-[0.82fr_minmax(0,1.18fr)] xl:items-center">
+            <div className="layout-header space-y-3">
               <p className="ui-eyebrow text-muted-foreground">
                 補足
               </p>
-              <h2 className="text-balance font-display text-[2rem] leading-[1.35] tracking-[-0.02em] text-foreground md:text-[2.6rem]">
-                実在感と落ち着いた印象が、
-                同時に残ることを重視しています。
+              <h2 className="ui-section-title layout-title-section text-foreground">
+                落ち着いた印象で、自然に読めることを重視しています。
               </h2>
             </div>
 
-            <div className="max-w-2xl justify-self-end rounded-[1.55rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-6 py-7 shadow-[0_14px_34px_rgba(27,44,74,0.07)] md:px-8">
-              <p className="ui-copy max-w-[36rem] md:text-base">
+            <div className="layout-reading-wide rounded-[1.55rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-6 py-7 shadow-[0_14px_34px_rgba(27,44,74,0.07)] md:px-8 xl:justify-self-end">
+              <p className="ui-copy md:text-base">
                 氏名や所属を必要な範囲で明示しつつ、住所や電話番号などは出しすぎない形を意識しています。
-                採用担当が短時間で「どんな技術を軸にしているか」と「どのような姿勢で作る人か」を理解できることを優先しています。
+                短時間でも「どんな技術を軸にしているか」と「どのような姿勢で作る人か」が伝わることを優先しています。
               </p>
             </div>
           </div>

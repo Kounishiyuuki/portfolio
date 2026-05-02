@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { ProjectShowcaseCard } from "@/components/home/project-showcase-card";
@@ -5,27 +6,46 @@ import { Card } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
 import { SectionContainer } from "@/components/ui/section-container";
 import { InternalLink } from "@/components/ui/internal-link";
+import { plainMailtoHref } from "@/lib/contact-data";
 import { featuredProjectItems } from "@/lib/projects-data";
 import { siteConfig } from "@/lib/site-config";
-
-const mailToHref = `mailto:${siteConfig.email}`;
 
 const overviewSteps = [
   {
     label: "01",
     title: "制作物を見る",
-    note: "Projects で制作の内容、技術、GitHub への導線をまとめて確認できます。",
+    note: "制作の内容と使った技術を、一覧でまとめて見られます。",
   },
   {
     label: "02",
     title: "プロフィールを見る",
-    note: "About では所属や主軸技術、画面づくりで大切にしていることを紹介しています。",
+    note: "所属や主軸にしている技術を、短く整理して載せています。",
   },
   {
     label: "03",
-    title: "GitHub / 連絡先へ進む",
-    note: "実装を見る場合は GitHub、ご連絡はメールから自然に進める構成です。",
+    title: "GitHub とメール",
+    note: "実装を見たいときや連絡したいときも、迷わず進めます。",
   },
+] as const;
+
+const heroTechGroups = [
+  {
+    label: "開発",
+    note: "実装",
+    items: ["Swift", "Kotlin", "Next.js", "C++"],
+  },
+  {
+    label: "制作",
+    note: "UI / 3D",
+    items: ["Figma", "Unity", "Blender", "Maya"],
+  },
+] as const;
+
+const featuredProjectLayoutClasses = [
+  "lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-4",
+  "lg:col-span-8",
 ] as const;
 
 export default function HomePage() {
@@ -34,15 +54,14 @@ export default function HomePage() {
       <HeroSection />
 
       <SectionContainer spacing="default" className="pt-4 md:pt-8">
-        <div className="mb-8 flex items-end justify-between gap-6 md:mb-12">
-          <div className="max-w-2xl space-y-3">
-            <p className="ui-eyebrow text-accent/90">Featured Works</p>
-            <h2 className="max-w-[12ch] text-balance text-[1.88rem] font-semibold leading-[1.38] tracking-[-0.02em] text-foreground md:text-[2.28rem]">
-              まず見てほしい制作を、
-              すぐに確認できるようにしています。
+        <div className="mb-8 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between">
+          <div className="layout-header space-y-3">
+            <p className="ui-eyebrow text-accent/90">注目制作</p>
+            <h2 className="ui-section-title layout-title-section text-foreground">
+              まず見てほしい制作を、先にまとめています。
             </h2>
-            <p className="ui-copy max-w-[36rem] md:text-[15px]">
-              内容が伝わりやすいものを先に並べ、詳しく見たい場合は Projects 一覧と GitHub に進めるようにしています。
+            <p className="ui-copy layout-reading md:text-[15px]">
+              代表的な制作を先に載せています。気になったものは、そのまま制作一覧や GitHub で詳しく見られます。
             </p>
           </div>
           <InternalLink
@@ -54,18 +73,31 @@ export default function HomePage() {
           </InternalLink>
         </div>
 
-        <div className="mb-5 rounded-[1.45rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,249,253,0.82))] px-5 py-4 shadow-[0_10px_26px_rgba(27,44,74,0.05)]">
-          <p className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
-            注目制作の見方
-          </p>
-          <p className="mt-2 max-w-3xl text-[13px] leading-[1.8] text-foreground/78">
-            代表的な制作だけを抜き出し、性質ラベルと見るポイントを添えています。短時間で方向性を掴みたい場合は、ここから確認するのが最も分かりやすい導線です。
-          </p>
+        <div className="mb-5 grid gap-3 rounded-[1.45rem] border border-line/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(246,249,253,0.76))] px-5 py-4 shadow-[0_10px_26px_rgba(27,44,74,0.05)] md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+          <div className="min-w-0">
+            <p className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
+              注目制作の見方
+            </p>
+            <p className="mt-2 max-w-[54rem] text-[13px] leading-[1.8] text-foreground/78">
+              制作の種類と見るポイントを先に読めるように整理しています。短時間で雰囲気を知りたい場合は、ここから見るのが分かりやすいです。
+            </p>
+          </div>
+          <InternalLink
+            href="/projects"
+            className="inline-flex w-fit items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-3.5 py-2 text-[12px] font-semibold text-accent/90 shadow-[0_8px_18px_rgba(27,44,74,0.04)] transition-[border-color,background-color,color] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-accent md:hidden"
+          >
+            一覧へ
+            <ArrowRight className="size-3.5" />
+          </InternalLink>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-12 md:items-start">
-          {featuredProjectItems.map((project) => (
-            <ProjectShowcaseCard key={project.title} {...project} />
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-12 lg:items-stretch">
+          {featuredProjectItems.map((project, index) => (
+            <ProjectShowcaseCard
+              key={project.title}
+              {...project}
+              className={featuredProjectLayoutClasses[index]}
+            />
           ))}
         </div>
       </SectionContainer>
@@ -76,27 +108,30 @@ export default function HomePage() {
           inset
           padding="lg"
           tone="muted"
-          className="overflow-hidden rounded-[2.2rem] border-white/12 px-5 py-8 md:px-10 md:py-12"
+          className="overflow-hidden rounded-[2rem] border-white/12 px-5 py-7 md:px-9 md:py-10"
         >
           <div className="relative">
-            <div className="pointer-events-none absolute inset-x-[14%] top-8 h-28 rounded-full bg-accent/8 blur-3xl" />
-            <div className="relative rounded-[1.9rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-6 py-12 text-center shadow-[0_18px_48px_rgba(27,44,74,0.09)] md:px-12 md:py-16">
-              <div className="mx-auto max-w-3xl space-y-5">
-                <p className="ui-eyebrow text-accent/90">Contact</p>
-                <h2 className="text-balance font-display text-[1.92rem] leading-[1.34] tracking-[-0.02em] text-foreground md:text-[3.05rem]">
-                  制作やプロフィールを見たあとに、
-                  <span className="block">そのまま連絡先へ進めます。</span>
-                </h2>
-                <p className="ui-copy mx-auto max-w-[36rem] md:text-[15px] md:leading-7">
-                  メールと GitHub をシンプルにまとめているので、
-                  ご質問やご相談がある場合も自然に確認できます。
-                </p>
-              </div>
+            <div className="pointer-events-none absolute inset-x-[22%] top-4 h-20 rounded-full bg-accent/7 blur-3xl" />
+            <div className="relative rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))] px-5 py-6 shadow-[0_14px_34px_rgba(27,44,74,0.07)] md:px-7 md:py-7">
+              <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                <div className="layout-header space-y-3">
+                  <p className="ui-eyebrow text-accent/90">連絡先</p>
+                  <h2 className="ui-section-title max-w-[12ch] text-foreground md:max-w-[14ch]">
+                    メールと GitHub をまとめています。
+                  </h2>
+                  <p className="ui-copy max-w-[34rem] md:text-[14.5px] md:leading-7">
+                    気になったときに、そのまま確認しやすい連絡先ページです。
+                  </p>
+                </div>
 
-              <div className="mt-8 flex justify-center md:mt-9">
-                <Button href="/contact" size="lg" className="min-w-[11rem]">
-                  連絡先を見る
-                </Button>
+                <div className="flex flex-col gap-2.5 sm:flex-row md:flex-col md:items-end lg:flex-row">
+                  <p className="text-[11px] leading-5 text-muted-foreground md:max-w-[16rem] md:text-right lg:max-w-none lg:text-left">
+                    連絡先ページで、メールと GitHub を見られます。
+                  </p>
+                  <Button href="/contact" variant="secondary" size="lg" className="w-full sm:w-auto sm:min-w-[10.5rem]">
+                    連絡先を見る
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -110,21 +145,22 @@ function HeroSection() {
   return (
     <SectionContainer
       spacing="hero"
-      className="pt-8 md:pt-14"
+      className="relative overflow-hidden pt-8 md:pt-14"
     >
-      <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.18fr)_minmax(21rem,0.82fr)]">
+      <SoftHeroBackground />
+
+      <div className="relative z-[1] grid min-w-0 items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
         <Card
           interactive={false}
           inset
           padding="lg"
           tone="muted"
-          className="overflow-hidden rounded-[2rem] lg:min-h-[34rem]"
+          className="overflow-hidden rounded-[2rem] shadow-[0_24px_70px_rgba(27,44,74,0.1)] lg:col-span-7 lg:min-h-[34rem]"
         >
           <div className="relative flex h-full flex-col justify-between gap-12 md:gap-14">
-            <div className="pointer-events-none absolute inset-y-0 right-[-14%] top-12 w-56 rounded-full bg-accent/10 blur-3xl" />
-            <div className="pointer-events-none absolute left-[8%] top-8 h-24 w-24 rounded-full bg-white/30 blur-3xl" />
+            <div className="pointer-events-none absolute -inset-10 bg-[radial-gradient(circle_at_88%_18%,rgba(88,148,255,0.14),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.18),transparent_48%)]" />
 
-            <div className="relative max-w-[42rem] space-y-8 md:space-y-10">
+            <div className="relative min-w-0 space-y-8 md:space-y-10">
               <div className="space-y-2.5">
                 <p className="text-[1.28rem] font-semibold tracking-[-0.035em] text-foreground md:text-[1.6rem]">
                   {siteConfig.name}
@@ -135,25 +171,54 @@ function HeroSection() {
               </div>
 
               <div className="space-y-4.5 md:space-y-5">
-                <h1 className="max-w-[10ch] text-balance font-display text-[2.34rem] leading-[1.22] tracking-[-0.024em] md:text-[4.05rem]">
-                  学生として取り組んでいる
-                  <span className="text-accent">制作と実装</span>
-                  をまとめたポートフォリオです。
+                <h1 className="ui-display-title max-w-[15ch] text-foreground sm:max-w-[17ch] lg:max-w-[14.5ch]">
+                  学生制作と<span className="text-accent">実装</span>のポートフォリオ
                 </h1>
-                <p className="ui-copy max-w-[34rem] md:text-[15px] md:leading-[1.9]">
-                  Swift / Kotlin / Next.js を軸に、情報設計を意識した UI 実装に取り組んでいます。
-                  制作物、プロフィール、GitHub、連絡先をシンプルに確認できる構成です。
+                <p className="ui-copy max-w-[40rem] md:text-[15px] md:leading-[1.85]">
+                  学生として取り組んできた制作や実装を、見やすくまとめています。
                 </p>
-                <div className="flex flex-wrap gap-2.5 pt-0.5">
-                  <span className="ui-chip px-3.5 py-1.5 text-[11px] text-foreground/80 shadow-none">Swift</span>
-                  <span className="ui-chip px-3.5 py-1.5 text-[11px] text-foreground/80 shadow-none">Kotlin</span>
-                  <span className="ui-chip px-3.5 py-1.5 text-[11px] text-foreground/80 shadow-none">Next.js</span>
-                  <span className="ui-chip px-3.5 py-1.5 text-[11px] text-foreground/80 shadow-none">情報設計</span>
+                <div className="max-w-[43rem] rounded-[1.3rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(246,249,253,0.5))] p-3.5 shadow-[0_12px_30px_rgba(27,44,74,0.06)] md:p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2.5">
+                    <p className="text-[11px] font-semibold tracking-[0.1em] text-muted-foreground/88">
+                      使える技術
+                    </p>
+                    <p className="text-[11px] text-foreground/58">
+                      情報設計も意識
+                    </p>
+                  </div>
+
+                  <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+                    {heroTechGroups.map((group) => (
+                      <div
+                        key={group.label}
+                        className="rounded-[1.05rem] border border-line/45 bg-white/54 px-3.5 py-3"
+                      >
+                        <div className="flex items-baseline justify-between gap-3">
+                          <p className="text-[11px] font-semibold tracking-[0.08em] text-foreground/74">
+                            {group.label}
+                          </p>
+                          <p className="text-[10px] tracking-[0.06em] text-muted-foreground">
+                            {group.note}
+                          </p>
+                        </div>
+                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                          {group.items.map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-pill border border-line/55 bg-white/84 px-2.5 py-1 text-[11px] font-medium text-foreground/78 shadow-[0_4px_12px_rgba(27,44,74,0.03)]"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <Button href="/projects" size="lg" className="min-w-[13rem]">
+              <div className="grid max-w-[43rem] gap-3 pt-1 sm:grid-cols-2">
+                <Button href="/projects" size="lg" className="w-full">
                   制作物を見る
                   <ArrowRight className="size-4" />
                 </Button>
@@ -161,17 +226,17 @@ function HeroSection() {
                   href={siteConfig.githubUrl}
                   variant="secondary"
                   size="lg"
-                  className="min-w-[10.5rem]"
+                  className="w-full"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
                 </Button>
                 <Button
-                  href={mailToHref}
+                  href={plainMailtoHref}
                   variant="ghost"
                   size="lg"
-                  className="min-w-[10rem] border border-line/75 bg-white/70 text-foreground/78 hover:bg-white/86"
+                  className="w-full border border-line/75 bg-white/70 text-foreground/78 hover:bg-white/86"
                 >
                   メール
                 </Button>
@@ -179,17 +244,17 @@ function HeroSection() {
                   href="/about"
                   variant="secondary"
                   size="lg"
-                  className="min-w-[11rem]"
+                  className="w-full"
                 >
                   プロフィールを見る
                 </Button>
               </div>
             </div>
 
-            <div className="relative grid gap-4 sm:grid-cols-3">
-              <MetricCard label="主軸" value="UI 実装" note="読みやすさを意識した画面づくり" />
-              <MetricCard label="技術" value="Web / Mobile" note="Swift / Kotlin / Next.js" />
-              <MetricCard label="導線" value="Projects" note="制作物、GitHub、連絡先を確認しやすい構成" />
+            <div className="relative grid gap-4 md:grid-cols-3">
+              <MetricCard label="内容" value="制作と実装" note="学生として取り組んできたものを整理" />
+              <MetricCard label="領域" value="モバイル・Web・3D" note="Swift、Kotlin、Next.js、Unity などを横断" />
+              <MetricCard label="見せ方" value="整理して伝える" note="技術の広がりが先に伝わる構成" />
             </div>
           </div>
         </Card>
@@ -198,7 +263,7 @@ function HeroSection() {
           interactive={false}
           padding="none"
           tone="strong"
-          className="overflow-hidden rounded-[2rem] border-white/12 lg:min-h-[34rem]"
+          className="overflow-hidden rounded-[2rem] border-white/12 shadow-[0_24px_70px_rgba(27,44,74,0.12)] lg:col-span-5 lg:min-h-[34rem]"
         >
           <div className="flex h-full flex-col">
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
@@ -206,7 +271,7 @@ function HeroSection() {
                 <p className="text-xs tracking-[0.1em] text-muted-foreground">
                   このサイトで分かること
                 </p>
-                <p className="mt-1 text-sm text-foreground">自己紹介と制作物を、順番に追いやすくしています</p>
+                <p className="mt-1 text-sm text-foreground">自己紹介と制作物を、見やすくまとめています</p>
               </div>
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-line-strong/80" />
@@ -214,11 +279,11 @@ function HeroSection() {
               </div>
             </div>
 
-            <div className="grid flex-1 gap-4 p-5">
-                <div className="rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(242,246,252,0.04))] p-5 shadow-[0_14px_32px_rgba(27,44,74,0.08)]">
-                  <p className="text-xs tracking-[0.1em] text-muted-foreground">
-                    まず見る場所
-                  </p>
+            <div className="grid flex-1 gap-4 p-4 md:p-5">
+              <div className="rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(242,246,252,0.04))] p-5 shadow-[0_14px_32px_rgba(27,44,74,0.08)]">
+                <p className="text-xs tracking-[0.1em] text-muted-foreground">
+                  まず見る場所
+                </p>
                 <div className="mt-5 space-y-4">
                   {overviewSteps.map((item) => (
                     <div
@@ -237,21 +302,21 @@ function HeroSection() {
                 </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
                 <div className="rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5">
                   <p className="text-xs tracking-[0.1em] text-muted-foreground">
                     GitHub
                   </p>
-                  <p className="mt-3 text-lg leading-[1.75] text-foreground">
-                    実装を確認したい場合は、制作物一覧からそのまま GitHub に進めます。
+                  <p className="mt-3 text-[1rem] leading-[1.72] text-foreground md:text-[1.08rem]">
+                    制作ごとの GitHub も、そのまま確認できます。
                   </p>
                 </div>
                 <div className="rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5">
                   <p className="text-xs tracking-[0.1em] text-muted-foreground">
                     連絡先
                   </p>
-                  <p className="mt-3 text-lg leading-[1.75] text-foreground">
-                    ご質問やご相談がある場合は、Contact からメールでご連絡いただけます。
+                  <p className="mt-3 text-[1rem] leading-[1.72] text-foreground md:text-[1.08rem]">
+                    メールで、気軽に連絡できます。
                   </p>
                 </div>
               </div>
@@ -260,6 +325,26 @@ function HeroSection() {
         </Card>
       </div>
     </SectionContainer>
+  );
+}
+
+function SoftHeroBackground() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-[-18%] top-0 h-[34rem] overflow-hidden md:inset-x-[-14%] md:h-[40rem]"
+    >
+      <Image
+        src="/images/backgrounds/portfolio-soft-abstract.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="scale-[1.08] object-cover opacity-[0.34] blur-[18px] saturate-[0.82] md:opacity-[0.38] md:blur-[22px]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,252,255,0.5),rgba(250,252,255,0.9)_72%,rgba(250,252,255,1))]" />
+      <div className="absolute inset-x-[10%] top-[8%] h-28 rounded-full bg-white/55 blur-3xl md:inset-x-[18%]" />
+    </div>
   );
 }
 
