@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { ProjectShowcaseCard } from "@/components/home/project-showcase-card";
@@ -144,9 +145,11 @@ function HeroSection() {
   return (
     <SectionContainer
       spacing="hero"
-      className="pt-8 md:pt-14"
+      className="relative overflow-hidden pt-8 md:pt-14"
     >
-        <div className="grid min-w-0 items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
+      <SoftHeroBackground />
+
+      <div className="relative z-[1] grid min-w-0 items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
         <Card
           interactive={false}
           inset
@@ -322,6 +325,26 @@ function HeroSection() {
         </Card>
       </div>
     </SectionContainer>
+  );
+}
+
+function SoftHeroBackground() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-[-18%] top-0 h-[34rem] overflow-hidden md:inset-x-[-14%] md:h-[40rem]"
+    >
+      <Image
+        src="/images/backgrounds/portfolio-soft-abstract.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="scale-[1.08] object-cover opacity-[0.34] blur-[18px] saturate-[0.82] md:opacity-[0.38] md:blur-[22px]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,252,255,0.5),rgba(250,252,255,0.9)_72%,rgba(250,252,255,1))]" />
+      <div className="absolute inset-x-[10%] top-[8%] h-28 rounded-full bg-white/55 blur-3xl md:inset-x-[18%]" />
+    </div>
   );
 }
 

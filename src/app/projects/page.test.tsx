@@ -18,8 +18,12 @@ describe("ProjectsPage", () => {
     expect(screen.getByText("Featured Projects")).toBeInTheDocument();
     expect(screen.getByText("All Works")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "WinCook - 詳細を見る" })).toHaveAttribute("href", "/projects/wincook");
     expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Nexus Quant/ })).not.toBeInTheDocument();
   });
 
   it("filters visible project cards from user interaction", async () => {
@@ -29,8 +33,19 @@ describe("ProjectsPage", () => {
 
     expect(screen.getByRole("button", { name: /AI/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByText(/今は/)).toHaveTextContent("AI");
+    expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Share Fit" })).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Portfolio" })).not.toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: /すべて/ }));
+
+    expect(screen.getByRole("button", { name: /すべて/ })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
   });
 
   it("keeps the contact call-to-action available after filtering", async () => {

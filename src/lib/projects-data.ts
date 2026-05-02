@@ -39,6 +39,7 @@ export type ProjectItem = {
   }[];
   status: string;
   featured?: boolean;
+  filterIds?: readonly Exclude<ProjectFilterId, "all">[];
   filterHints?: readonly string[];
   showcase?: {
     eyebrow: string;
@@ -86,6 +87,7 @@ export const projectItems = [
     ],
     status: "ハッカソン制作",
     featured: true,
+    filterIds: ["mobile", "ai", "hackathon"],
     filterHints: ["Mobile", "iOS", "Hackathon", "AI"],
     showcase: {
       eyebrow: "Featured",
@@ -131,6 +133,7 @@ export const projectItems = [
     ],
     status: "ハッカソン制作",
     featured: true,
+    filterIds: ["mobile", "hackathon"],
     filterHints: ["Mobile", "Android", "Hackathon"],
     showcase: {
       eyebrow: "Featured",
@@ -172,6 +175,7 @@ export const projectItems = [
     ],
     status: "制作中 / 検証中",
     featured: true,
+    filterIds: ["mobile", "ai"],
     filterHints: ["AI", "Mobile", "Android"],
     showcase: {
       eyebrow: "Featured",
@@ -206,6 +210,7 @@ export const projectItems = [
     coverAlt: "Portfolioの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
     status: "制作中",
     featured: false,
+    filterIds: ["web"],
     filterHints: ["Web", "Frontend"],
   },
   {
@@ -233,6 +238,7 @@ export const projectItems = [
     coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
     status: "制作中",
     featured: false,
+    filterIds: ["mobile"],
     filterHints: ["Mobile", "iOS"],
   },
 ] as const satisfies readonly ProjectItem[];
@@ -267,6 +273,10 @@ function normalizeProjectTerms(project: ProjectItem) {
 export function matchesProjectFilter(project: ProjectItem, filterId: ProjectFilterId) {
   if (filterId === "all") {
     return true;
+  }
+
+  if (project.filterIds) {
+    return project.filterIds.includes(filterId);
   }
 
   const normalizedTerms = ` ${normalizeProjectTerms(project)} `;

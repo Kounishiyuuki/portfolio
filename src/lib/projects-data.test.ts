@@ -26,14 +26,10 @@ describe("projects data", () => {
     const aiProjects = getProjectsByFilter("ai");
     const hackathonProjects = getProjectsByFilter("hackathon");
 
-    expect(mobileProjects.map((project) => project.title)).toEqual(
-      expect.arrayContaining(["WinCook", "Share Fit", "PulseCue"])
-    );
-    expect(webProjects.map((project) => project.title)).toContain("Portfolio");
-    expect(aiProjects.map((project) => project.title)).toEqual(expect.arrayContaining(["WinCook", "AIVY"]));
-    expect(hackathonProjects.map((project) => project.title)).toEqual(
-      expect.arrayContaining(["WinCook", "Share Fit"])
-    );
+    expect(mobileProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY", "PulseCue"]);
+    expect(webProjects.map((project) => project.title)).toEqual(["Portfolio"]);
+    expect(aiProjects.map((project) => project.title)).toEqual(["WinCook", "AIVY"]);
+    expect(hackathonProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit"]);
   });
 
   it("exports only showcase-ready featured projects", () => {
