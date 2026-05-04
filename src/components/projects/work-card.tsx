@@ -11,6 +11,27 @@ export type WorkCardProps = ProjectItem & {
   ctaAriaLabel?: string;
 };
 
+const featuredCardAccents = {
+  WinCook: {
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,249,239,0.78)_42%,rgba(247,250,253,0.82))] shadow-[0_14px_34px_rgba(139,96,29,0.09)] hover:shadow-[0_22px_46px_rgba(139,96,29,0.13)]",
+    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(255,210,122,0.24),transparent_34%),linear-gradient(135deg,rgba(255,252,246,0.96),rgba(246,239,224,0.72))]",
+    glow: "bg-[radial-gradient(circle_at_50%_20%,rgba(255,196,96,0.28),transparent_56%)]",
+    innerGlow: "bg-amber-200/18",
+  },
+  "Share Fit": {
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(238,250,247,0.76)_44%,rgba(247,250,253,0.84))] shadow-[0_14px_34px_rgba(33,126,111,0.08)] hover:shadow-[0_22px_46px_rgba(33,126,111,0.12)]",
+    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(115,213,178,0.2),transparent_34%),radial-gradient(circle_at_78%_20%,rgba(119,178,255,0.18),transparent_32%),linear-gradient(135deg,rgba(247,252,255,0.96),rgba(229,245,241,0.74))]",
+    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(104,211,182,0.22),transparent_58%)]",
+    innerGlow: "bg-emerald-200/16",
+  },
+  AIVY: {
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(242,244,255,0.76)_44%,rgba(247,250,253,0.84))] shadow-[0_14px_34px_rgba(85,89,166,0.08)] hover:shadow-[0_22px_46px_rgba(85,89,166,0.12)]",
+    media: "bg-[radial-gradient(circle_at_30%_18%,rgba(132,170,255,0.22),transparent_34%),radial-gradient(circle_at_78%_22%,rgba(164,132,255,0.18),transparent_32%),linear-gradient(135deg,rgba(248,250,255,0.96),rgba(236,238,255,0.74))]",
+    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(132,146,255,0.22),transparent_58%)]",
+    innerGlow: "bg-violet-200/16",
+  },
+} as const;
+
 export function WorkCard({
   title,
   category,
@@ -31,12 +52,21 @@ export function WorkCard({
   githubUrl,
   githubLabel = "GitHubを見る",
 }: WorkCardProps) {
+  const featuredAccent = featured
+    ? featuredCardAccents[title as keyof typeof featuredCardAccents]
+    : undefined;
+
   return (
     <div className="h-full">
       <Card
         padding="none"
         tone="muted"
-        className="group h-full overflow-hidden rounded-[1.55rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,250,253,0.82))] shadow-[0_12px_30px_rgba(27,44,74,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_20px_42px_rgba(27,44,74,0.12)]"
+        className={cn(
+          "group h-full overflow-hidden rounded-[1.55rem] border-white/10 transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95",
+          featuredAccent
+            ? featuredAccent.card
+            : "bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,250,253,0.82))] shadow-[0_12px_30px_rgba(27,44,74,0.08)] hover:shadow-[0_20px_42px_rgba(27,44,74,0.12)]"
+        )}
       >
         <div className="p-3 pb-0 md:p-4 md:pb-0">
           <div
@@ -61,7 +91,7 @@ export function WorkCard({
             <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(15,22,35,0.08))] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             <div className="pointer-events-none absolute inset-x-[16%] top-4 z-[1] h-12 rounded-full bg-white/[0.08] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
             {coverImage ? (
-              <ProjectCover src={coverImage} alt={coverAlt} />
+              <ProjectCover src={coverImage} alt={coverAlt} accent={featuredAccent} />
             ) : (
               <WorkVisual type={visual} />
             )}
@@ -191,13 +221,35 @@ function InfoBlock({
   );
 }
 
-function ProjectCover({ src, alt }: { src: string; alt: string }) {
+function ProjectCover({
+  src,
+  alt,
+  accent,
+}: {
+  src: string;
+  alt: string;
+  accent?: (typeof featuredCardAccents)[keyof typeof featuredCardAccents];
+}) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.76))] p-3.5 transition-transform duration-500 group-hover:scale-[1.02] md:p-4">
+    <div
+      className={cn(
+        "absolute inset-0 flex items-center justify-center p-3.5 transition-transform duration-500 group-hover:scale-[1.02] md:p-4",
+        accent?.media ?? "bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.76))]"
+      )}
+    >
+      {accent ? (
+        <div
+          aria-hidden="true"
+          className={cn("pointer-events-none absolute inset-0 opacity-80", accent.glow)}
+        />
+      ) : null}
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1rem] border border-white/70 bg-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
         <div
           aria-hidden="true"
-          className="absolute inset-x-[12%] top-[10%] h-16 rounded-full bg-accent/10 blur-2xl"
+          className={cn(
+            "absolute inset-x-[12%] top-[10%] h-16 rounded-full blur-2xl",
+            accent?.innerGlow ?? "bg-accent/10"
+          )}
         />
         <Image
           src={src}

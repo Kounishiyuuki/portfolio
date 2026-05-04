@@ -33,9 +33,11 @@ export default function ProjectsPage() {
         initial="initial"
         animate="animate"
         variants={staggerChildren(0.08)}
-        className="pt-8 md:pt-12"
+        className="relative overflow-hidden pt-8 md:pt-12"
       >
-        <motion.div variants={fadeInUp({ reducedMotion: true })} className="space-y-7 md:space-y-8">
+        <ProjectsHeaderBackground />
+
+        <motion.div variants={fadeInUp({ reducedMotion: true })} className="relative z-[1] space-y-7 md:space-y-8">
           <div className="layout-header space-y-4">
             <p className="ui-eyebrow text-accent/90">制作一覧</p>
             <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.3rem,4.2vw,4.35rem)]">
@@ -250,6 +252,26 @@ export default function ProjectsPage() {
         </Card>
       </motion.section>
     </PageContainer>
+  );
+}
+
+function ProjectsHeaderBackground() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-[-18%] top-0 h-[28rem] overflow-hidden md:inset-x-[-10%] md:h-[31rem]"
+    >
+      <Image
+        src="/images/backgrounds/projects-soft-halo.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="scale-[1.12] object-cover opacity-[0.22] blur-[20px] saturate-[0.78] md:opacity-[0.28]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,252,255,0.68),rgba(250,252,255,0.92)_70%,rgba(250,252,255,1))]" />
+      <div className="absolute inset-x-[18%] top-8 h-24 rounded-full bg-white/62 blur-3xl" />
+    </div>
   );
 }
 
