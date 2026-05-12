@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
@@ -159,16 +160,17 @@ export default function AboutPage() {
               <div className="flex h-full flex-col">
                 <div className="flex flex-1 flex-col p-5">
                   <div className="relative flex min-h-[23rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(27,44,74,0.14)] sm:min-h-[28rem]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.08),transparent_30%)]" />
-                    <div className="absolute inset-x-[16%] top-8 h-40 rounded-full bg-white/[0.06] blur-3xl" />
-                    <div className="absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,rgba(11,16,24,0),rgba(11,16,24,0.82))]" />
+                    <Image
+                      src="/images/profile/profile-snow.jpg"
+                      alt="雪山で撮影したプロフィール写真"
+                      fill
+                      sizes="(min-width: 1280px) 36vw, (min-width: 768px) 42vw, 100vw"
+                      className="object-cover object-[50%_42%]"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,14,22,0.08),rgba(9,14,22,0.28)_48%,rgba(9,14,22,0.82))]" />
+                    <div className="absolute inset-x-[16%] top-8 h-40 rounded-full bg-white/[0.08] blur-3xl" />
                     <div className="absolute inset-x-6 inset-y-6 rounded-[1.35rem] border border-white/6" />
-
-                    <div className="absolute left-1/2 top-[15%] h-44 w-44 -translate-x-1/2 rounded-full border border-white/10 bg-[radial-gradient(circle_at_50%_34%,rgba(255,255,255,0.32),rgba(255,255,255,0.1)_43%,rgba(255,255,255,0.02)_74%)] shadow-[0_20px_60px_rgba(0,0,0,0.36)]" />
-                    <div className="absolute left-1/2 top-[31%] h-56 w-48 -translate-x-1/2 rounded-t-[5.5rem] rounded-b-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.04))]" />
-                    <div className="absolute left-[calc(50%-3.8rem)] top-[28.5%] h-4 w-8 rounded-full bg-white/[0.08]" />
-                    <div className="absolute right-[calc(50%-3.8rem)] top-[28.5%] h-4 w-8 rounded-full bg-white/[0.08]" />
-                    <div className="absolute left-1/2 top-[35.5%] h-16 w-20 -translate-x-1/2 rounded-[999px] border border-white/6 bg-white/[0.03]" />
 
                     <div className="relative z-10 mt-auto w-full rounded-[1.2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(237,242,249,0.18))] px-4 py-4 backdrop-blur-md">
                       <p className="text-[1.55rem] font-semibold tracking-[-0.035em] text-foreground">
