@@ -10,7 +10,7 @@ describe("AboutPage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /所属と主軸が、自然に伝わるプロフィール。/,
+        name: "プロフィール",
       })
     ).toBeInTheDocument();
     expect(screen.getByText(siteConfig.name)).toBeInTheDocument();
@@ -28,6 +28,22 @@ describe("AboutPage", () => {
     expect(screen.getByRole("heading", { name: "強み" })).toBeInTheDocument();
     expect(screen.getByText("学びの起点")).toBeInTheDocument();
     expect(screen.getByText("主軸技術")).toBeInTheDocument();
-    expect(screen.getByText("強みの出し方")).toBeInTheDocument();
+    expect(screen.getByText("UIと実装")).toBeInTheDocument();
+  });
+
+  it("shows a concise journey timeline", () => {
+    render(<AboutPage />);
+
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "これまでの歩み",
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByText("2005年")).toBeInTheDocument();
+    expect(screen.getByText("金沢で生まれ、高校までを過ごす")).toBeInTheDocument();
+    expect(screen.getByText("大学入学")).toBeInTheDocument();
+    expect(screen.getByText("大学2年")).toBeInTheDocument();
+    expect(screen.getByText("現在")).toBeInTheDocument();
   });
 });

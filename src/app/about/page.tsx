@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
@@ -39,12 +40,39 @@ const storyBlocks = [
     index: "03",
     title: "強み",
     description:
-      "見た目だけでなく、情報の優先順位、ラベル、余白、実装構造まで含めて読みやすく整理することを重視しています。成果物の性質や見るポイントが自然に伝わる見せ方を意識しています。",
-    cta: "強みの出し方",
+      "情報の優先順位、ラベル、余白、実装構造まで含めて、使いやすい画面を考えています。",
+    cta: "UIと実装",
   },
 ] as const;
 
 const timelineItems = [...siteConfig.focusAreas, "情報設計", siteConfig.role] as const;
+
+const journeyItems = [
+  {
+    period: "2005年",
+    title: "金沢で生まれ、高校までを過ごす",
+    description:
+      "落ち着いた環境で学びながら、ものづくりや表現への関心を少しずつ広げてきました。",
+  },
+  {
+    period: "大学入学",
+    title: "アプリ開発やWeb制作に関心を持つ",
+    description:
+      "大学での学びを通して、アプリ開発、Web制作、UI設計、実際に使えるプロダクトづくりに取り組み始めました。",
+  },
+  {
+    period: "大学2年",
+    title: "プロジェクト活動で副リーダーを担当",
+    description:
+      "チームでの制作を進めながら、進行管理や実装面の整理にも関わるようになりました。",
+  },
+  {
+    period: "現在",
+    title: "制作とプロジェクト活動を継続",
+    description:
+      "モバイルアプリ、Web、UIを中心に、学びと実装を往復しながら制作を続けています。",
+  },
+] as const;
 
 export default function AboutPage() {
   return (
@@ -74,7 +102,7 @@ export default function AboutPage() {
                       プロフィール
                     </p>
                     <h1 className="ui-display-title layout-title-display text-foreground md:text-[clamp(2.4rem,4.9vw,5rem)]">
-                      所属と主軸が、<span className="text-accent">自然に伝わるプロフィール。</span>
+                      プロフィール
                     </h1>
                     <p className="ui-copy layout-reading md:text-[1.02rem]">
                       {siteConfig.school} {siteConfig.faculty} {siteConfig.department} に所属する {siteConfig.year}の {siteConfig.role} として、
@@ -87,7 +115,7 @@ export default function AboutPage() {
                       現在の主軸
                     </p>
                     <p className="mt-2 text-[14px] leading-[1.85] text-foreground/82">
-                      Swift / Kotlin / Next.js を軸に、モバイルと Web の両方から、情報の優先順位、読みやすさ、実装の整理しやすさを考えて画面を組み立てています。
+                      Swift / Kotlin / Next.js を軸に、モバイルと Web の UI 実装に取り組んでいます。
                     </p>
                   </div>
 
@@ -132,16 +160,17 @@ export default function AboutPage() {
               <div className="flex h-full flex-col">
                 <div className="flex flex-1 flex-col p-5">
                   <div className="relative flex min-h-[23rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(27,44,74,0.14)] sm:min-h-[28rem]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.08),transparent_30%)]" />
-                    <div className="absolute inset-x-[16%] top-8 h-40 rounded-full bg-white/[0.06] blur-3xl" />
-                    <div className="absolute inset-x-0 bottom-0 h-[68%] bg-[linear-gradient(180deg,rgba(11,16,24,0),rgba(11,16,24,0.82))]" />
+                    <Image
+                      src="/images/profile/profile-snow.jpg"
+                      alt="雪山で撮影したプロフィール写真"
+                      fill
+                      sizes="(min-width: 1280px) 36vw, (min-width: 768px) 42vw, 100vw"
+                      className="object-cover object-[50%_42%]"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,14,22,0.08),rgba(9,14,22,0.28)_48%,rgba(9,14,22,0.82))]" />
+                    <div className="absolute inset-x-[16%] top-8 h-40 rounded-full bg-white/[0.08] blur-3xl" />
                     <div className="absolute inset-x-6 inset-y-6 rounded-[1.35rem] border border-white/6" />
-
-                    <div className="absolute left-1/2 top-[15%] h-44 w-44 -translate-x-1/2 rounded-full border border-white/10 bg-[radial-gradient(circle_at_50%_34%,rgba(255,255,255,0.32),rgba(255,255,255,0.1)_43%,rgba(255,255,255,0.02)_74%)] shadow-[0_20px_60px_rgba(0,0,0,0.36)]" />
-                    <div className="absolute left-1/2 top-[31%] h-56 w-48 -translate-x-1/2 rounded-t-[5.5rem] rounded-b-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.04))]" />
-                    <div className="absolute left-[calc(50%-3.8rem)] top-[28.5%] h-4 w-8 rounded-full bg-white/[0.08]" />
-                    <div className="absolute right-[calc(50%-3.8rem)] top-[28.5%] h-4 w-8 rounded-full bg-white/[0.08]" />
-                    <div className="absolute left-1/2 top-[35.5%] h-16 w-20 -translate-x-1/2 rounded-[999px] border border-white/6 bg-white/[0.03]" />
 
                     <div className="relative z-10 mt-auto w-full rounded-[1.2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(237,242,249,0.18))] px-4 py-4 backdrop-blur-md">
                       <p className="text-[1.55rem] font-semibold tracking-[-0.035em] text-foreground">
@@ -154,7 +183,7 @@ export default function AboutPage() {
                         {siteConfig.school} / {siteConfig.faculty} / {siteConfig.department}
                       </p>
                       <p className="mt-3 text-[12px] leading-[1.7] text-foreground/78">
-                        Swift / Kotlin / Next.js を中心に、情報設計を意識した読みやすい UI 実装を目指しています。
+                        Swift / Kotlin / Next.js を中心に、UI 実装と情報設計に取り組んでいます。
                       </p>
                     </div>
                   </div>
@@ -186,21 +215,9 @@ export default function AboutPage() {
           ))}
         </motion.div>
 
-        <motion.div variants={fadeInUp()} className="layout-header mx-auto mt-10 text-center md:mt-12">
-          <p className="ui-eyebrow text-muted-foreground">
-            読み方
-          </p>
-          <h2 className="ui-section-title layout-title-section mt-4 text-foreground">
-            所属と主軸が、短く分かるようにしています。
-          </h2>
-          <p className="ui-copy layout-reading mx-auto mt-4">
-            所属情報、主軸にしている技術、制作で重視していることを、短時間でも読みやすい順番で整理しています。
-          </p>
-        </motion.div>
-
         <motion.div
           variants={staggerChildren(0.08)}
-          className="mt-9 grid gap-5 md:grid-cols-2 md:items-stretch xl:grid-cols-3"
+          className="mt-8 grid gap-5 md:mt-10 md:grid-cols-2 md:items-stretch xl:grid-cols-3"
         >
           {storyBlocks.map((block) => (
             <motion.div key={block.index} variants={fadeInUp()}>
@@ -236,39 +253,67 @@ export default function AboutPage() {
       </motion.section>
 
       <motion.section
-        className="pt-[calc(var(--section-space)*0.9)]"
+        className="pt-10 md:pt-16"
         initial="initial"
         whileInView="animate"
         viewport={defaultViewport}
-        variants={fadeInUp()}
+        variants={staggerChildren(0.08)}
+        aria-labelledby="journey-heading"
       >
-        <Card
-          interactive={false}
-          inset
-          padding="lg"
-          tone="muted"
-          className="relative overflow-hidden rounded-[2rem] px-6 py-10 md:px-10 md:py-12"
-        >
-          <div className="pointer-events-none absolute inset-x-[18%] top-10 h-24 rounded-full bg-accent/8 blur-3xl" />
-          <div className="relative grid gap-8 xl:grid-cols-[0.82fr_minmax(0,1.18fr)] xl:items-center">
-            <div className="layout-header space-y-3">
-              <p className="ui-eyebrow text-muted-foreground">
-                補足
-              </p>
-              <h2 className="ui-section-title layout-title-section text-foreground">
-                落ち着いた印象で、自然に読めることを重視しています。
-              </h2>
-            </div>
+        <motion.div variants={fadeInUp()} className="mb-7 space-y-3 md:mb-9">
+          <p className="ui-eyebrow text-accent/90">Journey</p>
+          <h2
+            id="journey-heading"
+            className="ui-section-title layout-title-section text-foreground"
+          >
+            これまでの歩み
+          </h2>
+          <p className="ui-copy layout-reading text-muted-foreground">
+            学生としての学びと制作活動の流れを、簡潔にまとめています。
+          </p>
+        </motion.div>
 
-            <div className="layout-reading-wide rounded-[1.55rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-6 py-7 shadow-[0_14px_34px_rgba(27,44,74,0.07)] md:px-8 xl:justify-self-end">
-              <p className="ui-copy md:text-base">
-                氏名や所属を必要な範囲で明示しつつ、住所や電話番号などは出しすぎない形を意識しています。
-                短時間でも「どんな技術を軸にしているか」と「どのような姿勢で作る人か」が伝わることを優先しています。
-              </p>
-            </div>
-          </div>
-        </Card>
+        <motion.div variants={fadeInUp()}>
+          <Card
+            interactive={false}
+            inset
+            padding="none"
+            tone="muted"
+            className="overflow-hidden rounded-[1.8rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.035))] px-5 py-6 shadow-[0_14px_34px_rgba(27,44,74,0.055)] md:px-8 md:py-8"
+          >
+            <ol className="relative grid gap-0 md:grid-cols-4 md:gap-4">
+              {journeyItems.map((item, index) => (
+                <li
+                  key={item.period}
+                  className="relative grid gap-4 border-l border-white/12 pb-7 pl-6 last:pb-0 md:border-l-0 md:border-t md:pb-0 md:pl-0 md:pt-6"
+                >
+                  <span
+                    className="absolute -left-[0.45rem] top-1 flex size-3.5 rounded-full border border-accent/40 bg-accent shadow-[0_0_0_5px_rgba(88,148,255,0.1)] md:left-0 md:top-[-0.45rem]"
+                    aria-hidden="true"
+                  />
+                  <div className="flex items-baseline gap-3 md:flex-col md:gap-2">
+                    <span className="text-[11px] font-semibold tracking-[0.08em] text-accent/90">
+                      {item.period}
+                    </span>
+                    <span className="text-[10px] font-semibold text-muted-foreground/70">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-[1rem] font-semibold leading-[1.7] tracking-[-0.02em] text-foreground md:text-[1.02rem]">
+                      {item.title}
+                    </h3>
+                    <p className="ui-body-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Card>
+        </motion.div>
       </motion.section>
+
     </PageContainer>
   );
 }
