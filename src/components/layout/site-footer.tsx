@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div>
             <p className="ui-eyebrow text-foreground/72">このサイトについて</p>
             <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-              {siteConfig.name} のポートフォリオです。制作物、プロフィール、GitHub、メールを見やすくまとめています。
+              {siteConfig.name} のポートフォリオです。
             </p>
           </div>
           <p className="text-sm leading-6 text-muted-foreground md:max-w-xs md:text-right">

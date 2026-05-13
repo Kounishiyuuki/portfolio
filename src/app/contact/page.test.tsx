@@ -8,7 +8,7 @@ describe("ContactPage", () => {
     render(<ContactPage />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: /メールと GitHub をまとめています。/ })
+      screen.getByRole("heading", { level: 1, name: /興味を持っていただけた場合は、メールからご連絡ください。/ })
     ).toBeInTheDocument();
     expect(screen.getByText(siteConfig.email)).toBeInTheDocument();
     expect(screen.getByText("github.com/Kounishiyuuki")).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("ContactPage", () => {
         "href",
         expect.stringContaining(encodeURIComponent("ポートフォリオについてご連絡です"))
       );
-      expect(link).toHaveAttribute("href", expect.stringContaining(encodeURIComponent("ご連絡内容:")));
+      expect(link).toHaveAttribute("href", expect.stringContaining(encodeURIComponent("確認したい内容:")));
     }
 
     const githubLinks = screen.getAllByRole("link", { name: "GitHubを見る" });
@@ -44,7 +44,8 @@ describe("ContactPage", () => {
     expect(screen.getByText("ポートフォリオについてのご質問")).toBeInTheDocument();
     expect(screen.getByText("制作や得意分野についての確認")).toBeInTheDocument();
     expect(screen.getByText("GitHub や実装についてのご相談")).toBeInTheDocument();
-    expect(screen.getByText("ご所属 / お名前")).toBeInTheDocument();
-    expect(screen.getByText("希望時期")).toBeInTheDocument();
+    expect(screen.getByText("お名前・ご所属")).toBeInTheDocument();
+    expect(screen.getByText("ご用件")).toBeInTheDocument();
+    expect(screen.getByText("確認したい内容")).toBeInTheDocument();
   });
 });

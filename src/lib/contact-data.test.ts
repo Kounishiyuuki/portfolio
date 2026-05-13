@@ -17,12 +17,12 @@ describe("contact data", () => {
   it("encodes subject and body lines for the contact mail template", () => {
     const href = createMailtoHref("hello@example.com", {
       subject: "相談 & 確認",
-      bodyLines: ["ご所属 / お名前:", "A+B"],
+      bodyLines: ["お名前・ご所属:", "A+B"],
     });
 
     expect(href).toBe(
       `mailto:hello@example.com?subject=${encodeURIComponent("相談 & 確認")}&body=${encodeURIComponent(
-        "ご所属 / お名前:\nA+B"
+        "お名前・ご所属:\nA+B"
       )}`
     );
     expect(contactMailtoHref).toContain(encodeURIComponent(contactMailSubject));

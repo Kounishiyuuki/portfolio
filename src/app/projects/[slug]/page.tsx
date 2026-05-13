@@ -121,7 +121,7 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
 
         <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.46fr)]">
           <div className="space-y-5">
-            <DetailPanel eyebrow="担当範囲" title="公開できる範囲で、担当と見るポイントを整理しています。">
+            <DetailPanel eyebrow="担当範囲" title="担当したこと">
               <p className="text-[14px] leading-[1.95] text-foreground/76">
                 {project.role}
               </p>
