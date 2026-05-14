@@ -30,15 +30,15 @@ type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: cn(
-    "border border-accent/22 text-accent-foreground",
-    "bg-[linear-gradient(180deg,hsl(var(--color-accent))_0%,rgba(38,102,232,0.97)_100%)]",
-    "shadow-[0_8px_20px_rgba(37,99,235,0.14),0_16px_36px_rgba(88,148,255,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]",
-    "hover:border-accent/28 hover:brightness-[1.015] hover:shadow-[0_10px_24px_rgba(37,99,235,0.16),0_18px_40px_rgba(88,148,255,0.14),inset_0_1px_0_rgba(255,255,255,0.24)]"
+    "border border-foreground text-white",
+    "bg-[linear-gradient(180deg,rgba(29,29,31,1)_0%,rgba(0,0,0,0.98)_100%)]",
+    "shadow-[0_10px_24px_rgba(0,0,0,0.14),0_18px_42px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.16)]",
+    "hover:border-black hover:brightness-[1.08] hover:shadow-[0_12px_28px_rgba(0,0,0,0.16),0_20px_46px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.18)]"
   ),
   secondary: cn(
-    "border border-line/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,249,253,0.94))]",
-    "text-foreground shadow-[0_8px_22px_rgba(27,44,74,0.06),inset_0_1px_0_rgba(255,255,255,0.74)]",
-    "glass-muted hover:border-line-strong/90 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.985),rgba(244,247,252,0.97))] hover:shadow-[0_10px_26px_rgba(27,44,74,0.08),inset_0_1px_0_rgba(255,255,255,0.82)]"
+    "border border-line/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,246,247,0.94))]",
+    "text-foreground shadow-[0_8px_22px_rgba(0,0,0,0.055),inset_0_1px_0_rgba(255,255,255,0.82)]",
+    "glass-muted hover:border-line-strong/90 hover:bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(244,244,245,0.98))] hover:shadow-[0_10px_26px_rgba(0,0,0,0.075),inset_0_1px_0_rgba(255,255,255,0.88)]"
   ),
   ghost: cn(
     "border border-transparent bg-transparent text-foreground/78 shadow-none",
@@ -58,7 +58,7 @@ function buttonClassName(variant: ButtonVariant, size: ButtonSize, className?: s
     "whitespace-normal text-center select-none [font-feature-settings:'palt'_1] sm:whitespace-nowrap",
     "transition-[background-color,border-color,color,box-shadow,filter] duration-200",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-    "disabled:cursor-not-allowed disabled:border-line/70 disabled:bg-[linear-gradient(180deg,rgba(249,250,252,0.84),rgba(241,244,248,0.72))] disabled:text-foreground/38 disabled:shadow-none disabled:brightness-100",
+    "disabled:cursor-not-allowed disabled:border-line/70 disabled:bg-[linear-gradient(180deg,rgba(249,249,250,0.84),rgba(241,241,242,0.72))] disabled:text-foreground/38 disabled:shadow-none disabled:brightness-100",
     sizeClasses[size],
     variantClasses[variant],
     className

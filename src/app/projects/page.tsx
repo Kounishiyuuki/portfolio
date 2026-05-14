@@ -39,7 +39,7 @@ export default function ProjectsPage() {
 
         <motion.div variants={fadeInUp({ reducedMotion: true })} className="relative z-[1] space-y-7 md:space-y-8">
           <div className="layout-header space-y-4">
-            <p className="ui-eyebrow text-accent/90">制作一覧</p>
+            <p className="ui-eyebrow text-muted-foreground">制作一覧</p>
             <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.3rem,4.2vw,4.35rem)]">
               制作一覧
             </h1>
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
 
           <motion.div
             variants={fadeIn(0, true)}
-            className="rounded-[1.6rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,248,253,0.86))] p-3 shadow-[0_14px_34px_rgba(27,44,74,0.06)] md:p-4"
+            className="rounded-[1.6rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,245,246,0.86))] p-3 shadow-[0_14px_34px_rgba(0,0,0,0.06)] md:p-4"
           >
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
@@ -90,8 +90,8 @@ export default function ProjectsPage() {
                             "group inline-flex items-center gap-2 rounded-pill border px-4 py-2.5 text-[12px] font-medium tracking-[0.03em] transition-[background-color,border-color,color,box-shadow,transform] duration-200",
                             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                             isActive
-                              ? "border-accent/24 bg-[linear-gradient(180deg,rgba(88,148,255,0.96),rgba(71,128,232,0.92))] text-accent-foreground shadow-[0_12px_24px_rgba(88,148,255,0.22)]"
-                              : "border-line/75 bg-white/72 text-foreground/72 shadow-[0_8px_20px_rgba(27,44,74,0.04)] hover:border-line-strong/85 hover:bg-white/92 hover:text-foreground/88"
+                              ? "border-foreground bg-[linear-gradient(180deg,rgba(29,29,31,1),rgba(0,0,0,0.96))] text-white shadow-[0_12px_24px_rgba(0,0,0,0.14)]"
+                              : "border-line/75 bg-white/72 text-foreground/72 shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:border-line-strong/85 hover:bg-white/92 hover:text-foreground/88"
                           )}
                         >
                           <span>{filter.label}</span>
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
                               "rounded-full px-2 py-0.5 text-[10px] tracking-[0.04em] transition-colors duration-200",
                               isActive
                                 ? "bg-white/18 text-white/90"
-                                : "bg-[rgba(27,44,74,0.05)] text-foreground/46 group-hover:text-foreground/58"
+                                : "bg-[rgba(0,0,0,0.05)] text-foreground/46 group-hover:text-foreground/58"
                             )}
                           >
                             {resultCount}
@@ -155,7 +155,7 @@ export default function ProjectsPage() {
         {visibleFeaturedWorks.length > 0 ? (
           <div className="space-y-4">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.1em] text-accent/90">Featured Projects</p>
+              <p className="text-[11px] font-semibold tracking-[0.1em] text-muted-foreground">Featured Projects</p>
             </div>
             <div className="grid gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
               {visibleFeaturedWorks.map((work, index) => (
@@ -220,7 +220,7 @@ export default function ProjectsPage() {
           tone="muted"
           className="relative overflow-hidden rounded-[1.85rem] border-white/8 px-6 py-12 md:px-10 md:py-16"
         >
-          <div className="pointer-events-none absolute inset-x-[24%] top-12 h-20 rounded-full bg-accent/6 blur-3xl" />
+          <div className="pointer-events-none absolute inset-x-[24%] top-12 h-20 rounded-full bg-foreground/5 blur-3xl" />
           <div className="layout-header relative mx-auto flex flex-col items-center text-center">
             <p className="ui-eyebrow text-muted-foreground">連絡</p>
             <h2 className="ui-section-title layout-title-section mt-4 text-foreground">
@@ -266,17 +266,17 @@ function CompactWorkCard({ project }: { project: ProjectItem }) {
       interactive={false}
       padding="lg"
       tone="muted"
-      className="h-full rounded-[1.35rem] px-5 py-5 shadow-[0_10px_24px_rgba(27,44,74,0.05)]"
+      className="h-full rounded-[1.35rem] px-5 py-5 shadow-[0_10px_24px_rgba(0,0,0,0.05)]"
     >
       <div className="flex h-full min-w-0 flex-col gap-4">
-        <div className="relative aspect-[1.65/1] overflow-hidden rounded-[1rem] border border-line/70 bg-[linear-gradient(135deg,rgba(247,250,253,0.9),rgba(229,238,251,0.68))]">
+        <div className="relative aspect-[1.65/1] overflow-hidden rounded-[1rem] border border-line/70 bg-[linear-gradient(135deg,rgba(247,247,248,0.9),rgba(229,229,231,0.68))]">
           {project.coverImage ? (
             <Image
               src={project.coverImage}
               alt={project.coverAlt}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="h-full w-full object-contain p-3.5 drop-shadow-[0_12px_20px_rgba(27,44,74,0.14)]"
+              className="h-full w-full object-contain p-3.5 drop-shadow-[0_12px_20px_rgba(0,0,0,0.14)]"
               loading="lazy"
             />
           ) : (
@@ -347,15 +347,15 @@ function CompactVisual({ type }: { type: ProjectItem["visual"] }) {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(88,148,255,0.16),transparent_32%)]"
+      className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(29,29,31,0.16),transparent_32%)]"
     >
       <div
         className={cn(
-          "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border border-accent/16 bg-white/34 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]",
+          "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border border-line/70 bg-white/34 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]",
           isRing ? "h-24 w-24 rounded-full" : "h-20 w-28 rounded-[1.2rem]"
         )}
       />
-      <div className="absolute inset-x-[22%] bottom-5 h-px bg-accent/14" />
+      <div className="absolute inset-x-[22%] bottom-5 h-px bg-foreground/8" />
     </div>
   );
 }
