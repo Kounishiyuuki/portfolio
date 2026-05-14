@@ -41,7 +41,7 @@ export default function ProjectsPage() {
           <div className="layout-header space-y-4">
             <p className="ui-eyebrow text-accent/90">制作一覧</p>
             <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.3rem,4.2vw,4.35rem)]">
-              制作を、<span className="text-accent">一覧で見やすくまとめています。</span>
+              制作一覧
             </h1>
             <p className="ui-copy layout-reading">
               就職活動で見てほしい制作を中心に、内容・担当範囲・使った技術・GitHub への導線をまとめています。
@@ -131,15 +131,6 @@ export default function ProjectsPage() {
             </div>
           </motion.div>
 
-          <motion.div
-            variants={fadeIn(0, true)}
-            className="layout-reading-wide rounded-[1.45rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,249,253,0.82))] px-5 py-4 shadow-[0_10px_26px_rgba(27,44,74,0.05)]"
-          >
-            <p className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">一覧の見方</p>
-            <p className="mt-2 text-[13px] leading-[1.8] text-foreground/78">
-              Featured Projects は大きく表示し、All Works は補足として小さめにまとめています。
-            </p>
-          </motion.div>
         </motion.div>
       </motion.section>
 
@@ -165,9 +156,6 @@ export default function ProjectsPage() {
           <div className="space-y-4">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.1em] text-accent/90">Featured Projects</p>
-              <p className="mt-1 text-[13px] leading-[1.8] text-foreground/72">
-                まず見てほしい、プロダクトに近い制作です。
-              </p>
             </div>
             <div className="grid gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
               {visibleFeaturedWorks.map((work, index) => (
@@ -186,9 +174,6 @@ export default function ProjectsPage() {
           <div className="space-y-4 pt-10 md:pt-12">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.1em] text-muted-foreground">All Works</p>
-              <p className="mt-1 text-[13px] leading-[1.8] text-foreground/72">
-                補足として見られる個人制作です。
-              </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {visibleAllWorks.map((work, index) => (

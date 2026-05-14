@@ -17,12 +17,12 @@ export default function ContactPage() {
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(22rem,1.08fr)] xl:items-start xl:gap-6">
           <div className="space-y-5 md:space-y-6">
             <div className="layout-header space-y-4">
-              <p className="ui-eyebrow text-accent/90">連絡先</p>
+              <p className="ui-eyebrow text-accent/90">ご連絡</p>
               <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.2rem,3.7vw,3.7rem)]">
-                <span className="text-accent">メールと GitHub</span> をまとめています。
+                興味を持っていただけた場合は、<span className="text-accent">メール</span>からご連絡ください。
               </h1>
               <p className="ui-copy layout-reading">
-                制作のことを聞きたいときや、コードを見たいときに、そのまま確認できるようにしています。
+                制作物や活動について興味を持っていただけた場合は、メールからご連絡いただけると幸いです。
               </p>
             </div>
 
@@ -39,7 +39,7 @@ export default function ContactPage() {
                     連絡方法
                   </p>
                   <p className="mt-2 text-sm leading-6 text-foreground/82">
-                    まずはメールが分かりやすく、GitHub は補助的に見ていただけます。
+                    メールでのご連絡と、GitHub へのリンクを掲載しています。
                   </p>
                 </div>
 
@@ -105,10 +105,10 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-[11px] font-semibold tracking-[0.16em] text-muted-foreground">
-                    こんな内容で使えます
+                    ご連絡の例
                   </p>
                   <p className="mt-2 text-sm leading-6 text-foreground/82">
-                    最初のメールで書きやすい内容を、簡単にまとめています。
+                    制作物や活動について、気になる点があればお気軽にご連絡ください。
                   </p>
                 </div>
 
@@ -153,19 +153,19 @@ export default function ContactPage() {
                   ご連絡方法
                 </p>
                 <h2 className="ui-card-title layout-title-card text-foreground md:text-[clamp(1.3rem,1.2vw,1.58rem)]">
-                  まずはメールからご連絡ください。
+                  制作物や活動についてのご連絡はこちらからお願いいたします。
                 </h2>
                 <p className="layout-reading text-sm leading-6 text-muted-foreground">
-                  最初の連絡で書きやすいように、ひな型を入れたメールを用意しています。
+                  メールには簡単な項目を入れていますが、内容に合わせて自由に編集できます。
                 </p>
               </div>
 
               <div className="rounded-[1.35rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(247,249,253,0.84))] p-5 shadow-[0_12px_26px_rgba(27,44,74,0.06)]">
                 <p className="text-[11px] font-semibold tracking-[0.16em] text-muted-foreground">
-                  メールに入れておくと分かりやすい内容
+                  メールに含められる内容
                 </p>
                 <p className="mt-2 text-[13px] leading-6 text-foreground/74">
-                  ボタンを押すと、下の項目が入ったメールをそのまま開けます。必要なところだけ書いていただければ大丈夫です。
+                  必要に応じて、以下の項目を添えていただけます。
                 </p>
                 <div className="mt-4 space-y-3">
                   {messageTemplate.map((item) => (
@@ -203,7 +203,7 @@ export default function ContactPage() {
 
               <div className="space-y-3 pt-1">
                 <p className="text-center text-[11px] leading-5 text-muted-foreground">
-                  ボタンを押すと、ひな型が入った状態でメールを書き始められます。
+                  メールの項目は、内容に合わせて自由に編集できます。
                 </p>
               </div>
             </div>

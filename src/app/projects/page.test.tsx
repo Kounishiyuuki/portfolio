@@ -10,7 +10,7 @@ describe("ProjectsPage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /制作を、一覧で見やすくまとめています。/,
+        name: "制作一覧",
       })
     ).toBeInTheDocument();
     expect(screen.getByRole("toolbar", { name: "制作物の絞り込み" })).toBeInTheDocument();

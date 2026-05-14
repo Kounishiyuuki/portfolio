@@ -17,13 +17,11 @@ export function createMailtoHref(email: string, { subject, bodyLines }: MailtoHr
 export const contactMailSubject = "ポートフォリオについてご連絡です";
 
 export const contactMailBodyLines = [
-  "ご所属 / お名前:",
+  "お名前・ご所属:",
   "",
-  "ご連絡の背景:",
+  "ご用件:",
   "",
-  "ご連絡内容:",
-  "",
-  "希望時期:",
+  "確認したい内容:",
   "",
 ] as const;
 
@@ -38,7 +36,7 @@ export const contactChannels = [
   {
     label: "メール",
     value: siteConfig.email,
-    note: "制作のことやプロフィールについて、気軽にご連絡いただけます。",
+    note: "制作物や活動について興味を持っていただけた場合は、こちらからご連絡いただけます。",
     href: contactMailtoHref,
     action: "メールで連絡する",
     icon: "@",
@@ -47,7 +45,7 @@ export const contactChannels = [
   {
     label: "GitHub",
     value: "github.com/Kounishiyuuki",
-    note: "コードや使っている技術を見たいときの補助導線です。",
+    note: "公開しているコードや制作内容をご確認いただけます。",
     href: siteConfig.githubUrl,
     action: "GitHubを見る",
     icon: "</>",
@@ -63,19 +61,15 @@ export const collaborationNotes = [
 
 export const messageTemplate = [
   {
-    label: "ご所属 / お名前",
-    note: "会社名や学校名、ご担当者名があると分かりやすいです。",
+    label: "お名前・ご所属",
+    note: "差し支えない範囲で添えていただけます。",
   },
   {
-    label: "ご連絡の背景",
-    note: "ポートフォリオについてのご質問や、ご連絡のきっかけを簡単に書いていただければ大丈夫です。",
+    label: "ご用件",
+    note: "ご連絡の概要を簡単に添えていただけます。",
   },
   {
-    label: "ご連絡内容",
-    note: "面談希望、確認したい点、見てほしい制作などがあればそのまま書いていただけます。",
-  },
-  {
-    label: "希望時期",
-    note: "もし日程感があれば、候補や目安を添えていただけると助かります。",
+    label: "確認したい内容",
+    note: "制作物や活動について、気になる点があれば添えていただけます。",
   },
 ] as const;

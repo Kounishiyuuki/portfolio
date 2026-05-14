@@ -9,7 +9,7 @@ describe("SkillsPage", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /開発と制作を、見やすく美しく整理。/,
+        name: /開発と制作の主軸技術/,
       })
     ).toBeInTheDocument();
     for (const category of skillCategories) {
@@ -19,11 +19,8 @@ describe("SkillsPage", () => {
       expect(screen.getAllByText(skill).length).toBeGreaterThanOrEqual(2);
     }
     expect(screen.getByText("Blender")).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "何ができるかを、成果物に近い言葉で見せています。",
-      })
-    ).toBeInTheDocument();
+    expect(screen.getAllByText("できる形").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("主軸").length).toBeGreaterThan(0);
     for (const skill of skillSnapshots) {
       expect(screen.getByRole("heading", { name: skill.name })).toBeInTheDocument();
       expect(screen.getByText(skill.output)).toBeInTheDocument();

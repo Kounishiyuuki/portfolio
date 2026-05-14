@@ -14,12 +14,12 @@ const overviewSteps = [
   {
     label: "01",
     title: "制作物を見る",
-    note: "制作の内容と使った技術を、一覧でまとめて見られます。",
+    note: "制作内容、担当範囲、使用技術を確認できます。",
   },
   {
     label: "02",
     title: "プロフィールを見る",
-    note: "所属や主軸にしている技術を、短く整理して載せています。",
+    note: "所属と主軸にしている技術を確認できます。",
   },
   {
     label: "03",
@@ -58,11 +58,8 @@ export default function HomePage() {
           <div className="layout-header space-y-3">
             <p className="ui-eyebrow text-accent/90">注目制作</p>
             <h2 className="ui-section-title layout-title-section text-foreground">
-              まず見てほしい制作を、先にまとめています。
+              Featured Projects
             </h2>
-            <p className="ui-copy layout-reading md:text-[15px]">
-              代表的な制作を先に載せています。気になったものは、そのまま制作一覧や GitHub で詳しく見られます。
-            </p>
           </div>
           <InternalLink
             href="/projects"
@@ -70,24 +67,6 @@ export default function HomePage() {
           >
             制作一覧を見る
             <ArrowRight className="size-4" />
-          </InternalLink>
-        </div>
-
-        <div className="mb-5 grid gap-3 rounded-[1.45rem] border border-line/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(246,249,253,0.76))] px-5 py-4 shadow-[0_10px_26px_rgba(27,44,74,0.05)] md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-          <div className="min-w-0">
-            <p className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
-              注目制作の見方
-            </p>
-            <p className="mt-2 max-w-[54rem] text-[13px] leading-[1.8] text-foreground/78">
-              制作の種類と見るポイントを先に読めるように整理しています。短時間で雰囲気を知りたい場合は、ここから見るのが分かりやすいです。
-            </p>
-          </div>
-          <InternalLink
-            href="/projects"
-            className="inline-flex w-fit items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-3.5 py-2 text-[12px] font-semibold text-accent/90 shadow-[0_8px_18px_rgba(27,44,74,0.04)] transition-[border-color,background-color,color] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-accent md:hidden"
-          >
-            一覧へ
-            <ArrowRight className="size-3.5" />
           </InternalLink>
         </div>
 
@@ -174,9 +153,6 @@ function HeroSection() {
                 <h1 className="ui-display-title max-w-[15ch] text-foreground sm:max-w-[17ch] lg:max-w-[14.5ch]">
                   学生制作と<span className="text-accent">実装</span>のポートフォリオ
                 </h1>
-                <p className="ui-copy max-w-[40rem] md:text-[15px] md:leading-[1.85]">
-                  学生として取り組んできた制作や実装を、見やすくまとめています。
-                </p>
                 <div className="max-w-[43rem] rounded-[1.3rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(246,249,253,0.5))] p-3.5 shadow-[0_12px_30px_rgba(27,44,74,0.06)] md:p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2.5">
                     <p className="text-[11px] font-semibold tracking-[0.1em] text-muted-foreground/88">
@@ -252,9 +228,9 @@ function HeroSection() {
             </div>
 
             <div className="relative grid gap-4 md:grid-cols-3">
-              <MetricCard label="内容" value="制作と実装" note="学生として取り組んできたものを整理" />
+              <MetricCard label="内容" value="制作と実装" note="アプリ、Web、3D制作" />
               <MetricCard label="領域" value="モバイル・Web・3D" note="Swift、Kotlin、Next.js、Unity などを横断" />
-              <MetricCard label="見せ方" value="整理して伝える" note="技術の広がりが先に伝わる構成" />
+              <MetricCard label="技術" value="Swift・Kotlin・Next.js" note="UI実装と情報設計" />
             </div>
           </div>
         </Card>
@@ -269,9 +245,9 @@ function HeroSection() {
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
               <div>
                 <p className="text-xs tracking-[0.1em] text-muted-foreground">
-                  このサイトで分かること
+                  ポートフォリオ
                 </p>
-                <p className="mt-1 text-sm text-foreground">自己紹介と制作物を、見やすくまとめています</p>
+                <p className="mt-1 text-sm text-foreground">制作物、プロフィール、連絡先</p>
               </div>
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-line-strong/80" />

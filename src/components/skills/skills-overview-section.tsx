@@ -22,10 +22,9 @@ export function SkillsOverviewSection() {
               eyebrow="使える技術"
               title={
                 <>
-                  開発と制作を、<span className="text-accent">見やすく美しく整理。</span>
+                  開発と制作の<span className="text-accent">主軸技術</span>
                 </>
               }
-              description="アプリ、Web、基礎実装、デザイン、3D制作までを、強みと使いどころが自然に伝わる順番でまとめています。"
               className="max-w-4xl space-y-4"
               eyebrowClassName="ui-eyebrow text-accent/90"
               titleClassName="ui-page-title max-w-[14ch] text-foreground md:text-[clamp(2.35rem,4vw,4.35rem)]"
@@ -143,10 +142,10 @@ export function SkillsOverviewSection() {
 
                   <div className="mt-5">
                     <p className="text-[11px] font-semibold tracking-[0.1em] text-white/54">
-                      主軸の見え方
+                      主軸技術
                     </p>
                     <h2 className="ui-card-title mt-2 max-w-[17ch] text-white md:text-[clamp(1.42rem,1.4vw,1.75rem)]">
-                      まず伝えたい技術を、自然に前へ出しています。
+                      Swift / Kotlin / Next.js / Figma
                     </h2>
                   </div>
 
@@ -194,22 +193,7 @@ export function SkillsOverviewSection() {
               tone="default"
               className="rounded-[1.65rem] border-line/70 bg-white/78 px-5 py-5 md:px-6 md:py-6"
             >
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-col gap-3 border-b border-line/60 pb-4 md:flex-row md:items-end md:justify-between">
-                  <div>
-                    <SectionHeader
-                      eyebrow="ひと目で分かること"
-                      title="開発系と制作系を、ひと目で分かる形に。"
-                      className="space-y-2"
-                      eyebrowClassName="text-[11px] font-semibold text-accent/90"
-                      titleClassName="max-w-[15ch] text-balance text-[1.58rem] font-semibold leading-[1.42] md:text-[1.78rem]"
-                    />
-                  </div>
-                  <p className="max-w-xl text-sm leading-[1.8] text-muted-foreground">
-                    技術名の数を増やすより、どの領域に強みがあるかが自然に伝わる情報密度を意識しています。
-                  </p>
-                </div>
-
+              <div className="flex flex-col">
                 <div className="grid gap-3 md:grid-cols-2">
                   {capabilityBlocks.map((block) => (
                     <div
@@ -246,20 +230,7 @@ export function SkillsOverviewSection() {
             tone="default"
             className="rounded-[1.65rem] border-line/70 bg-white/78 px-5 py-5 md:px-6 md:py-6"
           >
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col gap-3 border-b border-line/60 pb-4 md:flex-row md:items-end md:justify-between">
-                <SectionHeader
-                  eyebrow="主軸スキルの使い方"
-                  title="何ができるかを、成果物に近い言葉で見せています。"
-                  className="space-y-2"
-                  eyebrowClassName="text-[11px] font-semibold text-accent/90"
-                  titleClassName="max-w-[21ch] text-balance text-[1.68rem] font-semibold leading-[1.44] md:text-[1.9rem]"
-                />
-                <p className="max-w-xl text-sm leading-[1.8] text-muted-foreground">
-                  技術名だけでは伝わりにくいので、実際にどの場面で使い、どんな形にできるかまで補足しています。
-                </p>
-            </div>
-
+            <div className="flex flex-col">
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                 {skillSnapshots.map((skill) => (
                   <div
