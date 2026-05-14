@@ -318,10 +318,10 @@ function SoftHeroBackground() {
         fill
         priority
         sizes="100vw"
-        className="scale-[1.1] object-cover opacity-[0.28] blur-[20px] saturate-[0.72] md:opacity-[0.34] md:blur-[22px]"
+        className="scale-[1.08] object-cover opacity-[0.36] blur-[16px] saturate-0 contrast-[1.08] md:opacity-[0.42] md:blur-[18px]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,252,255,0.66),rgba(250,252,255,0.92)_72%,rgba(250,252,255,1))]" />
-      <div className="absolute inset-x-[10%] top-[8%] h-28 rounded-full bg-white/64 blur-3xl md:inset-x-[18%]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,251,251,0.54),rgba(251,251,251,0.86)_72%,rgba(251,251,251,0.98))]" />
+      <div className="absolute inset-x-[10%] top-[8%] h-28 rounded-full bg-white/52 blur-3xl md:inset-x-[18%]" />
     </div>
   );
 }

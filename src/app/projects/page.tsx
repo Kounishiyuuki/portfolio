@@ -252,10 +252,10 @@ function ProjectsHeaderBackground() {
         fill
         priority
         sizes="100vw"
-        className="scale-[1.12] object-cover opacity-[0.22] blur-[20px] saturate-[0.78] md:opacity-[0.28]"
+        className="scale-[1.08] object-cover opacity-[0.34] blur-[14px] saturate-0 contrast-[1.12] md:opacity-[0.38] md:blur-[16px]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,252,255,0.68),rgba(250,252,255,0.92)_70%,rgba(250,252,255,1))]" />
-      <div className="absolute inset-x-[18%] top-8 h-24 rounded-full bg-white/62 blur-3xl" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,251,251,0.58),rgba(251,251,251,0.88)_70%,rgba(251,251,251,0.98))]" />
+      <div className="absolute inset-x-[18%] top-8 h-24 rounded-full bg-white/48 blur-3xl" />
     </div>
   );
 }
