@@ -91,7 +91,7 @@ export const projectItems = [
     filterHints: ["Mobile", "iOS", "Hackathon", "AI"],
     showcase: {
       eyebrow: "Featured",
-      accent: "from-sky-500/30 via-cyan-500/10 to-transparent",
+      accent: "from-neutral-950/22 via-neutral-500/10 to-transparent",
       layout: "featured",
       visual: "server",
       className: "md:col-span-2 xl:col-span-7",
@@ -137,7 +137,7 @@ export const projectItems = [
     filterHints: ["Mobile", "Android", "Hackathon"],
     showcase: {
       eyebrow: "Featured",
-      accent: "from-cyan-400/20 via-blue-500/10 to-transparent",
+      accent: "from-neutral-900/20 via-neutral-500/10 to-transparent",
       layout: "default",
       visual: "chip",
       className: "xl:col-span-5",
@@ -179,7 +179,7 @@ export const projectItems = [
     filterHints: ["AI", "Mobile", "Android"],
     showcase: {
       eyebrow: "Featured",
-      accent: "from-slate-200/10 via-sky-500/10 to-transparent",
+      accent: "from-neutral-200/16 via-neutral-700/10 to-transparent",
       layout: "default",
       visual: "orb",
       className: "xl:col-span-4",

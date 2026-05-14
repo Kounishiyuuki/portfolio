@@ -92,13 +92,13 @@ export default function AboutPage() {
               tone="muted"
               className="relative overflow-hidden rounded-[2rem] px-6 py-8 md:px-10 md:py-10 xl:min-h-[31rem]"
             >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top_left,rgba(88,148,255,0.18),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top_left,rgba(29,29,31,0.18),transparent_55%)]" />
               <div className="pointer-events-none absolute -left-16 top-20 h-40 w-40 rounded-full bg-white/[0.025] blur-3xl" />
 
               <div className="relative flex h-full flex-col justify-between gap-12">
                 <div className="layout-reading-wide space-y-8">
                   <div className="space-y-4">
-                    <p className="ui-eyebrow text-accent/90">
+                    <p className="ui-eyebrow text-muted-foreground">
                       プロフィール
                     </p>
                     <h1 className="ui-display-title layout-title-display text-foreground md:text-[clamp(2.4rem,4.9vw,5rem)]">
@@ -110,7 +110,7 @@ export default function AboutPage() {
                     </p>
                   </div>
 
-                  <div className="rounded-[1.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-4 py-4 shadow-[0_10px_28px_rgba(27,44,74,0.05)] md:px-5">
+                  <div className="rounded-[1.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04))] px-4 py-4 shadow-[0_10px_28px_rgba(0,0,0,0.05)] md:px-5">
                     <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
                       現在の主軸
                     </p>
@@ -122,7 +122,7 @@ export default function AboutPage() {
                   <div className="grid gap-3 border-t border-white/8 pt-5 sm:grid-cols-2">
                     {introMeta.map((item) => (
                       <div key={item.label} className="flex items-center gap-3">
-                        <span className="flex size-6 items-center justify-center rounded-full bg-accent/14 text-[10px] font-semibold text-accent">
+                        <span className="flex size-6 items-center justify-center rounded-full bg-foreground/8 text-[10px] font-semibold text-foreground">
                           +
                         </span>
                         <div>
@@ -159,7 +159,7 @@ export default function AboutPage() {
             >
               <div className="flex h-full flex-col">
                 <div className="flex flex-1 flex-col p-5">
-                  <div className="relative flex min-h-[23rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(27,44,74,0.14)] sm:min-h-[28rem]">
+                  <div className="relative flex min-h-[23rem] flex-1 items-end overflow-hidden rounded-[1.65rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.14)] sm:min-h-[28rem]">
                     <Image
                       src="/images/profile/profile-snow.jpg"
                       alt="雪山で撮影したプロフィール写真"
@@ -226,11 +226,11 @@ export default function AboutPage() {
                 inset
                 padding="lg"
                 tone="muted"
-                className="h-full rounded-[1.7rem] border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] px-6 py-7 shadow-[0_12px_28px_rgba(27,44,74,0.05)] md:px-7"
+                className="h-full rounded-[1.7rem] border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.03))] px-6 py-7 shadow-[0_12px_28px_rgba(0,0,0,0.05)] md:px-7"
               >
                 <div className="flex h-full flex-col">
                   <div className="mb-7 flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-accent/14 text-sm font-semibold text-accent">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-foreground/8 text-sm font-semibold text-foreground">
                       {block.index}
                     </div>
                     <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(255,255,255,0.14),rgba(255,255,255,0.02))]" />
@@ -242,7 +242,7 @@ export default function AboutPage() {
                   <p className="ui-body-sm mt-4 text-muted-foreground">
                     {block.description}
                   </p>
-                  <p className="mt-6 text-[11px] font-semibold tracking-[0.08em] text-accent/90">
+                  <p className="mt-6 text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
                     {block.cta}
                   </p>
                 </div>
@@ -261,7 +261,7 @@ export default function AboutPage() {
         aria-labelledby="journey-heading"
       >
         <motion.div variants={fadeInUp()} className="mb-7 space-y-3 md:mb-9">
-          <p className="ui-eyebrow text-accent/90">Journey</p>
+          <p className="ui-eyebrow text-muted-foreground">Journey</p>
           <h2
             id="journey-heading"
             className="ui-section-title layout-title-section text-foreground"
@@ -279,7 +279,7 @@ export default function AboutPage() {
             inset
             padding="none"
             tone="muted"
-            className="overflow-hidden rounded-[1.8rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.035))] px-5 py-6 shadow-[0_14px_34px_rgba(27,44,74,0.055)] md:px-8 md:py-8"
+            className="overflow-hidden rounded-[1.8rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.035))] px-5 py-6 shadow-[0_14px_34px_rgba(0,0,0,0.055)] md:px-8 md:py-8"
           >
             <ol className="relative grid gap-0 md:grid-cols-4 md:gap-4">
               {journeyItems.map((item, index) => (
@@ -288,11 +288,11 @@ export default function AboutPage() {
                   className="relative grid gap-4 border-l border-white/12 pb-7 pl-6 last:pb-0 md:border-l-0 md:border-t md:pb-0 md:pl-0 md:pt-6"
                 >
                   <span
-                    className="absolute -left-[0.45rem] top-1 flex size-3.5 rounded-full border border-accent/40 bg-accent shadow-[0_0_0_5px_rgba(88,148,255,0.1)] md:left-0 md:top-[-0.45rem]"
+                    className="absolute -left-[0.45rem] top-1 flex size-3.5 rounded-full border border-foreground/28 bg-foreground shadow-[0_0_0_5px_rgba(29,29,31,0.1)] md:left-0 md:top-[-0.45rem]"
                     aria-hidden="true"
                   />
                   <div className="flex items-baseline gap-3 md:flex-col md:gap-2">
-                    <span className="text-[11px] font-semibold tracking-[0.08em] text-accent/90">
+                    <span className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
                       {item.period}
                     </span>
                     <span className="text-[10px] font-semibold text-muted-foreground/70">

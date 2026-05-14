@@ -13,22 +13,22 @@ export type WorkCardProps = ProjectItem & {
 
 const featuredCardAccents = {
   WinCook: {
-    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,249,239,0.78)_42%,rgba(247,250,253,0.82))] shadow-[0_14px_34px_rgba(139,96,29,0.09)] hover:shadow-[0_22px_46px_rgba(139,96,29,0.13)]",
-    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(255,210,122,0.24),transparent_34%),linear-gradient(135deg,rgba(255,252,246,0.96),rgba(246,239,224,0.72))]",
-    glow: "bg-[radial-gradient(circle_at_50%_20%,rgba(255,196,96,0.28),transparent_56%)]",
-    innerGlow: "bg-amber-200/18",
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,246,247,0.82))] shadow-[0_14px_34px_rgba(0,0,0,0.075)] hover:shadow-[0_22px_46px_rgba(0,0,0,0.1)]",
+    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(29,29,31,0.12),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.96),rgba(232,232,234,0.72))]",
+    glow: "bg-[radial-gradient(circle_at_50%_20%,rgba(134,134,139,0.18),transparent_56%)]",
+    innerGlow: "bg-neutral-300/18",
   },
   "Share Fit": {
-    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(238,250,247,0.76)_44%,rgba(247,250,253,0.84))] shadow-[0_14px_34px_rgba(33,126,111,0.08)] hover:shadow-[0_22px_46px_rgba(33,126,111,0.12)]",
-    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(115,213,178,0.2),transparent_34%),radial-gradient(circle_at_78%_20%,rgba(119,178,255,0.18),transparent_32%),linear-gradient(135deg,rgba(247,252,255,0.96),rgba(229,245,241,0.74))]",
-    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(104,211,182,0.22),transparent_58%)]",
-    innerGlow: "bg-emerald-200/16",
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,245,246,0.84))] shadow-[0_14px_34px_rgba(0,0,0,0.075)] hover:shadow-[0_22px_46px_rgba(0,0,0,0.1)]",
+    media: "bg-[radial-gradient(circle_at_28%_18%,rgba(29,29,31,0.1),transparent_34%),radial-gradient(circle_at_78%_20%,rgba(134,134,139,0.14),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.96),rgba(230,230,232,0.74))]",
+    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(134,134,139,0.18),transparent_58%)]",
+    innerGlow: "bg-neutral-300/16",
   },
   AIVY: {
-    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(242,244,255,0.76)_44%,rgba(247,250,253,0.84))] shadow-[0_14px_34px_rgba(85,89,166,0.08)] hover:shadow-[0_22px_46px_rgba(85,89,166,0.12)]",
-    media: "bg-[radial-gradient(circle_at_30%_18%,rgba(132,170,255,0.22),transparent_34%),radial-gradient(circle_at_78%_22%,rgba(164,132,255,0.18),transparent_32%),linear-gradient(135deg,rgba(248,250,255,0.96),rgba(236,238,255,0.74))]",
-    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(132,146,255,0.22),transparent_58%)]",
-    innerGlow: "bg-violet-200/16",
+    card: "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,244,245,0.84))] shadow-[0_14px_34px_rgba(0,0,0,0.075)] hover:shadow-[0_22px_46px_rgba(0,0,0,0.1)]",
+    media: "bg-[radial-gradient(circle_at_30%_18%,rgba(29,29,31,0.12),transparent_34%),radial-gradient(circle_at_78%_22%,rgba(134,134,139,0.14),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.96),rgba(232,232,234,0.74))]",
+    glow: "bg-[radial-gradient(circle_at_52%_20%,rgba(134,134,139,0.18),transparent_58%)]",
+    innerGlow: "bg-neutral-300/16",
   },
 } as const;
 
@@ -65,23 +65,23 @@ export function WorkCard({
           "group h-full overflow-hidden rounded-[1.55rem] border-white/10 transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95",
           featuredAccent
             ? featuredAccent.card
-            : "bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,250,253,0.82))] shadow-[0_12px_30px_rgba(27,44,74,0.08)] hover:shadow-[0_20px_42px_rgba(27,44,74,0.12)]"
+            : "bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,247,248,0.82))] shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_42px_rgba(0,0,0,0.12)]"
         )}
       >
         <div className="p-3 pb-0 md:p-4 md:pb-0">
           <div
             className={cn(
-              "relative overflow-hidden rounded-[1.15rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] transition-[border-color,box-shadow,transform] duration-300 group-hover:border-white/12 group-hover:shadow-[0_16px_34px_rgba(27,44,74,0.14)]",
+              "relative overflow-hidden rounded-[1.15rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] transition-[border-color,box-shadow,transform] duration-300 group-hover:border-white/12 group-hover:shadow-[0_16px_34px_rgba(0,0,0,0.14)]",
               featured ? "aspect-[1.22/1] md:aspect-[1.32/1]" : "aspect-[1.12/1]"
             )}
           >
             <div className="absolute left-4 top-4 z-[2] flex items-center gap-2">
               {featured ? (
-                <span className="rounded-pill border border-accent/18 bg-accent/90 px-2.5 py-1 text-[10px] font-semibold tracking-[0.05em] text-accent-foreground shadow-[0_10px_24px_rgba(88,148,255,0.16)]">
+                <span className="rounded-pill border border-foreground/12 bg-foreground px-2.5 py-1 text-[10px] font-semibold tracking-[0.05em] text-white shadow-[0_10px_24px_rgba(0,0,0,0.14)]">
                   注目
                 </span>
               ) : null}
-              <span className="rounded-pill border border-white/14 bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-[0.04em] text-foreground/74 shadow-[0_10px_24px_rgba(27,44,74,0.08)]">
+              <span className="rounded-pill border border-white/14 bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-[0.04em] text-foreground/74 shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
                 {kind}
               </span>
               <span className="rounded-pill border border-white/12 bg-white/[0.16] px-2.5 py-1 text-[10px] font-medium tracking-[0.04em] text-foreground/72 backdrop-blur-md">
@@ -160,7 +160,7 @@ export function WorkCard({
                 <InternalLink
                   href={href}
                   aria-label={ctaAriaLabel ?? `${title} - ${ctaLabel}`}
-                  className="inline-flex w-full justify-center sm:flex-1 lg:w-auto lg:flex-none min-h-11 items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-4 text-[11px] font-semibold tracking-[0.04em] text-accent/90 transition-[border-color,color,background-color,box-shadow] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-accent"
+                  className="inline-flex w-full justify-center sm:flex-1 lg:w-auto lg:flex-none min-h-11 items-center gap-1.5 rounded-pill border border-line/75 bg-white/78 px-4 text-[11px] font-semibold tracking-[0.04em] text-muted-foreground transition-[border-color,color,background-color,box-shadow] duration-200 hover:border-line-strong/90 hover:bg-white hover:text-foreground"
                 >
                   {ctaLabel}
                   <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -190,8 +190,8 @@ function InfoBlock({
       className={[
         "rounded-[1rem] border px-3.5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]",
         tone === "accent"
-          ? "border-accent/12 bg-[linear-gradient(180deg,rgba(247,251,255,0.92),rgba(241,247,255,0.62))]"
-          : "border-line/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.78),rgba(247,250,253,0.48))]",
+          ? "border-line/70 bg-[linear-gradient(180deg,rgba(247,247,248,0.92),rgba(241,241,242,0.62))]"
+          : "border-line/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.78),rgba(247,247,248,0.48))]",
       ].join(" ")}
     >
       <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
@@ -209,7 +209,7 @@ function InfoBlock({
             className={[
               "inline-flex items-center rounded-pill border px-2.5 py-1 text-[10px] tracking-[0.04em]",
               tone === "accent"
-                ? "border-accent/12 bg-white/72 text-foreground/76"
+                ? "border-line/70 bg-white/72 text-foreground/76"
                 : "border-line/65 bg-white/72 text-foreground/68",
             ].join(" ")}
           >
@@ -234,7 +234,7 @@ function ProjectCover({
     <div
       className={cn(
         "absolute inset-0 flex items-center justify-center p-3.5 transition-transform duration-500 group-hover:scale-[1.02] md:p-4",
-        accent?.media ?? "bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.76))]"
+        accent?.media ?? "bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.76))]"
       )}
     >
       {accent ? (
@@ -243,12 +243,12 @@ function ProjectCover({
           className={cn("pointer-events-none absolute inset-0 opacity-80", accent.glow)}
         />
       ) : null}
-      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1rem] border border-white/70 bg-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1rem] border border-white/70 bg-white/58 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(0,0,0,0.12)]">
         <div
           aria-hidden="true"
           className={cn(
             "absolute inset-x-[12%] top-[10%] h-16 rounded-full blur-2xl",
-            accent?.innerGlow ?? "bg-accent/10"
+            accent?.innerGlow ?? "bg-foreground/10"
           )}
         />
         <Image
@@ -256,7 +256,7 @@ function ProjectCover({
           alt={alt}
           fill
           sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="relative z-[1] max-h-full max-w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(27,44,74,0.16)] md:p-3"
+          className="relative z-[1] max-h-full max-w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(0,0,0,0.16)] md:p-3"
         />
       </div>
     </div>

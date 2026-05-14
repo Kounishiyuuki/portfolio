@@ -40,7 +40,7 @@ export const contactChannels = [
     href: contactMailtoHref,
     action: "メールで連絡する",
     icon: "@",
-    iconClassName: "bg-[#2563eb] text-white border-[#2563eb]/20",
+    iconClassName: "bg-[#1D1D1F] text-white border-[#1D1D1F]/20",
   },
   {
     label: "GitHub",
@@ -49,7 +49,7 @@ export const contactChannels = [
     href: siteConfig.githubUrl,
     action: "GitHubを見る",
     icon: "</>",
-    iconClassName: "bg-[#111827] text-white border-[#111827]/20",
+    iconClassName: "bg-black text-white border-black/20",
   },
 ] as const;
 

@@ -55,7 +55,7 @@ export function Card({
         "transition-[transform,border-color,box-shadow,background-color] duration-300 ease-out",
         !prefersReducedMotion &&
           interactive &&
-          "hover:border-line-strong/90 hover:shadow-[0_22px_55px_rgba(27,44,74,0.12)]",
+          "hover:border-line-strong/90 hover:shadow-[0_22px_55px_rgba(0,0,0,0.1)]",
         paddingClasses[padding],
         toneClasses[tone],
         inset && "glass-muted",

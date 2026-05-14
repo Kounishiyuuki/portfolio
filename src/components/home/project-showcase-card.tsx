@@ -54,8 +54,8 @@ export function ProjectShowcaseCard({
         padding="none"
         tone="default"
         className={cn(
-          "group flex h-full flex-col overflow-hidden rounded-[1.6rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,250,253,0.76))] shadow-[0_12px_32px_rgba(27,44,74,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_18px_42px_rgba(27,44,74,0.12)]",
-          layout === "featured" && "shadow-[0_14px_34px_rgba(27,44,74,0.1)] hover:shadow-[0_22px_44px_rgba(27,44,74,0.14)]"
+          "group flex h-full flex-col overflow-hidden rounded-[1.6rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,248,249,0.76))] shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-line-strong/95 hover:shadow-[0_18px_42px_rgba(0,0,0,0.12)]",
+          layout === "featured" && "shadow-[0_14px_34px_rgba(0,0,0,0.1)] hover:shadow-[0_22px_44px_rgba(0,0,0,0.14)]"
         )}
       >
         <div
@@ -66,7 +66,7 @@ export function ProjectShowcaseCard({
           )}
         >
           <div className="absolute left-4 top-4 z-[2] flex items-center gap-2">
-            <span className="rounded-pill border border-white/14 bg-white/88 px-2.5 py-1 text-[10px] font-semibold tracking-[0.04em] text-foreground/76 shadow-[0_10px_24px_rgba(27,44,74,0.08)]">
+            <span className="rounded-pill border border-white/14 bg-white/88 px-2.5 py-1 text-[10px] font-semibold tracking-[0.04em] text-foreground/76 shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
               {kind}
             </span>
             <span className="rounded-pill border border-white/12 bg-white/[0.16] px-2.5 py-1 text-[10px] font-medium tracking-[0.04em] text-foreground/72 backdrop-blur-md">
@@ -90,7 +90,7 @@ export function ProjectShowcaseCard({
             <InternalLink
               href={href}
               aria-label={ctaAriaLabel ?? `${title} - ${ctaLabel}`}
-              className="inline-flex max-w-full items-center gap-1.5 text-[12px] font-semibold tracking-[0.03em] text-accent/90 transition-colors duration-200 hover:text-accent"
+              className="inline-flex max-w-full items-center gap-1.5 text-[12px] font-semibold tracking-[0.03em] text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
               {ctaLabel}
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -134,13 +134,13 @@ export function ProjectShowcaseCard({
 function ProjectShowcaseCover({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-[1.02] md:p-5">
-      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(27,44,74,0.12)]">
+      <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(0,0,0,0.12)]">
         <Image
           src={src}
           alt={alt}
           fill
           sizes="(min-width: 1280px) 45vw, (min-width: 768px) 50vw, 100vw"
-          className="h-full w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(27,44,74,0.16)] md:p-3"
+          className="h-full w-full object-contain p-2.5 drop-shadow-[0_16px_24px_rgba(0,0,0,0.16)] md:p-3"
         />
       </div>
     </div>
@@ -158,14 +158,14 @@ function ProjectVisual({
         {[0, 1, 2, 3, 4].map((column) => (
           <div
             key={column}
-            className="flex h-full flex-1 flex-col justify-between rounded-[1rem] border border-cyan-300/10 bg-slate-950/50 p-3"
+            className="flex h-full flex-1 flex-col justify-between rounded-[1rem] border border-white/10 bg-neutral-950/50 p-3"
           >
             {[0, 1, 2, 3, 4, 5].map((slot) => (
               <span
                 key={slot}
                 className={cn(
                   "h-1.5 rounded-full",
-                  slot % 2 === 0 ? "bg-cyan-300/45" : "bg-white/10"
+                  slot % 2 === 0 ? "bg-white/38" : "bg-white/10"
                 )}
               />
             ))}
@@ -178,9 +178,9 @@ function ProjectVisual({
   if (type === "chip") {
     return (
       <div className="absolute inset-0 p-6 transition-transform duration-500 group-hover:scale-[1.03]">
-        <div className="flex h-full items-center justify-center rounded-[1.5rem] border border-cyan-200/10 bg-slate-950/40">
-          <div className="relative aspect-square w-40 rounded-[1.6rem] border border-cyan-300/20 bg-slate-900/70 shadow-2xl">
-            <div className="absolute inset-5 rounded-[1rem] border border-cyan-200/15 bg-cyan-300/5" />
+        <div className="flex h-full items-center justify-center rounded-[1.5rem] border border-white/10 bg-neutral-950/40">
+          <div className="relative aspect-square w-40 rounded-[1.6rem] border border-white/20 bg-neutral-900/70 shadow-2xl">
+            <div className="absolute inset-5 rounded-[1rem] border border-white/15 bg-white/5" />
             <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/10" />
             <div className="absolute top-1/2 w-full -translate-y-1/2 border-t border-white/10" />
           </div>
@@ -192,7 +192,7 @@ function ProjectVisual({
   if (type === "orb") {
     return (
       <div className="absolute inset-0 overflow-hidden transition-transform duration-500 group-hover:scale-[1.03]">
-        <div className="absolute left-1/2 top-1/2 size-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 shadow-[0_0_42px_rgba(120,180,255,0.12)] transition-shadow duration-300 group-hover:shadow-[0_0_48px_rgba(120,180,255,0.14)]" />
+        <div className="absolute left-1/2 top-1/2 size-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 shadow-[0_0_42px_rgba(134,134,139,0.12)] transition-shadow duration-300 group-hover:shadow-[0_0_48px_rgba(134,134,139,0.14)]" />
         <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 border-t border-white/10" />
         <div className="absolute inset-y-8 left-1/2 -translate-x-1/2 border-l border-white/8" />
       </div>

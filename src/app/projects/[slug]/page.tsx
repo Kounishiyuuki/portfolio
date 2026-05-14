@@ -71,13 +71,13 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
           <div className="layout-header min-w-0 space-y-6">
             <InternalLink
               href="/projects"
-              className="inline-flex w-fit items-center gap-2 rounded-pill border border-line/75 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/70 shadow-[0_8px_20px_rgba(27,44,74,0.05)] hover:border-line-strong/90 hover:bg-white hover:text-foreground"
+              className="inline-flex w-fit items-center gap-2 rounded-pill border border-line/75 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/70 shadow-[0_8px_20px_rgba(0,0,0,0.05)] hover:border-line-strong/90 hover:bg-white hover:text-foreground"
             >
               制作一覧へ戻る
             </InternalLink>
 
             <div className="space-y-4">
-              <p className="ui-eyebrow text-accent/90">Featured Project</p>
+              <p className="ui-eyebrow text-muted-foreground">Featured Project</p>
               <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.35rem,4.6vw,4.65rem)]">
                 {project.title}
               </h1>
@@ -114,7 +114,7 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
             </div>
           </div>
 
-          <div className="rounded-[1.85rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(246,249,253,0.86))] p-3 shadow-[0_18px_46px_rgba(27,44,74,0.08)] md:p-4">
+          <div className="rounded-[1.85rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(246,246,247,0.86))] p-3 shadow-[0_18px_46px_rgba(0,0,0,0.08)] md:p-4">
             <ProjectMediaFrame project={project} />
           </div>
         </section>
@@ -181,15 +181,15 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
               {mediaItems.map((image) => (
                 <figure
                   key={image.src}
-                  className="overflow-hidden rounded-[1.45rem] border border-line/75 bg-white/84 p-3 shadow-[0_12px_30px_rgba(27,44,74,0.06)]"
+                  className="overflow-hidden rounded-[1.45rem] border border-line/75 bg-white/84 p-3 shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
                 >
-                  <div className="relative aspect-[1.2/1] overflow-hidden rounded-[1.05rem] border border-line/55 bg-[linear-gradient(135deg,rgba(248,250,253,0.96),rgba(231,239,251,0.72))]">
+                  <div className="relative aspect-[1.2/1] overflow-hidden rounded-[1.05rem] border border-line/55 bg-[linear-gradient(135deg,rgba(248,248,249,0.96),rgba(231,231,233,0.72))]">
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      className="object-contain p-4 drop-shadow-[0_14px_22px_rgba(27,44,74,0.14)]"
+                      className="object-contain p-4 drop-shadow-[0_14px_22px_rgba(0,0,0,0.14)]"
                     />
                   </div>
                   <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[11px] leading-5 text-muted-foreground">
@@ -202,7 +202,7 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
           </section>
         ) : null}
 
-        <section className="rounded-[1.85rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(246,249,253,0.82))] p-5 shadow-[0_16px_42px_rgba(27,44,74,0.06)] md:p-7">
+        <section className="rounded-[1.85rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(246,246,247,0.82))] p-5 shadow-[0_16px_42px_rgba(0,0,0,0.06)] md:p-7">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="layout-header space-y-3">
               <p className="ui-eyebrow text-muted-foreground">Related</p>
@@ -220,14 +220,14 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
               <InternalLink
                 key={item.slug}
                 href={item.href}
-                className="group rounded-[1.2rem] border border-line/70 bg-white/76 p-4 shadow-[0_10px_24px_rgba(27,44,74,0.045)] hover:border-line-strong/90 hover:bg-white"
+                className="group rounded-[1.2rem] border border-line/70 bg-white/76 p-4 shadow-[0_10px_24px_rgba(0,0,0,0.045)] hover:border-line-strong/90 hover:bg-white"
               >
                 <span className="text-[11px] font-semibold tracking-[0.08em] text-muted-foreground">
                   {item.category}
                 </span>
                 <span className="mt-2 flex items-center justify-between gap-4">
                   <span className="text-[16px] font-semibold text-foreground">{item.title}</span>
-                  <ArrowRight className="size-4 text-accent/85 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  <ArrowRight className="size-4 text-foreground/78 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </span>
                 <span className="mt-2 block text-[13px] leading-[1.75] text-muted-foreground">
                   {item.summary}
@@ -244,7 +244,7 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
 function ProjectMediaFrame({ project }: { project: ProjectItem }) {
   if (!project.coverImage) {
     return (
-      <div className="flex aspect-[1.12/1] items-center justify-center rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.74))]">
+      <div className="flex aspect-[1.12/1] items-center justify-center rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.74))]">
         <span className="rounded-pill border border-white/70 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/64">
           {project.status}
         </span>
@@ -253,7 +253,7 @@ function ProjectMediaFrame({ project }: { project: ProjectItem }) {
   }
 
   return (
-    <div className="relative aspect-[1.12/1] overflow-hidden rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,250,253,0.94),rgba(229,238,251,0.74))]">
+    <div className="relative aspect-[1.12/1] overflow-hidden rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.74))]">
       <Image
         src={project.coverImage}
         alt={project.coverAlt}
@@ -261,7 +261,7 @@ function ProjectMediaFrame({ project }: { project: ProjectItem }) {
         priority
         loading="eager"
         sizes="(min-width: 1024px) 42vw, 100vw"
-        className="object-contain p-5 drop-shadow-[0_20px_34px_rgba(27,44,74,0.16)] md:p-7"
+        className="object-contain p-5 drop-shadow-[0_20px_34px_rgba(0,0,0,0.16)] md:p-7"
       />
     </div>
   );
@@ -277,8 +277,8 @@ function DetailPanel({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-[1.55rem] border border-line/80 bg-white/82 p-5 shadow-[0_12px_32px_rgba(27,44,74,0.055)] md:p-6">
-      <p className="ui-eyebrow text-accent/90">{eyebrow}</p>
+    <section className="rounded-[1.55rem] border border-line/80 bg-white/82 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.055)] md:p-6">
+      <p className="ui-eyebrow text-muted-foreground">{eyebrow}</p>
       <h2 className="ui-section-title mt-3 max-w-[22ch] text-foreground md:text-[clamp(1.3rem,1.2vw,1.7rem)]">
         {title}
       </h2>
@@ -299,7 +299,7 @@ function DetailListPanel({
   compact?: boolean;
 }) {
   return (
-    <section className="rounded-[1.55rem] border border-line/80 bg-white/82 p-5 shadow-[0_12px_32px_rgba(27,44,74,0.055)] md:p-6">
+    <section className="rounded-[1.55rem] border border-line/80 bg-white/82 p-5 shadow-[0_12px_32px_rgba(0,0,0,0.055)] md:p-6">
       <p className="ui-eyebrow text-muted-foreground">{eyebrow}</p>
       <h2 className="mt-2 text-[18px] font-semibold leading-[1.45] text-foreground">
         {title}
@@ -310,11 +310,11 @@ function DetailListPanel({
             key={item}
             className={
               compact
-                ? "rounded-pill border border-line/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(247,250,253,0.78))] px-3 py-1.5 text-[12px] text-foreground/72"
+                ? "rounded-pill border border-line/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(247,247,248,0.78))] px-3 py-1.5 text-[12px] text-foreground/72"
                 : "flex gap-3 text-[14px] leading-[1.85] text-foreground/76"
             }
           >
-            {compact ? null : <span className="mt-[0.72em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent/62" />}
+            {compact ? null : <span className="mt-[0.72em] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/52" />}
             <span>{item}</span>
           </li>
         ))}

@@ -17,9 +17,9 @@ export default function ContactPage() {
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(22rem,1.08fr)] xl:items-start xl:gap-6">
           <div className="space-y-5 md:space-y-6">
             <div className="layout-header space-y-4">
-              <p className="ui-eyebrow text-accent/90">ご連絡</p>
+              <p className="ui-eyebrow text-muted-foreground">ご連絡</p>
               <h1 className="ui-page-title layout-title-page text-foreground md:text-[clamp(2.2rem,3.7vw,3.7rem)]">
-                興味を持っていただけた場合は、<span className="text-accent">メール</span>からご連絡ください。
+                興味を持っていただけた場合は、<span className="text-foreground">メール</span>からご連絡ください。
               </h1>
               <p className="ui-copy layout-reading">
                 制作物や活動について興味を持っていただけた場合は、メールからご連絡いただけると幸いです。
@@ -31,7 +31,7 @@ export default function ContactPage() {
               inset
               padding="lg"
               tone="muted"
-              className="rounded-[1.8rem] px-5 py-5 shadow-[0_16px_40px_rgba(27,44,74,0.075)] md:px-6 md:py-6"
+              className="rounded-[1.8rem] px-5 py-5 shadow-[0_16px_40px_rgba(0,0,0,0.075)] md:px-6 md:py-6"
             >
               <div className="space-y-5">
                 <div className="space-y-2">
@@ -48,10 +48,10 @@ export default function ContactPage() {
                     <div
                       key={item.label}
                       className={[
-                        "rounded-[1.35rem] border border-line/80 px-4 py-4 shadow-[0_10px_24px_rgba(27,44,74,0.06)]",
+                        "rounded-[1.35rem] border border-line/80 px-4 py-4 shadow-[0_10px_24px_rgba(0,0,0,0.06)]",
                         index === 0
-                          ? "bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,248,255,0.88))] shadow-[0_14px_30px_rgba(37,99,235,0.08)]"
-                          : "bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,249,253,0.84))]",
+                          ? "bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(244,244,245,0.88))] shadow-[0_14px_30px_rgba(0,0,0,0.06)]"
+                          : "bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(247,247,248,0.84))]",
                       ].join(" ")}
                     >
                       <div className="flex items-start gap-3.5">
@@ -80,8 +80,8 @@ export default function ContactPage() {
                               "mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 text-[12px] font-semibold tracking-[0.01em] transition-[border-color,color,background-color,box-shadow] duration-200 sm:w-auto",
                               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/42 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                               index === 0
-                                ? "border border-accent/16 bg-white/84 text-accent shadow-[0_10px_22px_rgba(88,148,255,0.08)] hover:bg-accent/8"
-                                : "border border-line/75 bg-white/80 text-accent hover:border-line-strong/85 hover:bg-white hover:text-accent/90",
+                                ? "border border-line/70 bg-white/84 text-foreground shadow-[0_10px_22px_rgba(29,29,31,0.08)] hover:bg-foreground/6"
+                                : "border border-line/75 bg-white/80 text-foreground hover:border-line-strong/85 hover:bg-white hover:text-muted-foreground",
                             ].join(" ")}
                           >
                             {item.action}
@@ -100,7 +100,7 @@ export default function ContactPage() {
               inset
               padding="lg"
               tone="default"
-              className="rounded-[1.8rem] px-5 py-5 shadow-[0_14px_34px_rgba(27,44,74,0.06)] md:px-6 md:py-6"
+              className="rounded-[1.8rem] px-5 py-5 shadow-[0_14px_34px_rgba(0,0,0,0.06)] md:px-6 md:py-6"
             >
               <div className="space-y-4">
                 <div>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                 <div className="space-y-2.5">
                   {collaborationNotes.map((note, index) => (
                     <div key={note} className="flex items-start gap-3">
-                      <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-line/80 bg-background text-[10px] font-semibold text-accent">
+                      <div className="flex size-7 shrink-0 items-center justify-center rounded-full border border-line/80 bg-background text-[10px] font-semibold text-foreground">
                         0{index + 1}
                       </div>
                       <p className="pt-1 text-[13px] leading-6 text-muted-foreground">
@@ -125,7 +125,7 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <div className="rounded-[1.15rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(246,249,253,0.72))] px-4 py-3">
+                <div className="rounded-[1.15rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(246,246,247,0.72))] px-4 py-3">
                   <p className="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground">
                     所属
                   </p>
@@ -142,9 +142,9 @@ export default function ContactPage() {
             inset
             padding="lg"
             tone="muted"
-            className="relative overflow-hidden rounded-[2rem] px-5 py-5 shadow-[0_18px_46px_rgba(27,44,74,0.08)] md:px-7 md:py-7"
+            className="relative overflow-hidden rounded-[2rem] px-5 py-5 shadow-[0_18px_46px_rgba(0,0,0,0.08)] md:px-7 md:py-7"
           >
-            <div className="pointer-events-none absolute inset-x-[18%] top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(88,148,255,0.1),transparent_58%)]" />
+            <div className="pointer-events-none absolute inset-x-[18%] top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(29,29,31,0.1),transparent_58%)]" />
             <div className="pointer-events-none absolute inset-x-[24%] bottom-8 h-20 rounded-full bg-white/30 blur-3xl" />
 
             <div className="relative space-y-6">
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="rounded-[1.35rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(247,249,253,0.84))] p-5 shadow-[0_12px_26px_rgba(27,44,74,0.06)]">
+              <div className="rounded-[1.35rem] border border-line/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(247,247,248,0.84))] p-5 shadow-[0_12px_26px_rgba(0,0,0,0.06)]">
                 <p className="text-[11px] font-semibold tracking-[0.16em] text-muted-foreground">
                   メールに含められる内容
                 </p>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                   {messageTemplate.map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-[1rem] border border-line/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,249,253,0.76))] px-4 py-3"
+                      className="rounded-[1rem] border border-line/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(246,246,247,0.76))] px-4 py-3"
                     >
                       <p className="text-sm font-medium text-foreground/88">{item.label}</p>
                       <p className="mt-1.5 text-[12px] leading-5 text-muted-foreground">{item.note}</p>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] px-4 py-4 shadow-[0_12px_28px_rgba(27,44,74,0.06)]">
+              <div className="rounded-[1.4rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] px-4 py-4 shadow-[0_12px_28px_rgba(0,0,0,0.06)]">
                 <div className="space-y-3">
                   <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
                     連絡する

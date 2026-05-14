@@ -35,8 +35,8 @@ const config: Config = {
         prose: "44rem"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"],
-        display: ["var(--font-display)", "serif"]
+        sans: ["var(--font-sans)", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "sans-serif"]
       },
       backdropBlur: {
         chrome: "20px"
