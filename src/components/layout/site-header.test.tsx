@@ -33,6 +33,18 @@ describe("SiteHeader", () => {
     expect(currentLinks).toHaveLength(2);
   });
 
+  it("keeps project navigation active for nested project routes", async () => {
+    mockedUsePathname.mockReturnValue("/projects/wincook");
+
+    render(<SiteHeader />);
+
+    await userEvent.click(screen.getByRole("button", { name: "メニュー" }));
+
+    const currentLinks = screen.getAllByRole("link", { name: "制作物", current: "page" });
+    expect(currentLinks).toHaveLength(2);
+    expect(screen.queryByRole("link", { name: "プロフィール", current: "page" })).not.toBeInTheDocument();
+  });
+
   it("opens and closes the mobile menu from user actions", async () => {
     render(<SiteHeader />);
 

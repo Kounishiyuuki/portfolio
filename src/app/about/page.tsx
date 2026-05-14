@@ -80,11 +80,11 @@ export default function AboutPage() {
       <motion.section
         initial="initial"
         animate="animate"
-        variants={staggerChildren(0.08)}
+        variants={staggerChildren({ gap: 0.08, reducedMotion: true })}
         className="pt-8 md:pt-12"
       >
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)] xl:gap-6">
-          <motion.div variants={fadeInUp()}>
+          <motion.div variants={fadeInUp({ reducedMotion: true })}>
             <Card
               interactive={false}
               inset
@@ -150,7 +150,7 @@ export default function AboutPage() {
             </Card>
           </motion.div>
 
-          <motion.div variants={fadeInUp()}>
+          <motion.div variants={fadeInUp({ reducedMotion: true })}>
             <Card
               interactive={false}
               padding="none"
@@ -199,10 +199,10 @@ export default function AboutPage() {
         initial="initial"
         whileInView="animate"
         viewport={defaultViewport}
-        variants={staggerChildren(0.08)}
+        variants={staggerChildren({ gap: 0.08, reducedMotion: true })}
       >
         <motion.div
-          variants={fadeIn()}
+          variants={fadeIn(0, true)}
           className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-3.5"
         >
           {timelineItems.map((item) => (
@@ -216,11 +216,11 @@ export default function AboutPage() {
         </motion.div>
 
         <motion.div
-          variants={staggerChildren(0.08)}
+          variants={staggerChildren({ gap: 0.08, reducedMotion: true })}
           className="mt-8 grid gap-5 md:mt-10 md:grid-cols-2 md:items-stretch xl:grid-cols-3"
         >
           {storyBlocks.map((block) => (
-            <motion.div key={block.index} variants={fadeInUp()}>
+            <motion.div key={block.index} variants={fadeInUp({ reducedMotion: true })}>
               <Card
                 interactive={false}
                 inset
@@ -257,10 +257,10 @@ export default function AboutPage() {
         initial="initial"
         whileInView="animate"
         viewport={defaultViewport}
-        variants={staggerChildren(0.08)}
+        variants={staggerChildren({ gap: 0.08, reducedMotion: true })}
         aria-labelledby="journey-heading"
       >
-        <motion.div variants={fadeInUp()} className="mb-7 space-y-3 md:mb-9">
+        <motion.div variants={fadeInUp({ reducedMotion: true })} className="mb-7 space-y-3 md:mb-9">
           <p className="ui-eyebrow text-muted-foreground">Journey</p>
           <h2
             id="journey-heading"
@@ -273,7 +273,7 @@ export default function AboutPage() {
           </p>
         </motion.div>
 
-        <motion.div variants={fadeInUp()}>
+        <motion.div variants={fadeInUp({ reducedMotion: true })}>
           <Card
             interactive={false}
             inset

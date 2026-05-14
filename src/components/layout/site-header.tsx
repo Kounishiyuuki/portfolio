@@ -17,6 +17,24 @@ const navItems = [
   { href: "/contact", label: "連絡先" },
 ];
 
+function normalizePathname(pathname: string | null) {
+  if (!pathname || pathname === "/") {
+    return "/";
+  }
+
+  return pathname.replace(/\/+$/, "");
+}
+
+function isNavItemActive(pathname: string | null, href: string) {
+  const currentPath = normalizePathname(pathname);
+
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,21 +64,25 @@ export function SiteHeader() {
             </span>
           </InternalLink>
           <nav className="hidden items-center gap-1 md:flex">
-            {navItems.map((item) => (
-              <InternalLink
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "rounded-pill px-4 py-2 text-sm tracking-[0.01em] transition-[background-color,color,border-color,box-shadow] duration-200",
-                  pathname === item.href
-                    ? "bg-background text-foreground shadow-[0_8px_18px_rgba(0,0,0,0.07)]"
-                    : "text-muted-foreground hover:bg-background/92 hover:text-foreground"
-                )}
-                aria-current={pathname === item.href ? "page" : undefined}
-              >
-                {item.label}
-              </InternalLink>
-            ))}
+            {navItems.map((item) => {
+              const isActive = isNavItemActive(pathname, item.href);
+
+              return (
+                <InternalLink
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "rounded-pill px-4 py-2 text-sm tracking-[0.01em] transition-[background-color,color,border-color,box-shadow] duration-200",
+                    isActive
+                      ? "bg-background text-foreground shadow-[0_8px_18px_rgba(0,0,0,0.07)]"
+                      : "text-muted-foreground hover:bg-background/92 hover:text-foreground"
+                  )}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </InternalLink>
+              );
+            })}
           </nav>
           <div className="relative shrink-0 md:hidden">
             <motion.button
@@ -91,22 +113,26 @@ export function SiteHeader() {
                 isMenuOpen ? "block" : "hidden"
               )}
             >
-              {navItems.map((item) => (
-                <InternalLink
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "block rounded-[0.9rem] px-3 py-2.5 text-sm tracking-[0.01em] transition-[background-color,color,box-shadow] duration-200",
-                    pathname === item.href
-                      ? "bg-background text-foreground shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
-                      : "text-foreground/84 hover:bg-background hover:text-foreground"
-                  )}
-                  aria-current={pathname === item.href ? "page" : undefined}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </InternalLink>
-              ))}
+              {navItems.map((item) => {
+                const isActive = isNavItemActive(pathname, item.href);
+
+                return (
+                  <InternalLink
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "block rounded-[0.9rem] px-3 py-2.5 text-sm tracking-[0.01em] transition-[background-color,color,box-shadow] duration-200",
+                      isActive
+                        ? "bg-background text-foreground shadow-[0_8px_18px_rgba(0,0,0,0.06)]"
+                        : "text-foreground/84 hover:bg-background hover:text-foreground"
+                    )}
+                    aria-current={isActive ? "page" : undefined}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </InternalLink>
+                );
+              })}
             </nav>
           </div>
         </div>
