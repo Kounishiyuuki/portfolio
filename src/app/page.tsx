@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { JourneySection } from "@/components/home/journey-section";
 import { ProjectShowcaseCard } from "@/components/home/project-showcase-card";
 import { Card } from "@/components/ui/card";
 import { PageContainer } from "@/components/ui/page-container";
@@ -52,6 +53,7 @@ export default function HomePage() {
   return (
     <PageContainer className="pb-[calc(var(--section-space)*0.9)] pt-[var(--page-space)]">
       <HeroSection />
+      <JourneySection />
 
       <SectionContainer spacing="default" className="pt-4 md:pt-8">
         <div className="mb-8 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between">
