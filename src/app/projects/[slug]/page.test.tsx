@@ -19,6 +19,7 @@ describe("FeaturedProjectDetailPage", () => {
       { slug: "wincook" },
       { slug: "share-fit" },
       { slug: "aivy" },
+      { slug: "tabflow" },
     ]);
   });
 
@@ -48,6 +49,22 @@ describe("FeaturedProjectDetailPage", () => {
       title: "AIVY | 制作詳細",
       description: "AIキャラクターとの会話体験を扱うメディアアプリ",
     });
+  });
+
+  it("renders the TabFlow detail page with the repository link", async () => {
+    const page = await FeaturedProjectDetailPage({
+      params: Promise.resolve({ slug: "tabflow" }),
+    });
+
+    render(page);
+
+    expect(screen.getByRole("heading", { level: 1, name: "TabFlow" })).toBeInTheDocument();
+    expect(screen.getByText(/Popup・Options・Background Service Worker/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /GitHubを見る/ })).toHaveAttribute(
+      "href",
+      "https://github.com/Kounishiyuuki/tabflow"
+    );
+    expect(screen.queryByText("Project Media")).not.toBeInTheDocument();
   });
 
   it("uses notFound for non-featured or stale project detail routes", async () => {

@@ -3,7 +3,6 @@ import {
   allWorkProjectItems,
   featuredProjectItems,
   getProjectsByFilter,
-  matchesProjectFilter,
   projectFilterOptions,
   projectItems,
 } from "@/lib/projects-data";
@@ -27,19 +26,19 @@ describe("projects data", () => {
     const hackathonProjects = getProjectsByFilter("hackathon");
 
     expect(mobileProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY", "PulseCue"]);
-    expect(webProjects.map((project) => project.title)).toEqual(["Portfolio"]);
+    expect(webProjects.map((project) => project.title)).toEqual(["TabFlow", "Portfolio"]);
     expect(aiProjects.map((project) => project.title)).toEqual(["WinCook", "AIVY"]);
     expect(hackathonProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit"]);
   });
 
   it("exports only showcase-ready featured projects", () => {
-    expect(featuredProjectItems.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY"]);
+    expect(featuredProjectItems.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY", "TabFlow"]);
     expect(featuredProjectItems.every((project) => project.featured && project.showcase)).toBe(true);
-    expect(featuredProjectItems.every((project) => matchesProjectFilter(project, "mobile"))).toBe(true);
     expect(featuredProjectItems.map((project) => project.href)).toEqual([
       "/projects/wincook",
       "/projects/share-fit",
       "/projects/aivy",
+      "/projects/tabflow",
     ]);
   });
 
