@@ -21,6 +21,8 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "WinCook - 詳細を見る" })).toHaveAttribute("href", "/projects/wincook");
+    expect(screen.getByRole("heading", { name: "TabFlow" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "TabFlow - 詳細を見る" })).toHaveAttribute("href", "/projects/tabflow");
     expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /Nexus Quant/ })).not.toBeInTheDocument();
@@ -37,6 +39,7 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Share Fit" })).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Portfolio" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "TabFlow" })).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("button", { name: /すべて/ }));
 
@@ -44,6 +47,7 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "TabFlow" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
   });
