@@ -45,6 +45,8 @@ const heroTechGroups = [
 const featuredProjectLayoutClasses = [
   "lg:col-span-7",
   "lg:col-span-5",
+  "lg:col-span-5",
+  "lg:col-span-4",
   "lg:col-span-4",
   "lg:col-span-8",
 ] as const;

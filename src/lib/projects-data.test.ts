@@ -25,16 +25,17 @@ describe("projects data", () => {
     const aiProjects = getProjectsByFilter("ai");
     const hackathonProjects = getProjectsByFilter("hackathon");
 
-    expect(mobileProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY", "PulseCue"]);
+    expect(mobileProjects.map((project) => project.title)).toEqual(["PulseCue", "WinCook", "Share Fit", "AIVY"]);
     expect(webProjects.map((project) => project.title)).toEqual(["TabFlow", "Portfolio"]);
     expect(aiProjects.map((project) => project.title)).toEqual(["WinCook", "AIVY"]);
     expect(hackathonProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit"]);
   });
 
   it("exports only showcase-ready featured projects", () => {
-    expect(featuredProjectItems.map((project) => project.title)).toEqual(["WinCook", "Share Fit", "AIVY", "TabFlow"]);
+    expect(featuredProjectItems.map((project) => project.title)).toEqual(["PulseCue", "WinCook", "Share Fit", "AIVY", "TabFlow"]);
     expect(featuredProjectItems.every((project) => project.featured && project.showcase)).toBe(true);
     expect(featuredProjectItems.map((project) => project.href)).toEqual([
+      "/projects/pulsecue-ios",
       "/projects/wincook",
       "/projects/share-fit",
       "/projects/aivy",
@@ -43,7 +44,7 @@ describe("projects data", () => {
   });
 
   it("keeps non-featured works separate from featured projects", () => {
-    expect(allWorkProjectItems.map((project) => project.title)).toEqual(["Portfolio", "PulseCue"]);
+    expect(allWorkProjectItems.map((project) => project.title)).toEqual(["Portfolio"]);
     expect(allWorkProjectItems.every((project) => !project.featured)).toBe(true);
   });
 });

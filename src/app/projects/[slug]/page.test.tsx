@@ -16,6 +16,7 @@ vi.mock("next/navigation", () => ({
 describe("FeaturedProjectDetailPage", () => {
   it("generates static params for the final featured projects", () => {
     expect(generateStaticParams()).toEqual([
+      { slug: "pulsecue-ios" },
       { slug: "wincook" },
       { slug: "share-fit" },
       { slug: "aivy" },
@@ -30,11 +31,12 @@ describe("FeaturedProjectDetailPage", () => {
 
     render(page);
 
+    const project = featuredProjectItems.find((item) => item.slug === "wincook");
     expect(screen.getByRole("heading", { level: 1, name: "WinCook" })).toBeInTheDocument();
-    expect(screen.getByText(featuredProjectItems[0].role)).toBeInTheDocument();
+    expect(screen.getByText(project?.role ?? "")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /GitHubを見る/ })).toHaveAttribute(
       "href",
-      featuredProjectItems[0].githubUrl
+      project?.githubUrl
     );
     expect(screen.getAllByAltText("WinCookのREADMEに掲載されているアプリビジュアル").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByAltText("WinCookのロゴ画像")).toBeInTheDocument();

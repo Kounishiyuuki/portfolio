@@ -17,6 +17,11 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("button", { name: /すべて/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByText("Featured Projects")).toBeInTheDocument();
     expect(screen.getByText("All Works")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "PulseCue - 詳細を見る" })).toHaveAttribute(
+      "href",
+      "/projects/pulsecue-ios"
+    );
     expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
@@ -24,7 +29,6 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("heading", { name: "TabFlow" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "TabFlow - 詳細を見る" })).toHaveAttribute("href", "/projects/tabflow");
     expect(screen.getByRole("heading", { name: "Portfolio" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /Nexus Quant/ })).not.toBeInTheDocument();
   });
 

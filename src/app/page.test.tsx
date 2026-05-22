@@ -29,6 +29,7 @@ describe("HomePage", () => {
     for (const project of featuredProjectItems) {
       expect(screen.getByRole("heading", { name: project.title })).toBeInTheDocument();
     }
+    expect(featuredProjectItems[0]?.title).toBe("PulseCue");
 
     const githubLink = screen.getByRole("link", { name: "GitHub" });
     expect(githubLink).toHaveAttribute("href", siteConfig.githubUrl);
