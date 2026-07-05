@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { InternalLink } from "@/components/ui/internal-link";
 import { PageContainer } from "@/components/ui/page-container";
+import { ProjectAppIcon } from "@/components/projects/project-app-icon";
 import {
   featuredProjectItems,
   featuredProjectSlugs,
@@ -243,9 +244,26 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
 
 function ProjectMediaFrame({ project }: { project: ProjectItem }) {
   if (!project.coverImage) {
+    if (!project.appIcon) {
+      return (
+        <div className="flex aspect-[1.12/1] items-center justify-center rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.74))]">
+          <span className="rounded-pill border border-white/70 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/64">
+            {project.status}
+          </span>
+        </div>
+      );
+    }
+
     return (
-      <div className="flex aspect-[1.12/1] items-center justify-center rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.74))]">
-        <span className="rounded-pill border border-white/70 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/64">
+      <div className="relative flex aspect-[1.12/1] items-center justify-center overflow-hidden rounded-[1.45rem] border border-line/65 bg-[linear-gradient(135deg,rgba(247,247,248,0.94),rgba(229,229,231,0.74))]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(29,29,31,0.14),transparent_34%)]" />
+        <ProjectAppIcon
+          icon={project.appIcon}
+          priority
+          className="size-28 rounded-[1.7rem] md:size-[8.5rem]"
+          sizes="(min-width: 768px) 8.5rem, 7rem"
+        />
+        <span className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-pill border border-white/70 bg-white/78 px-4 py-2 text-[12px] font-semibold text-foreground/64 shadow-[0_10px_24px_rgba(0,0,0,0.08)]">
           {project.status}
         </span>
       </div>

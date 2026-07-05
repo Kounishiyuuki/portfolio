@@ -44,6 +44,17 @@ describe("projects data", () => {
     ]);
   });
 
+  it("provides real app icon assets for PulseCue and Barns", () => {
+    expect(projectItems.find((project) => project.title === "PulseCue")?.appIcon).toEqual({
+      src: "/images/projects/pulsecue/icon.png",
+      alt: "PulseCueのアプリアイコン",
+    });
+    expect(projectItems.find((project) => project.title === "Barns")?.appIcon).toEqual({
+      src: "/images/projects/barns/icon.png",
+      alt: "Barnsのアプリアイコン",
+    });
+  });
+
   it("frames Barns as a modest request-based MVP project", () => {
     const barns = projectItems.find((project) => project.title === "Barns");
 

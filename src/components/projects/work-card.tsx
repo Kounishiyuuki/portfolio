@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
+import { ProjectAppIcon } from "@/components/projects/project-app-icon";
 import type { ProjectItem } from "@/lib/projects-data";
 import { cn } from "@/lib/utils";
 
@@ -45,6 +46,7 @@ export function WorkCard({
   visual,
   coverImage,
   coverAlt,
+  appIcon,
   featured = false,
   href = "/projects",
   ctaLabel = "制作詳細を見る",
@@ -93,7 +95,18 @@ export function WorkCard({
             {coverImage ? (
               <ProjectCover src={coverImage} alt={coverAlt} accent={featuredAccent} />
             ) : (
-              <WorkVisual type={visual} />
+              <>
+                <WorkVisual type={visual} />
+                {appIcon ? (
+                  <div className="absolute inset-0 z-[1] flex items-center justify-center p-6">
+                    <ProjectAppIcon
+                      icon={appIcon}
+                      className="size-[5.5rem] rounded-[1.3rem] md:size-[6.5rem]"
+                      sizes="(min-width: 768px) 6.5rem, 5.5rem"
+                    />
+                  </div>
+                ) : null}
+              </>
             )}
           </div>
         </div>

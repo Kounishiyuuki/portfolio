@@ -30,6 +30,8 @@ describe("HomePage", () => {
       expect(screen.getByRole("heading", { name: project.title })).toBeInTheDocument();
     }
     expect(featuredProjectItems[0]?.title).toBe("PulseCue");
+    expect(screen.getByAltText("PulseCueのアプリアイコン")).toBeInTheDocument();
+    expect(screen.getByAltText("Barnsのアプリアイコン")).toBeInTheDocument();
 
     const githubLink = screen.getByRole("link", { name: "GitHub" });
     expect(githubLink).toHaveAttribute("href", siteConfig.githubUrl);

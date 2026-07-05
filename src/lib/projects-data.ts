@@ -33,6 +33,10 @@ export type ProjectItem = {
   githubLabel?: string;
   coverImage?: string;
   coverAlt: string;
+  appIcon?: {
+    src: string;
+    alt: string;
+  };
   screenshots?: readonly {
     src: string;
     alt: string;
@@ -74,6 +78,10 @@ export const projectItems = [
     githubUrl: "https://github.com/Kounishiyuuki/pulsecue-ios",
     githubLabel: "GitHubを見る",
     coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
+    appIcon: {
+      src: "/images/projects/pulsecue/icon.png",
+      alt: "PulseCueのアプリアイコン",
+    },
     status: "制作中",
     featured: true,
     filterIds: ["mobile"],
@@ -107,6 +115,10 @@ export const projectItems = [
     href: "/projects/barns",
     ctaLabel: "詳細を見る",
     coverAlt: "Barnsの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
+    appIcon: {
+      src: "/images/projects/barns/icon.png",
+      alt: "Barnsのアプリアイコン",
+    },
     status: "MVPまで構築",
     featured: true,
     filterIds: ["mobile"],

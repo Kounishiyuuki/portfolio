@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Card } from "@/components/ui/card";
 import { InternalLink } from "@/components/ui/internal-link";
+import { ProjectAppIcon } from "@/components/projects/project-app-icon";
 import type { ProjectItem } from "@/lib/projects-data";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,7 @@ export function ProjectShowcaseCard({
   focus,
   coverImage,
   coverAlt,
+  appIcon,
   showcase,
   ctaLabel = "制作を見る",
   ctaAriaLabel,
@@ -78,7 +80,18 @@ export function ProjectShowcaseCard({
           {coverImage ? (
             <ProjectShowcaseCover src={coverImage} alt={coverAlt} />
           ) : (
-            <ProjectVisual type={visual} />
+            <>
+              <ProjectVisual type={visual} />
+              {appIcon ? (
+                <div className="absolute inset-0 z-[1] flex items-center justify-center p-6">
+                  <ProjectAppIcon
+                    icon={appIcon}
+                    className="size-24 rounded-[1.45rem] md:size-[7.5rem]"
+                    sizes="(min-width: 768px) 7.5rem, 6rem"
+                  />
+                </div>
+              ) : null}
+            </>
           )}
         </div>
 
