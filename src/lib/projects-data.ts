@@ -15,7 +15,7 @@ export type ProjectItem = {
   slug: string;
   summary: string;
   category: string;
-  kind: "チーム制作" | "個人制作";
+  kind: "チーム制作" | "個人制作" | "依頼制作";
   year: string;
   description: string;
   role: string;
@@ -33,6 +33,10 @@ export type ProjectItem = {
   githubLabel?: string;
   coverImage?: string;
   coverAlt: string;
+  appIcon?: {
+    src: string;
+    alt: string;
+  };
   screenshots?: readonly {
     src: string;
     alt: string;
@@ -74,6 +78,10 @@ export const projectItems = [
     githubUrl: "https://github.com/Kounishiyuuki/pulsecue-ios",
     githubLabel: "GitHubを見る",
     coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
+    appIcon: {
+      src: "/images/projects/pulsecue/icon.png",
+      alt: "PulseCueのアプリアイコン",
+    },
     status: "制作中",
     featured: true,
     filterIds: ["mobile"],
@@ -84,6 +92,43 @@ export const projectItems = [
       layout: "featured",
       visual: "orb",
       className: "md:col-span-2 xl:col-span-7",
+    },
+  },
+  {
+    title: "Barns",
+    slug: "barns",
+    summary: "知人からの依頼をもとにMVPまで形にしたアプリ",
+    category: "App / MVP",
+    kind: "依頼制作",
+    year: "2026",
+    description:
+      "知人からの依頼をもとに、要望を整理しながらMVPまで構築したアプリです。実際に使う場面を意識し、必要な機能から優先して形にしました。",
+    role: "依頼内容の整理、画面設計、UI、MVP実装までを担当しました。",
+    focus: "知人の要望をもとに、実利用に必要な範囲を整理してMVPとして形にすること",
+    tags: ["MVP", "App", "依頼制作", "UI設計"],
+    techStack: ["要件整理", "画面設計", "UI実装", "MVP開発"],
+    features: ["知人の要望に基づく機能整理", "MVPに必要な画面と操作の実装", "実利用を意識した導線設計"],
+    focusPoints: ["依頼内容を画面と機能に落とし込んだこと", "MVPとして必要な範囲を絞って実装したこと", "実際に使う人の要望を起点に制作したこと"],
+    learned: ["要望を聞きながら機能範囲を決める進め方", "MVPとして優先度をつける判断", "実利用を意識した設計と実装"],
+    highlightPoints: ["依頼ベースの制作", "MVPまで構築", "実利用を意識した設計"],
+    visual: "vessel",
+    href: "/projects/barns",
+    ctaLabel: "詳細を見る",
+    coverAlt: "Barnsの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
+    appIcon: {
+      src: "/images/projects/barns/icon.png",
+      alt: "Barnsのアプリアイコン",
+    },
+    status: "MVPまで構築",
+    featured: true,
+    filterIds: ["mobile"],
+    filterHints: ["Mobile", "App", "MVP"],
+    showcase: {
+      eyebrow: "依頼ベース",
+      accent: "from-neutral-900/18 via-neutral-500/10 to-transparent",
+      layout: "featured",
+      visual: "chip",
+      className: "md:col-span-2 xl:col-span-5",
     },
   },
   {

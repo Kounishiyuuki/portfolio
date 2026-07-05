@@ -17,6 +17,7 @@ describe("FeaturedProjectDetailPage", () => {
   it("generates static params for the final featured projects", () => {
     expect(generateStaticParams()).toEqual([
       { slug: "pulsecue-ios" },
+      { slug: "barns" },
       { slug: "wincook" },
       { slug: "share-fit" },
       { slug: "aivy" },
@@ -67,6 +68,24 @@ describe("FeaturedProjectDetailPage", () => {
       "https://github.com/Kounishiyuuki/tabflow"
     );
     expect(screen.queryByText("Project Media")).not.toBeInTheDocument();
+  });
+
+  it("renders app icons for PulseCue and Barns detail pages", async () => {
+    const pulsecuePage = await FeaturedProjectDetailPage({
+      params: Promise.resolve({ slug: "pulsecue-ios" }),
+    });
+    const { unmount } = render(pulsecuePage);
+
+    expect(screen.getByAltText("PulseCueのアプリアイコン")).toBeInTheDocument();
+
+    unmount();
+
+    const barnsPage = await FeaturedProjectDetailPage({
+      params: Promise.resolve({ slug: "barns" }),
+    });
+    render(barnsPage);
+
+    expect(screen.getByAltText("Barnsのアプリアイコン")).toBeInTheDocument();
   });
 
   it("uses notFound for non-featured or stale project detail routes", async () => {

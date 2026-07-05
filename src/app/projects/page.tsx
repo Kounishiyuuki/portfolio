@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { ProjectAppIcon } from "@/components/projects/project-app-icon";
 import { WorkCard } from "@/components/projects/work-card";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -279,6 +280,15 @@ function CompactWorkCard({ project }: { project: ProjectItem }) {
               className="h-full w-full object-contain p-3.5 drop-shadow-[0_12px_20px_rgba(0,0,0,0.14)]"
               loading="lazy"
             />
+          ) : project.appIcon ? (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <CompactVisual type={project.visual} />
+              <ProjectAppIcon
+                icon={project.appIcon}
+                className="relative z-[1] size-[4.5rem] rounded-[1.1rem]"
+                sizes="4.5rem"
+              />
+            </div>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <CompactVisual type={project.visual} />

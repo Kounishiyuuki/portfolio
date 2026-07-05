@@ -18,10 +18,13 @@ describe("ProjectsPage", () => {
     expect(screen.getByText("Featured Projects")).toBeInTheDocument();
     expect(screen.getByText("All Works")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
+    expect(screen.getByAltText("PulseCueのアプリアイコン")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "PulseCue - 詳細を見る" })).toHaveAttribute(
       "href",
       "/projects/pulsecue-ios"
     );
+    expect(screen.getByRole("heading", { name: "Barns" })).toBeInTheDocument();
+    expect(screen.getByAltText("Barnsのアプリアイコン")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "WinCook" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Share Fit" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "AIVY" })).toBeInTheDocument();
