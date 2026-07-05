@@ -17,6 +17,7 @@ describe("FeaturedProjectDetailPage", () => {
   it("generates static params for the final featured projects", () => {
     expect(generateStaticParams()).toEqual([
       { slug: "pulsecue-ios" },
+      { slug: "barns" },
       { slug: "wincook" },
       { slug: "share-fit" },
       { slug: "aivy" },
