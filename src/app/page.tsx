@@ -33,7 +33,7 @@ const heroTechGroups = [
   {
     label: "開発",
     note: "実装",
-    items: ["Swift", "Kotlin", "Next.js", "C++"],
+    items: ["Swift", "Kotlin", "Next.js", "Cloudflare Workers"],
   },
   {
     label: "制作",
@@ -43,12 +43,13 @@ const heroTechGroups = [
 ] as const;
 
 const featuredProjectLayoutClasses = [
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-8",
+  "lg:col-span-7 xl:col-span-7",
+  "lg:col-span-5 xl:col-span-5",
+  "lg:col-span-5 xl:col-span-5",
+  "lg:col-span-7 xl:col-span-7",
+  "lg:col-span-4 xl:col-span-4",
+  "lg:col-span-4 xl:col-span-4",
+  "lg:col-span-4 xl:col-span-4",
 ] as const;
 
 export default function HomePage() {
@@ -74,12 +75,12 @@ export default function HomePage() {
           </InternalLink>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-12 lg:items-stretch">
+        <div className="scroll-depth-stage grid gap-5 md:grid-cols-2 lg:grid-cols-12 lg:items-stretch">
           {featuredProjectItems.map((project, index) => (
             <ProjectShowcaseCard
               key={project.title}
               {...project}
-              className={featuredProjectLayoutClasses[index]}
+              className={`${featuredProjectLayoutClasses[index]} scroll-depth-card`}
             />
           ))}
         </div>
@@ -157,6 +158,7 @@ function HeroSection() {
                 <h1 className="ui-display-title max-w-[15ch] text-foreground sm:max-w-[17ch] lg:max-w-[14.5ch]">
                   学生制作と<span className="text-foreground">実装</span>のポートフォリオ
                 </h1>
+                <p className="ui-copy max-w-[37rem]">iOS・watchOSアプリを中心に、使いやすさとデータの信頼性を考えながら、公開準備まで一貫して取り組んでいます。</p>
                 <div className="max-w-[43rem] rounded-[1.3rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(246,246,247,0.5))] p-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.06)] md:p-4">
                   <div className="flex flex-wrap items-center justify-between gap-2.5">
                     <p className="text-[11px] font-semibold tracking-[0.1em] text-muted-foreground/88">

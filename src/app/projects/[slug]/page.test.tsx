@@ -16,6 +16,7 @@ vi.mock("next/navigation", () => ({
 describe("FeaturedProjectDetailPage", () => {
   it("generates static params for the final featured projects", () => {
     expect(generateStaticParams()).toEqual([
+      { slug: "mannerpath" },
       { slug: "pulsecue-ios" },
       { slug: "barns" },
       { slug: "wincook" },

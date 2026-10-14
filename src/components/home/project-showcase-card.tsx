@@ -27,6 +27,7 @@ export function ProjectShowcaseCard({
   title,
   category,
   kind,
+  status,
   description,
   focus,
   coverImage,
@@ -98,7 +99,7 @@ export function ProjectShowcaseCard({
         <div className={cn("flex flex-1 flex-col justify-between min-w-0", bodySpacingClasses[layout])}>
           <div className="flex flex-col items-start gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
-              {eyebrow}
+              {eyebrow} <span className="font-normal text-muted-foreground/75">/ {status}</span>
             </p>
             <InternalLink
               href={href}

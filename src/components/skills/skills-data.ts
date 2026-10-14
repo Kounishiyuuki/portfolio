@@ -4,13 +4,14 @@ export const skillCategories = [
     label: "アプリ / Web",
     title: "アプリとWebの実装",
     description:
-      "Swift、Kotlin、Next.js を主軸に、画面設計からUI実装まで一貫して組み立てています。",
+      "Swift、Kotlin、Next.jsを主軸に、iOS・watchOSの画面からAPIまで実装しています。",
     items: [
       { name: "Swift", featured: true },
       { name: "Kotlin", featured: true },
       { name: "Next.js", featured: true },
+      { name: "Cloudflare Workers", featured: false },
     ],
-    note: "iOS、Android、Web を横断して、読みやすい画面づくりを考えられます。",
+    note: "モバイル・Webに加えて、WorkersとD1で公開APIやデータの管理も経験しています。",
   },
   {
     icon: "C++",
@@ -85,7 +86,7 @@ export const focusHighlights = [
   {
     icon: "01",
     title: "主軸技術",
-    detail: "Swift、Kotlin、Next.js、Figma を中心に、学生制作の幅を組み立てています。",
+    detail: "Swift、Kotlin、Next.jsに加え、Cloudflare Workers・D1でのAPI設計にも取り組んでいます。",
   },
   {
     icon: "02",

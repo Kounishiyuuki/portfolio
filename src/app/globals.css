@@ -242,3 +242,20 @@ a {
     }
   }
 }
+
+/* Progressive, reduced-motion-safe depth on Featured Projects only. */
+@keyframes portfolio-scroll-depth {
+  from { transform: translate3d(0, 16px, -28px) rotateX(3deg); opacity: 0.94; }
+  to { transform: translate3d(0, 0, 0) rotateX(0); opacity: 1; }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .scroll-depth-stage { perspective: 1400px; perspective-origin: center 40%; }
+    .scroll-depth-card {
+      transform-origin: center 70%;
+      animation: portfolio-scroll-depth linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+  }
+}

@@ -25,16 +25,17 @@ describe("projects data", () => {
     const aiProjects = getProjectsByFilter("ai");
     const hackathonProjects = getProjectsByFilter("hackathon");
 
-    expect(mobileProjects.map((project) => project.title)).toEqual(["PulseCue", "Barns", "WinCook", "Share Fit", "AIVY"]);
+    expect(mobileProjects.map((project) => project.title)).toEqual(["MannerPath", "PulseCue", "Barns", "WinCook", "Share Fit", "AIVY"]);
     expect(webProjects.map((project) => project.title)).toEqual(["TabFlow", "Portfolio"]);
     expect(aiProjects.map((project) => project.title)).toEqual(["WinCook", "AIVY"]);
     expect(hackathonProjects.map((project) => project.title)).toEqual(["WinCook", "Share Fit"]);
   });
 
   it("exports only showcase-ready featured projects", () => {
-    expect(featuredProjectItems.map((project) => project.title)).toEqual(["PulseCue", "Barns", "WinCook", "Share Fit", "AIVY", "TabFlow"]);
+    expect(featuredProjectItems.map((project) => project.title)).toEqual(["MannerPath", "PulseCue", "Barns", "WinCook", "Share Fit", "AIVY", "TabFlow"]);
     expect(featuredProjectItems.every((project) => project.featured && project.showcase)).toBe(true);
     expect(featuredProjectItems.map((project) => project.href)).toEqual([
+      "/projects/mannerpath",
       "/projects/pulsecue-ios",
       "/projects/barns",
       "/projects/wincook",
@@ -44,7 +45,11 @@ describe("projects data", () => {
     ]);
   });
 
-  it("provides real app icon assets for PulseCue and Barns", () => {
+  it("provides real app icon assets for MannerPath, PulseCue and Barns", () => {
+    expect(projectItems.find((project) => project.title === "MannerPath")?.appIcon).toEqual({
+      src: "/images/projects/mannerpath/icon.png",
+      alt: "MannerPathのアプリアイコン",
+    });
     expect(projectItems.find((project) => project.title === "PulseCue")?.appIcon).toEqual({
       src: "/images/projects/pulsecue/icon.png",
       alt: "PulseCueのアプリアイコン",
@@ -53,6 +58,11 @@ describe("projects data", () => {
       src: "/images/projects/barns/icon.png",
       alt: "Barnsのアプリアイコン",
     });
+  });
+
+  it("keeps release readiness separate from a published release", () => {
+    expect(projectItems.find((project) => project.slug === "mannerpath")?.status).toBe("App Store提出準備中");
+    expect(projectItems.find((project) => project.slug === "pulsecue-ios")?.status).toBe("継続開発中");
   });
 
   it("frames Barns as a modest request-based MVP project", () => {
