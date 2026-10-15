@@ -51,14 +51,14 @@ function AnimatedShowcase({ first, second }: { first: IosShowcaseProject; second
       aria-labelledby="ios-showcase-title"
       className="relative h-[220vh] md:h-[280vh]"
     >
-      <div className="sticky top-0 flex h-svh flex-col justify-center gap-6 py-20 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-center md:gap-10 md:py-0">
+      <div className="sticky top-0 flex h-svh flex-col justify-center gap-6 pb-6 pt-[5.5rem] md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-center md:gap-10 md:py-0">
         <div className="space-y-6 md:space-y-10">
           <IosShowcaseIntro id="ios-showcase-title" />
           <div className="relative min-h-[11rem] md:min-h-[14rem]">
-            <ShowcaseStep progress={progress} range={[0.4, 0.5]} direction="out">
+            <ShowcaseStep progress={progress} range={[0.42, 0.53]} direction="out">
               <IosShowcaseCopy project={first} />
             </ShowcaseStep>
-            <ShowcaseStep progress={progress} range={[0.5, 0.6]} direction="in">
+            <ShowcaseStep progress={progress} range={[0.47, 0.58]} direction="in">
               <IosShowcaseCopy project={second} />
             </ShowcaseStep>
           </div>
@@ -84,12 +84,16 @@ function ShowcaseStep({
   children: ReactNode;
 }) {
   const opacity = useTransform(progress, range, direction === "in" ? [0, 1] : [1, 0]);
-  const y = useTransform(progress, range, direction === "in" ? [16, 0] : [0, -16]);
+  // The two ranges overlap around the midpoint so the copy crossfades instead of leaving a gap.
+  const y = useTransform(progress, range, direction === "in" ? [12, 0] : [0, -12]);
   // Hidden copy must not be read out or receive pointer events while it is faded away.
   const visibility = useTransform(opacity, (value) => (value < 0.05 ? "hidden" : "visible"));
+  // Blurring the fading copy keeps the brief overlap from reading as doubled text.
+  const blur = useTransform(opacity, [0, 1], [6, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
-    <motion.div className="absolute inset-x-0 top-0" style={{ opacity, y, visibility }}>
+    <motion.div className="absolute inset-x-0 top-0" style={{ opacity, y, visibility, filter }}>
       {children}
     </motion.div>
   );
@@ -121,7 +125,7 @@ function PhoneModel({
   return (
     <div className="[perspective:1600px]">
       <motion.div
-        className="relative aspect-[640/1390] w-[min(42vw,11.5rem)] [--phone-depth:11px] [transform-style:preserve-3d] md:w-[16rem] lg:w-[17.5rem] [will-change:transform]"
+        className="relative aspect-[640/1390] w-[var(--phone-w)] [--phone-depth:11px] [--phone-w:min(40vw,11rem,18svh)] [transform-style:preserve-3d] md:[--phone-w:16rem] lg:[--phone-w:17.5rem] [will-change:transform]"
         style={{ rotateX, rotateY, rotateZ, x, y, scale }}
       >
         {/* Front: bezel + real screen captures */}
@@ -148,8 +152,8 @@ function PhoneModel({
         </div>
 
         {/* Edges give the body visible thickness while it turns */}
-        <div className="absolute inset-y-[5%] left-1/2 w-[var(--phone-depth)] -translate-x-1/2 bg-[#b9b9bf] [transform:rotateY(90deg)_translateZ(calc(min(42vw,11.5rem)/2))] md:[transform:rotateY(90deg)_translateZ(8rem)] lg:[transform:rotateY(90deg)_translateZ(8.75rem)]" />
-        <div className="absolute inset-y-[5%] left-1/2 w-[var(--phone-depth)] -translate-x-1/2 bg-[#b9b9bf] [transform:rotateY(-90deg)_translateZ(calc(min(42vw,11.5rem)/2))] md:[transform:rotateY(-90deg)_translateZ(8rem)] lg:[transform:rotateY(-90deg)_translateZ(8.75rem)]" />
+        <div className="absolute inset-y-[5%] left-1/2 w-[var(--phone-depth)] -translate-x-1/2 bg-[#b9b9bf] [transform:rotateY(90deg)_translateZ(calc(var(--phone-w)/2))]" />
+        <div className="absolute inset-y-[5%] left-1/2 w-[var(--phone-depth)] -translate-x-1/2 bg-[#b9b9bf] [transform:rotateY(-90deg)_translateZ(calc(var(--phone-w)/2))]" />
       </motion.div>
     </div>
   );
