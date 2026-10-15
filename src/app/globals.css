@@ -268,6 +268,8 @@ a {
       perspective-origin: center 40%;
     }
     .scroll-depth-card {
+      /* Named so the parallax inside the overflow-hidden media frame can follow the card. */
+      view-timeline: --project-card block;
       transform-origin: center 70%;
       animation: portfolio-scroll-depth linear both;
       animation-timeline: view();
@@ -275,7 +277,7 @@ a {
     }
     .scroll-depth-stage .scroll-depth-parallax {
       animation: portfolio-scroll-parallax linear both;
-      animation-timeline: view();
+      animation-timeline: --project-card;
       animation-range: cover;
     }
   }

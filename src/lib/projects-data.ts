@@ -84,6 +84,7 @@ export const projectItems = [
     appIcon: { src: "/images/projects/mannerpath/icon.png", alt: "MannerPathのアプリアイコン" },
     screenshots: [
       { src: "/images/projects/mannerpath/iphone-detail.png", alt: "MannerPathのiPhone画面：確認根拠と位置精度を表示" },
+      { src: "/images/projects/mannerpath/iphone-route.png", alt: "MannerPathのiPhone画面：目的地への徒歩ルートと所要時間を表示" },
       { src: "/images/projects/mannerpath/watch-nearby.png", alt: "MannerPathのApple Watch画面：近くの場所" },
     ],
     status: "App Store提出準備中",

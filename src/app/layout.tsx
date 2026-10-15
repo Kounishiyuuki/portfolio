@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${sans.variable} ${display.variable}`}>
-        <div className="relative min-h-screen overflow-hidden">
+        <div className="relative min-h-screen overflow-clip">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top,rgba(29,29,31,0.065),transparent_62%)]" />
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />

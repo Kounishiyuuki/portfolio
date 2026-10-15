@@ -65,6 +65,14 @@ describe("projects data", () => {
     expect(projectItems.find((project) => project.slug === "pulsecue-ios")?.status).toBe("継続開発中");
   });
 
+  it("shows MannerPath walking route alongside the existing screenshots", () => {
+    expect(projectItems.find((project) => project.slug === "mannerpath")?.screenshots?.map((image) => image.src)).toEqual([
+      "/images/projects/mannerpath/iphone-detail.png",
+      "/images/projects/mannerpath/iphone-route.png",
+      "/images/projects/mannerpath/watch-nearby.png",
+    ]);
+  });
+
   it("lists only implemented PulseCue technology and keeps unfinished work in the roadmap", () => {
     const pulsecue = projectItems.find((project) => project.slug === "pulsecue-ios");
 

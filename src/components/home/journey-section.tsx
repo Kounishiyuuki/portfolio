@@ -15,9 +15,9 @@ const journeyItems = [
     description: "アプリ開発、Web制作、UI設計に関心を持つ。",
   },
   {
-    label: "2026年",
+    label: "2026年8〜9月",
     title: "開発現場でのインターン",
-    description: "フラー・アンドパッドでのインターンを通してチーム開発を経験。",
+    description: "フラー（8/17〜8/21）、アンドパッド（8/24〜9/18）のインターンに参加。",
   },
   {
     label: "現在",
