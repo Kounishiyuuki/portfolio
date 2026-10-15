@@ -17,6 +17,7 @@ describe("ProjectsPage", () => {
     expect(screen.getByRole("button", { name: /すべて/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByText("Featured Projects")).toBeInTheDocument();
     expect(screen.getByText("All Works")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "MannerPath" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "PulseCue" })).toBeInTheDocument();
     expect(screen.getByAltText("PulseCueのアプリアイコン")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "PulseCue - 詳細を見る" })).toHaveAttribute(

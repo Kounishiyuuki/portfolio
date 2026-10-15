@@ -4,13 +4,14 @@ export const skillCategories = [
     label: "アプリ / Web",
     title: "アプリとWebの実装",
     description:
-      "Swift、Kotlin、Next.js を主軸に、画面設計からUI実装まで一貫して組み立てています。",
+      "Swift、Kotlin、Next.jsを主軸に、iOS・watchOSの画面からAPIまで実装しています。",
     items: [
       { name: "Swift", featured: true },
       { name: "Kotlin", featured: true },
       { name: "Next.js", featured: true },
+      { name: "Cloudflare Workers", featured: false },
     ],
-    note: "iOS、Android、Web を横断して、読みやすい画面づくりを考えられます。",
+    note: "モバイル・Webに加えて、WorkersとD1で公開APIやデータの管理も経験しています。",
   },
   {
     icon: "C++",
@@ -30,6 +31,7 @@ export const skillCategories = [
     items: [
       { name: "Figma", featured: true },
       { name: "情報設計", featured: false },
+      { name: "アクセシビリティ", featured: false },
     ],
     note: "使いやすさと見やすさを両立するための整理も大切にしています。",
   },
@@ -53,10 +55,10 @@ export const primarySkills = ["Swift", "Kotlin", "Next.js", "Figma"] as const;
 export const skillSnapshots = [
   {
     name: "Swift",
-    area: "iOS",
+    area: "iOS / watchOS",
     level: "主軸",
-    usage: "画面設計からUI実装まで、iOSアプリの見やすさを意識して組み立てます。",
-    output: "ネイティブUI / 画面遷移 / 情報整理",
+    usage: "SwiftUIでiPhone・Apple Watch・Widgetの画面を実装し、SwiftDataやMapKitを使った機能をテストとあわせて組み立てます。",
+    output: "SwiftUI / SwiftData / MapKit / WidgetKit",
   },
   {
     name: "Kotlin",
@@ -85,12 +87,12 @@ export const focusHighlights = [
   {
     icon: "01",
     title: "主軸技術",
-    detail: "Swift、Kotlin、Next.js、Figma を中心に、学生制作の幅を組み立てています。",
+    detail: "Swift、Kotlin、Next.jsに加え、Cloudflare Workers・D1でのAPI設計にも取り組んでいます。",
   },
   {
     icon: "02",
     title: "制作の流れ",
-    detail: "画面設計、実装、プロトタイプ、3D表現までを、つながりのある工程として扱えます。",
+    detail: "GitHubのIssueとPRで変更を小さく分け、テストやUI確認で検証しながら、個人開発をリリース準備まで進めています。",
   },
   {
     icon: "03",

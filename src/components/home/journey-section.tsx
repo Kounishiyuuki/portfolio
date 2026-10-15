@@ -15,14 +15,14 @@ const journeyItems = [
     description: "アプリ開発、Web制作、UI設計に関心を持つ。",
   },
   {
-    label: "大学2年",
-    title: "プロジェクト活動で副リーダーを担当",
-    description: "プロジェクト活動で副リーダーを担当する。",
+    label: "2026年8〜9月",
+    title: "開発現場でのインターン",
+    description: "フラー（8/17〜8/21）、アンドパッド（8/24〜9/18）のインターンに参加。",
   },
   {
     label: "現在",
-    title: "制作を継続",
-    description: "モバイルアプリ、Web、UIを中心に制作を継続。",
+    title: "MannerPathのリリース準備",
+    description: "iOS・watchOS・APIを横断して開発。PulseCueも継続改善中。",
   },
 ] as const;
 

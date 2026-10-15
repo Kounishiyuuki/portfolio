@@ -137,6 +137,21 @@ export default async function FeaturedProjectDetailPage({ params }: ProjectDetai
               items={project.features}
             />
 
+            {project.roadmap ? (
+              <>
+                <DetailListPanel
+                  eyebrow="開発中"
+                  title="現在取り組んでいること"
+                  items={project.roadmap.inProgress}
+                />
+                <DetailListPanel
+                  eyebrow="今後の予定"
+                  title="未実装の予定"
+                  items={project.roadmap.planned}
+                />
+              </>
+            ) : null}
+
             <DetailListPanel
               eyebrow="見てほしいポイント"
               title="確認しやすい判断材料"

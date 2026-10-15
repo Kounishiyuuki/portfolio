@@ -1,5 +1,3 @@
-import { siteConfig } from "@/lib/site-config";
-
 export const projectFilterOptions = [
   { id: "all", label: "すべて" },
   { id: "mobile", label: "モバイル" },
@@ -42,6 +40,11 @@ export type ProjectItem = {
     alt: string;
   }[];
   status: string;
+  // Keeps unfinished work out of `features` so the detail page never reads as shipped.
+  roadmap?: {
+    inProgress: readonly string[];
+    planned: readonly string[];
+  };
   featured?: boolean;
   filterIds?: readonly Exclude<ProjectFilterId, "all">[];
   filterHints?: readonly string[];
@@ -56,43 +59,76 @@ export type ProjectItem = {
 
 export const projectItems = [
   {
+    title: "MannerPath",
+    slug: "mannerpath",
+    summary: "確認根拠のある喫煙可能場所を探すiPhone・Apple Watchアプリ",
+    category: "iOS / Navigation",
+    kind: "個人制作",
+    year: "2026",
+    description: "自治体などの公式情報をもとに、喫煙可能場所と灰皿の場所を検索できるiPhone・Apple Watchアプリです。位置の精度や確認根拠を明示し、保存済みの情報はオフラインでも参照できます。現在はApp Store提出に向けた最終確認段階です。",
+    role: "企画、iOS・watchOSのUI実装、Cloudflare Workers・D1によるAPIとデータ管理、情報源の検証、リリース準備まで個人で取り組んでいます。",
+    focus: "位置情報の正確さと確認根拠を優先し、アプリ・API・公開データを一貫して設計すること",
+    tags: ["iOS", "watchOS", "SwiftUI", "MapKit", "Cloudflare Workers", "D1"],
+    techStack: ["Swift", "SwiftUI", "MapKit", "Core Location", "WidgetKit", "WatchConnectivity", "Cloudflare Workers", "TypeScript", "Hono", "D1"],
+    features: ["地図とリストからの場所検索と徒歩ルート", "出典・位置精度・情報の鮮度を示す詳細表示", "Apple WatchとWidgetからの確認", "地域別データ配信と保存済みデータのオフライン参照", "公式ソースの検証と公開データの品質管理"],
+    focusPoints: ["施設が存在するだけでは灰皿設置・喫煙可能と判断しないデータ採用基準", "正確な場所と概略位置を区別し、不明な情報を断定しないUI", "正確な現在地は端末内で距離計算に使い、APIには地域タイル単位でのみアクセスするプライバシー設計"],
+    learned: ["iOS・watchOS・Widgetを横断する機能設計", "Cloudflare WorkersとD1によるAPI・データ公開基盤", "一次情報・ライセンス・位置精度を踏まえたリリース品質管理"],
+    highlightPoints: ["iOS / watchOS", "Cloudflare Workers / D1", "データ品質と公開設計"],
+    visual: "ring",
+    href: "/projects/mannerpath",
+    ctaLabel: "詳細を見る",
+    githubUrl: "https://github.com/Kounishiyuuki/MannerPath",
+    githubLabel: "GitHubを見る",
+    coverAlt: "MannerPathの実アプリ画面：近くの場所を地図とリストで表示",
+    coverImage: "/images/projects/mannerpath/iphone-nearby.png",
+    appIcon: { src: "/images/projects/mannerpath/icon.png", alt: "MannerPathのアプリアイコン" },
+    screenshots: [
+      { src: "/images/projects/mannerpath/iphone-detail.png", alt: "MannerPathのiPhone画面：確認根拠と位置精度を表示" },
+      { src: "/images/projects/mannerpath/iphone-route.png", alt: "MannerPathのiPhone画面：目的地への徒歩ルートと所要時間を表示" },
+      { src: "/images/projects/mannerpath/watch-nearby.png", alt: "MannerPathのApple Watch画面：近くの場所" },
+    ],
+    status: "App Store提出準備中",
+    roadmap: {
+      inProgress: ["App Store提出に向けた審査情報・プライバシー申告・ストア用スクリーンショットの準備", "リリース候補版のUI回帰テストとApple Watch・Widgetの動作確認"],
+      planned: ["公式情報源の追加による対応地域の拡大"],
+    },
+    featured: true,
+    filterIds: ["mobile"],
+    filterHints: ["Mobile", "iOS", "watchOS"],
+    showcase: { eyebrow: "Release Candidate", accent: "from-amber-100/65 via-neutral-100/35 to-transparent", layout: "featured", visual: "orb", className: "md:col-span-2 xl:col-span-7" },
+  },
+  {
     title: "PulseCue",
     slug: "pulsecue-ios",
-    summary: "ワークアウト進行管理と日次健康ログをまとめるiOSアプリ",
+    summary: "トレーニングの実行と日々の健康記録をつなぐiOSアプリ",
     category: "iOS / Health",
     kind: "個人制作",
     year: "2026",
-    description:
-      "筋トレ中の進行管理と、摂取・消費・睡眠・体重の記録を1つにまとめたiOSアプリです。オフラインで使える構成を前提にしています。",
-    role: "個人制作として、アプリ設計、SwiftUI実装、SwiftDataを使ったローカル保存を担当しています。",
-    focus: "運動中に迷わず使える進行管理と、日々の記録を続けやすくする設計",
-    tags: ["iOS", "Swift", "SwiftUI", "SwiftData", "Offline"],
-    techStack: ["Swift", "SwiftUI", "SwiftData", "MVVM"],
-    features: ["Now / Rest / Nextの進行表示", "ルーティン管理", "DayLogによる健康記録", "通知・触覚・ビープによる合図"],
-    focusPoints: ["オフライン前提の設計", "運動中の操作負荷を下げるUI", "ローカルデータ管理"],
-    learned: ["SwiftUIでの状態管理", "SwiftDataを使ったデータ保存", "通知・触覚を含むiOS体験設計"],
-    highlightPoints: ["SwiftUI実装", "ローカルデータ管理", "健康ログ設計"],
+    description: "ワークアウトの進行、食事・栄養・睡眠・体重の記録をまとめたiOSアプリです。記録はSwiftDataで端末内に保存するローカルファースト構成で、アカウント単位の同期は基盤を段階的に整備している段階です。",
+    role: "個人開発として、SwiftUIでの画面設計と実装、SwiftDataの永続化とスキーマ移行、ワークアウトの状態管理、サインインと同期基盤の設計・テストに取り組んでいます。",
+    focus: "運動中の操作負荷を下げながら、記録の継続性とデータの安全な扱いを両立すること",
+    tags: ["iOS", "Swift", "SwiftUI", "SwiftData", "Health"],
+    techStack: ["Swift", "SwiftUI", "SwiftData", "Vision", "AVFoundation"],
+    features: ["Now / Rest / Nextのワークアウト実行画面", "ルーティン管理と運動履歴の確認", "食事・栄養・睡眠・体重の記録と目標との差分の可視化", "バーコード商品照会・栄養表示OCRからの入力補助（確認してから保存）", "ワークアウト記録のアカウント別所有と同期キューのローカル基盤"],
+    focusPoints: ["運動中でも迷わず操作できるNative-firstの画面設計", "入力候補を確認してから保存するデータ処理", "ローカルの記録とアカウント別同期の責務分離"],
+    learned: ["SwiftUIの状態管理とApple標準UIの使い分け", "SwiftDataの移行とアカウント別データ保護", "運動・栄養フローのテストとアクセシビリティ改善"],
+    highlightPoints: ["SwiftUI / SwiftData", "ワークアウト体験", "データ分離・同期基盤"],
     visual: "ring",
     href: "/projects/pulsecue-ios",
     ctaLabel: "詳細を見る",
     githubUrl: "https://github.com/Kounishiyuuki/pulsecue-ios",
     githubLabel: "GitHubを見る",
-    coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
-    appIcon: {
-      src: "/images/projects/pulsecue/icon.png",
-      alt: "PulseCueのアプリアイコン",
+    coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内ではアプリアイコンを表示",
+    appIcon: { src: "/images/projects/pulsecue/icon.png", alt: "PulseCueのアプリアイコン" },
+    status: "継続開発中",
+    roadmap: {
+      inProgress: ["サインインとサーバー同期クライアントの接続", "HealthKitからの読み取りによる入力補助（書き込みは行わない方針）"],
+      planned: ["写真からの栄養推定（現在はモックの候補フローのみ）"],
     },
-    status: "制作中",
     featured: true,
     filterIds: ["mobile"],
     filterHints: ["Mobile", "iOS"],
-    showcase: {
-      eyebrow: "Featured",
-      accent: "from-neutral-950/22 via-neutral-500/10 to-transparent",
-      layout: "featured",
-      visual: "orb",
-      className: "md:col-span-2 xl:col-span-7",
-    },
+    showcase: { eyebrow: "iOS Application", accent: "from-neutral-950/22 via-neutral-500/10 to-transparent", layout: "featured", visual: "orb", className: "xl:col-span-5" },
   },
   {
     title: "Barns",
@@ -349,7 +385,7 @@ export const projectItems = [
     visual: "crest",
     href: "/projects",
     ctaLabel: "一覧で見る",
-    githubUrl: siteConfig.githubUrl,
+    githubUrl: "https://github.com/Kounishiyuuki/portfolio",
     githubLabel: "GitHubを見る",
     coverAlt: "Portfolioの画面キャプチャは未追加のため、カード内では抽象ビジュアルを表示",
     status: "制作中",

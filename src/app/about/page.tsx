@@ -67,10 +67,14 @@ const journeyItems = [
       "チームでの制作を進めながら、進行管理や実装面の整理にも関わるようになりました。",
   },
   {
+    period: "2026年8〜9月",
+    title: "企業インターンに参加",
+    description: "フラー株式会社のサマーインターン（2026年8月17日〜21日）と株式会社アンドパッドの長期インターン（2026年8月24日〜9月18日）に参加し、チームでの開発に触れました。",
+  },
+  {
     period: "現在",
-    title: "制作とプロジェクト活動を継続",
-    description:
-      "モバイルアプリ、Web、UIを中心に、学びと実装を往復しながら制作を続けています。",
+    title: "MannerPathの公開準備とPulseCueの継続開発",
+    description: "MannerPathではiOS・Apple WatchとAPI、データ品質を一貫して扱い、PulseCueでは使いやすさと記録・同期基盤を改善しています。",
   },
 ] as const;
 
@@ -281,7 +285,7 @@ export default function AboutPage() {
             tone="muted"
             className="overflow-hidden rounded-[1.8rem] border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.035))] px-5 py-6 shadow-[0_14px_34px_rgba(0,0,0,0.055)] md:px-8 md:py-8"
           >
-            <ol className="relative grid gap-0 md:grid-cols-4 md:gap-4">
+            <ol className="relative grid gap-0 md:grid-cols-3 md:gap-4 xl:grid-cols-5">
               {journeyItems.map((item, index) => (
                 <li
                   key={item.period}

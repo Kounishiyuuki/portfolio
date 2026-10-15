@@ -29,8 +29,10 @@ describe("HomePage", () => {
     for (const project of featuredProjectItems) {
       expect(screen.getByRole("heading", { name: project.title })).toBeInTheDocument();
     }
-    expect(featuredProjectItems[0]?.title).toBe("PulseCue");
+    expect(featuredProjectItems[0]?.title).toBe("MannerPath");
+    expect(screen.getByAltText("MannerPathの実アプリ画面：近くの場所を地図とリストで表示")).toBeInTheDocument();
     expect(screen.getByAltText("PulseCueのアプリアイコン")).toBeInTheDocument();
+    expect(screen.getByRole("list", { name: "MannerPathの主な技術" })).toHaveTextContent("watchOS");
     expect(screen.getByAltText("Barnsのアプリアイコン")).toBeInTheDocument();
 
     const githubLink = screen.getByRole("link", { name: "GitHub" });
