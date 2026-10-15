@@ -125,7 +125,7 @@ function PhoneModel({
   return (
     <div className="[perspective:1600px]">
       <motion.div
-        className="relative aspect-[640/1390] w-[var(--phone-w)] [--phone-depth:11px] [--phone-w:min(40vw,11rem,18svh)] [transform-style:preserve-3d] md:[--phone-w:16rem] lg:[--phone-w:17.5rem] [will-change:transform]"
+        className="relative aspect-[640/1390] w-[var(--phone-w)] [--phone-depth:11px] [--phone-w:min(40vw,11rem,18svh)] [@media(max-height:700px)]:[--phone-w:min(40vw,11rem,15svh)] [transform-style:preserve-3d] md:[--phone-w:16rem] lg:[--phone-w:17.5rem] [will-change:transform]"
         style={{ rotateX, rotateY, rotateZ, x, y, scale }}
       >
         {/* Front: bezel + real screen captures */}
