@@ -40,6 +40,11 @@ export type ProjectItem = {
     alt: string;
   }[];
   status: string;
+  // Keeps unfinished work out of `features` so the detail page never reads as shipped.
+  roadmap?: {
+    inProgress: readonly string[];
+    planned: readonly string[];
+  };
   featured?: boolean;
   filterIds?: readonly Exclude<ProjectFilterId, "all">[];
   filterHints?: readonly string[];
@@ -66,7 +71,7 @@ export const projectItems = [
     tags: ["iOS", "watchOS", "SwiftUI", "MapKit", "Cloudflare Workers", "D1"],
     techStack: ["Swift", "SwiftUI", "MapKit", "Core Location", "WidgetKit", "WatchConnectivity", "Cloudflare Workers", "TypeScript", "Hono", "D1"],
     features: ["地図とリストからの場所検索と徒歩ルート", "出典・位置精度・情報の鮮度を示す詳細表示", "Apple WatchとWidgetからの確認", "地域別データ配信と保存済みデータのオフライン参照", "公式ソースの検証と公開データの品質管理"],
-    focusPoints: ["施設が存在するだけでは灰皿設置・喫煙可能と判断しないデータ採用基準", "正確な場所と概略位置を区別し、不明な情報を断定しないUI", "端末で距離を計算し、APIには地域タイル単位でアクセスする設計"],
+    focusPoints: ["施設が存在するだけでは灰皿設置・喫煙可能と判断しないデータ採用基準", "正確な場所と概略位置を区別し、不明な情報を断定しないUI", "正確な現在地は端末内で距離計算に使い、APIには地域タイル単位でのみアクセスするプライバシー設計"],
     learned: ["iOS・watchOS・Widgetを横断する機能設計", "Cloudflare WorkersとD1によるAPI・データ公開基盤", "一次情報・ライセンス・位置精度を踏まえたリリース品質管理"],
     highlightPoints: ["iOS / watchOS", "Cloudflare Workers / D1", "データ品質と公開設計"],
     visual: "ring",
@@ -82,10 +87,14 @@ export const projectItems = [
       { src: "/images/projects/mannerpath/watch-nearby.png", alt: "MannerPathのApple Watch画面：近くの場所" },
     ],
     status: "App Store提出準備中",
+    roadmap: {
+      inProgress: ["App Store提出に向けた審査情報・プライバシー申告・ストア用スクリーンショットの準備", "リリース候補版のUI回帰テストとApple Watch・Widgetの動作確認"],
+      planned: ["公式情報源の追加による対応地域の拡大"],
+    },
     featured: true,
     filterIds: ["mobile"],
     filterHints: ["Mobile", "iOS", "watchOS"],
-    showcase: { eyebrow: "Release Candidate", accent: "from-amber-100/65 via-neutral-100/35 to-transparent", layout: "featured", visual: "orb", className: "xl:col-span-7" },
+    showcase: { eyebrow: "Release Candidate", accent: "from-amber-100/65 via-neutral-100/35 to-transparent", layout: "featured", visual: "orb", className: "md:col-span-2 xl:col-span-7" },
   },
   {
     title: "PulseCue",
@@ -94,12 +103,12 @@ export const projectItems = [
     category: "iOS / Health",
     kind: "個人制作",
     year: "2026",
-    description: "ワークアウトの進行、食事・栄養・睡眠・体重の記録をまとめたiOSアプリです。SwiftDataによる端末内データ管理を基盤に、アカウント単位のデータ分離と同期の仕組みも段階的に整備しています。",
-    role: "個人開発として、SwiftUIでの画面設計と実装、SwiftDataの永続化、ワークアウト状態管理、認証・同期基盤の設計とテストに取り組んでいます。",
+    description: "ワークアウトの進行、食事・栄養・睡眠・体重の記録をまとめたiOSアプリです。記録はSwiftDataで端末内に保存するローカルファースト構成で、アカウント単位の同期は基盤を段階的に整備している段階です。",
+    role: "個人開発として、SwiftUIでの画面設計と実装、SwiftDataの永続化とスキーマ移行、ワークアウトの状態管理、サインインと同期基盤の設計・テストに取り組んでいます。",
     focus: "運動中の操作負荷を下げながら、記録の継続性とデータの安全な扱いを両立すること",
     tags: ["iOS", "Swift", "SwiftUI", "SwiftData", "Health"],
-    techStack: ["Swift", "SwiftUI", "SwiftData", "HealthKit", "Cloudflare Workers"],
-    features: ["Now / Rest / Nextのワークアウト実行画面", "ルーティン管理と運動履歴の確認", "食事・栄養・睡眠・体重の記録と可視化", "バーコード・栄養表示OCRからの入力補助", "アカウント単位のデータ管理と同期基盤の整備"],
+    techStack: ["Swift", "SwiftUI", "SwiftData", "Vision", "AVFoundation"],
+    features: ["Now / Rest / Nextのワークアウト実行画面", "ルーティン管理と運動履歴の確認", "食事・栄養・睡眠・体重の記録と目標との差分の可視化", "バーコード商品照会・栄養表示OCRからの入力補助（確認してから保存）", "ワークアウト記録のアカウント別所有と同期キューのローカル基盤"],
     focusPoints: ["運動中でも迷わず操作できるNative-firstの画面設計", "入力候補を確認してから保存するデータ処理", "ローカルの記録とアカウント別同期の責務分離"],
     learned: ["SwiftUIの状態管理とApple標準UIの使い分け", "SwiftDataの移行とアカウント別データ保護", "運動・栄養フローのテストとアクセシビリティ改善"],
     highlightPoints: ["SwiftUI / SwiftData", "ワークアウト体験", "データ分離・同期基盤"],
@@ -111,6 +120,10 @@ export const projectItems = [
     coverAlt: "PulseCueの画面キャプチャは未追加のため、カード内ではアプリアイコンを表示",
     appIcon: { src: "/images/projects/pulsecue/icon.png", alt: "PulseCueのアプリアイコン" },
     status: "継続開発中",
+    roadmap: {
+      inProgress: ["サインインとサーバー同期クライアントの接続", "HealthKitからの読み取りによる入力補助（書き込みは行わない方針）"],
+      planned: ["写真からの栄養推定（現在はモックの候補フローのみ）"],
+    },
     featured: true,
     filterIds: ["mobile"],
     filterHints: ["Mobile", "iOS"],

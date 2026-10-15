@@ -30,6 +30,7 @@ export function ProjectShowcaseCard({
   status,
   description,
   focus,
+  tags,
   coverImage,
   coverAlt,
   appIcon,
@@ -130,6 +131,16 @@ export function ProjectShowcaseCard({
             >
               {description}
             </p>
+            <ul aria-label={`${title}の主な技術`} className="flex flex-wrap gap-1.5">
+              {tags.slice(0, 4).map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-pill border border-line/70 bg-white/70 px-2.5 py-0.5 text-[10.5px] font-medium tracking-[0.02em] text-foreground/70"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
             <div className="rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.06))] px-3.5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]">
               <p className="text-[10px] font-semibold tracking-[0.08em] text-muted-foreground">
                 見るポイント
@@ -147,7 +158,7 @@ export function ProjectShowcaseCard({
 
 function ProjectShowcaseCover({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-[1.02] md:p-5">
+    <div className="scroll-depth-parallax absolute inset-0 flex items-center justify-center p-4 transition-transform duration-500 group-hover:scale-[1.02] md:p-5">
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[1.35rem] border border-white/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_18px_34px_rgba(0,0,0,0.12)]">
         <Image
           src={src}

@@ -44,6 +44,18 @@ describe("FeaturedProjectDetailPage", () => {
     expect(screen.getByAltText("WinCookのロゴ画像")).toBeInTheDocument();
   });
 
+  it("separates in-progress and planned work on the PulseCue detail page", async () => {
+    const page = await FeaturedProjectDetailPage({
+      params: Promise.resolve({ slug: "pulsecue-ios" }),
+    });
+
+    render(page);
+
+    expect(screen.getByRole("heading", { name: "現在取り組んでいること" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "未実装の予定" })).toBeInTheDocument();
+    expect(screen.getByText("写真からの栄養推定（現在はモックの候補フローのみ）")).toBeInTheDocument();
+  });
+
   it("returns project metadata from the selected project", async () => {
     await expect(
       generateMetadata({

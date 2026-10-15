@@ -65,6 +65,15 @@ describe("projects data", () => {
     expect(projectItems.find((project) => project.slug === "pulsecue-ios")?.status).toBe("継続開発中");
   });
 
+  it("lists only implemented PulseCue technology and keeps unfinished work in the roadmap", () => {
+    const pulsecue = projectItems.find((project) => project.slug === "pulsecue-ios");
+
+    expect(pulsecue?.techStack).not.toContain("HealthKit");
+    expect(pulsecue?.techStack).not.toContain("Cloudflare Workers");
+    expect(pulsecue?.roadmap?.inProgress.some((item) => item.includes("HealthKit"))).toBe(true);
+    expect(pulsecue?.roadmap?.planned.some((item) => item.includes("写真からの栄養推定"))).toBe(true);
+  });
+
   it("frames Barns as a modest request-based MVP project", () => {
     const barns = projectItems.find((project) => project.title === "Barns");
 

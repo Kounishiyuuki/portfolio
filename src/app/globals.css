@@ -243,19 +243,48 @@ a {
   }
 }
 
-/* Progressive, reduced-motion-safe depth on Featured Projects only. */
+/* Progressive, reduced-motion-safe depth on Featured Projects only.
+   Browsers without scroll-driven animations simply render the static layout. */
 @keyframes portfolio-scroll-depth {
-  from { transform: translate3d(0, 16px, -28px) rotateX(3deg); opacity: 0.94; }
+  from {
+    transform: translate3d(0, var(--depth-rise), var(--depth-z)) rotateX(var(--depth-tilt));
+    opacity: 0.92;
+  }
   to { transform: translate3d(0, 0, 0) rotateX(0); opacity: 1; }
 }
-@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+/* Uses `translate` rather than `transform` so it composes with the hover scale. */
+@keyframes portfolio-scroll-parallax {
+  from { translate: 0 var(--parallax-shift); }
+  to { translate: 0 calc(var(--parallax-shift) * -1); }
+}
+@media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .scroll-depth-stage { perspective: 1400px; perspective-origin: center 40%; }
+    .scroll-depth-stage {
+      --depth-rise: 12px;
+      --depth-z: 0px;
+      --depth-tilt: 0deg;
+      --parallax-shift: 0px;
+      perspective: 1400px;
+      perspective-origin: center 40%;
+    }
     .scroll-depth-card {
       transform-origin: center 70%;
       animation: portfolio-scroll-depth linear both;
       animation-timeline: view();
       animation-range: entry 5% cover 30%;
     }
+    .scroll-depth-stage .scroll-depth-parallax {
+      animation: portfolio-scroll-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .scroll-depth-stage {
+    --depth-rise: 22px;
+    --depth-z: -36px;
+    --depth-tilt: 4deg;
+    --parallax-shift: 8px;
   }
 }

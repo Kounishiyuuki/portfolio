@@ -31,6 +31,7 @@ export const skillCategories = [
     items: [
       { name: "Figma", featured: true },
       { name: "情報設計", featured: false },
+      { name: "アクセシビリティ", featured: false },
     ],
     note: "使いやすさと見やすさを両立するための整理も大切にしています。",
   },
@@ -54,10 +55,10 @@ export const primarySkills = ["Swift", "Kotlin", "Next.js", "Figma"] as const;
 export const skillSnapshots = [
   {
     name: "Swift",
-    area: "iOS",
+    area: "iOS / watchOS",
     level: "主軸",
-    usage: "画面設計からUI実装まで、iOSアプリの見やすさを意識して組み立てます。",
-    output: "ネイティブUI / 画面遷移 / 情報整理",
+    usage: "SwiftUIでiPhone・Apple Watch・Widgetの画面を実装し、SwiftDataやMapKitを使った機能をテストとあわせて組み立てます。",
+    output: "SwiftUI / SwiftData / MapKit / WidgetKit",
   },
   {
     name: "Kotlin",
@@ -91,7 +92,7 @@ export const focusHighlights = [
   {
     icon: "02",
     title: "制作の流れ",
-    detail: "画面設計、実装、プロトタイプ、3D表現までを、つながりのある工程として扱えます。",
+    detail: "GitHubのIssueとPRで変更を小さく分け、テストやUI確認で検証しながら、個人開発をリリース準備まで進めています。",
   },
   {
     icon: "03",
