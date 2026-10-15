@@ -7,7 +7,7 @@ export type IosShowcaseProject = {
   status: string;
   summary: string;
   points: readonly string[];
-  screen: { src: string; fit: "cover" | "icon" };
+  screen: string;
 };
 
 function pickProject(slug: string): ProjectItem {
@@ -23,7 +23,8 @@ function pickProject(slug: string): ProjectItem {
 const mannerPath = pickProject("mannerpath");
 const pulseCue = pickProject("pulsecue-ios");
 
-// PulseCue has no real screenshot yet, so its screen shows the app icon instead of a mock UI.
+// PulseCue's screen is a Simulator capture from the app's own App Store screenshot script
+// (DEBUG fixture route `runner-active`); it is not a repository asset, so it is only used here.
 export const iosShowcaseProjects: readonly IosShowcaseProject[] = [
   {
     slug: mannerPath.slug,
@@ -31,7 +32,7 @@ export const iosShowcaseProjects: readonly IosShowcaseProject[] = [
     status: mannerPath.status,
     summary: mannerPath.summary,
     points: mannerPath.highlightPoints,
-    screen: { src: mannerPath.coverImage ?? "", fit: "cover" },
+    screen: mannerPath.coverImage ?? "",
   },
   {
     slug: pulseCue.slug,
@@ -39,7 +40,7 @@ export const iosShowcaseProjects: readonly IosShowcaseProject[] = [
     status: pulseCue.status,
     summary: pulseCue.summary,
     points: pulseCue.highlightPoints,
-    screen: { src: pulseCue.appIcon?.src ?? "", fit: "icon" },
+    screen: "/images/projects/pulsecue/runner-active.png",
   },
 ];
 
@@ -79,15 +80,7 @@ export function IosShowcaseCopy({ project }: { project: IosShowcaseProject }) {
 }
 
 export function IosShowcaseScreen({ project }: { project: IosShowcaseProject }) {
-  if (project.screen.fit === "icon") {
-    return (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(180deg,#fafafa,#ececee)]">
-        <Image src={project.screen.src} alt="" width={120} height={120} className="size-[38%] rounded-[22%] shadow-[0_14px_30px_rgba(0,0,0,0.16)]" />
-      </div>
-    );
-  }
-
-  return <Image src={project.screen.src} alt="" fill sizes="18rem" className="object-cover object-top" />;
+  return <Image src={project.screen} alt="" fill sizes="18rem" className="object-cover object-top" />;
 }
 
 // Used while the animated version loads, when motion is reduced, and as the no-JS output.

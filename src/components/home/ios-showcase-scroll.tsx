@@ -49,7 +49,7 @@ function AnimatedShowcase({ first, second }: { first: IosShowcaseProject; second
     <section
       ref={sectionRef}
       aria-labelledby="ios-showcase-title"
-      className="relative h-[220vh] md:h-[280vh]"
+      className="relative h-[190vh] md:h-[230vh]"
     >
       <div className="sticky top-0 flex h-svh flex-col justify-center gap-6 pb-6 pt-[5.5rem] md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:items-center md:gap-10 md:py-0">
         <div className="space-y-6 md:space-y-10">
